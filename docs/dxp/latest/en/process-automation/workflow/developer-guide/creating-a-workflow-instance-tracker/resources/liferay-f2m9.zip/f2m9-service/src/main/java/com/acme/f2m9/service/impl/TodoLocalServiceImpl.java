@@ -14,14 +14,15 @@
 
 package com.acme.f2m9.service.impl;
 
+import org.osgi.service.component.annotations.Component;
+
 import com.acme.f2m9.model.Todo;
 import com.acme.f2m9.service.base.TodoLocalServiceBaseImpl;
-
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
-
-import org.osgi.service.component.annotations.Component;
+import com.liferay.portal.kernel.util.ContentTypes;
 
 /**
  * @author Brian Wing Shun Chan
@@ -35,7 +36,7 @@ public class TodoLocalServiceImpl extends TodoLocalServiceBaseImpl {
 	@Indexable(type = IndexableType.REINDEX)
 	public Todo addTodo(
 		long companyId, long groupId, long userId, String userName,
-		String item) {
+		String item) throws PortalException {
 
 		Todo todo = todoPersistence.create(counterLocalService.increment());
 
@@ -44,6 +45,8 @@ public class TodoLocalServiceImpl extends TodoLocalServiceBaseImpl {
 		todo.setName(item);
 		todo.setUserId(userId);
 		todo.setUserName(userName);
+		
+		assetEntryLocalService.updateEntry(userId, groupId, todo.getCreateDate(), todo.getModifiedDate(), Todo.class.getName(), todo.getTodoId(), todo.getUuid(), 0, null , null, true, true, null, null, null, null, ContentTypes.TEXT, todo.getName(), null, null, null, null, 0, 0, 1.0);
 
 		return todoPersistence.update(todo);
 	}
