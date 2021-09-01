@@ -32,8 +32,9 @@ public class TodoLocalServiceWrapper
 
 	@Override
 	public com.acme.f2m9.model.Todo addTodo(
-		long companyId, long groupId, long userId, String userName,
-		String item) {
+			long companyId, long groupId, long userId, String userName,
+			String item)
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _todoLocalService.addTodo(
 			companyId, groupId, userId, userName, item);

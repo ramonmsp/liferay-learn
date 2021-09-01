@@ -46,8 +46,9 @@ public class TodoLocalServiceUtil {
 	 * Never modify this class directly. Add custom service methods to <code>com.acme.f2m9.service.impl.TodoLocalServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
 	public static Todo addTodo(
-		long companyId, long groupId, long userId, String userName,
-		String item) {
+			long companyId, long groupId, long userId, String userName,
+			String item)
+		throws PortalException {
 
 		return getService().addTodo(companyId, groupId, userId, userName, item);
 	}

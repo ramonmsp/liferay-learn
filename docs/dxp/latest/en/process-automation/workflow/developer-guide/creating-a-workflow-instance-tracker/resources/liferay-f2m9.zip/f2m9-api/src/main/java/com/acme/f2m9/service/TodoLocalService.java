@@ -66,8 +66,9 @@ public interface TodoLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Todo addTodo(
-		long companyId, long groupId, long userId, String userName,
-		String item);
+			long companyId, long groupId, long userId, String userName,
+			String item)
+		throws PortalException;
 
 	/**
 	 * Adds the todo to the database. Also notifies the appropriate model listeners.
