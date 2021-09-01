@@ -25,5 +25,6 @@
 
 		<column name="name" type="String" />
 
+		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
 	</entity>
 </service-builder>

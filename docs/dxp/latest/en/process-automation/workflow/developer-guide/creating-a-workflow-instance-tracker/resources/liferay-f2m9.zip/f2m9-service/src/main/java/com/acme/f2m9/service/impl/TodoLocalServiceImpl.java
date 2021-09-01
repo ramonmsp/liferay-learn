@@ -14,9 +14,12 @@
 
 package com.acme.f2m9.service.impl;
 
+import com.acme.f2m9.model.Todo;
 import com.acme.f2m9.service.base.TodoLocalServiceBaseImpl;
 
 import com.liferay.portal.aop.AopService;
+import com.liferay.portal.kernel.search.Indexable;
+import com.liferay.portal.kernel.search.IndexableType;
 
 import org.osgi.service.component.annotations.Component;
 
@@ -28,4 +31,21 @@ import org.osgi.service.component.annotations.Component;
 	service = AopService.class
 )
 public class TodoLocalServiceImpl extends TodoLocalServiceBaseImpl {
+
+	@Indexable(type = IndexableType.REINDEX)
+	public Todo addTodo(
+		long companyId, long groupId, long userId, String userName,
+		String item) {
+
+		Todo todo = todoPersistence.create(counterLocalService.increment());
+
+		todo.setCompanyId(companyId);
+		todo.setGroupId(groupId);
+		todo.setName(item);
+		todo.setUserId(userId);
+		todo.setUserName(userName);
+
+		return todoPersistence.update(todo);
+	}
+
 }

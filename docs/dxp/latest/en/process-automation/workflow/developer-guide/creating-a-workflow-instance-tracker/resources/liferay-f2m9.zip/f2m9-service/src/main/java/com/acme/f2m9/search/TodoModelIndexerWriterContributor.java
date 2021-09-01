@@ -8,8 +8,13 @@ import com.liferay.portal.search.batch.DynamicQueryBatchIndexingActionableFactor
 import com.liferay.portal.search.spi.model.index.contributor.ModelIndexerWriterContributor;
 import com.liferay.portal.search.spi.model.index.contributor.helper.ModelIndexerWriterDocumentHelper;
 
+import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+@Component(
+	property = "indexer.class.name=com.acme.f2m9.model.Todo",
+	service = ModelIndexerWriterContributor.class
+)
 public class TodoModelIndexerWriterContributor
 	implements ModelIndexerWriterContributor<Todo> {
 
