@@ -64,6 +64,10 @@ public interface TodoLocalService
 	 *
 	 * Never modify this interface directly. Add custom service methods to <code>com.acme.f2m9.service.impl.TodoLocalServiceImpl</code> and rerun ServiceBuilder to automatically copy the method declarations to this interface. Consume the todo local service via injection or a <code>org.osgi.util.tracker.ServiceTracker</code>. Use {@link TodoLocalServiceUtil} if injection and service tracking are not available.
 	 */
+	@Indexable(type = IndexableType.REINDEX)
+	public Todo addTodo(
+		long companyId, long groupId, long userId, String userName,
+		String item);
 
 	/**
 	 * Adds the todo to the database. Also notifies the appropriate model listeners.

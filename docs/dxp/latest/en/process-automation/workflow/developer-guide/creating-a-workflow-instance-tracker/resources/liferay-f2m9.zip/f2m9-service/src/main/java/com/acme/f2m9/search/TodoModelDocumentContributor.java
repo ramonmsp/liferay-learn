@@ -16,7 +16,7 @@ import java.util.Locale;
 import org.osgi.service.component.annotations.Component;
 
 @Component(
-	immediate = true, property = "indexer.class.name=com.acme.f2m9.model.Todo",
+	property = "indexer.class.name=com.acme.f2m9.model.Todo",
 	service = ModelDocumentContributor.class
 )
 public class TodoModelDocumentContributor

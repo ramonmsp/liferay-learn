@@ -11,7 +11,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
 @Component(
-	immediate = true, property = "indexer.class.name=com.acme.f2m9.model.Todo",
+	property = "indexer.class.name=com.acme.f2m9.model.Todo",
 	service = KeywordQueryContributor.class
 )
 public class TodoKeywordQueryContributor implements KeywordQueryContributor {

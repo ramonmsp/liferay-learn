@@ -14,7 +14,7 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
 
-@Component
+@Component(immediate = true, service = {})
 public class TodoSearchRegistrar {
 
 	@Activate

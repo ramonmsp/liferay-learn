@@ -30,6 +30,15 @@ public class TodoLocalServiceWrapper
 		_todoLocalService = todoLocalService;
 	}
 
+	@Override
+	public com.acme.f2m9.model.Todo addTodo(
+		long companyId, long groupId, long userId, String userName,
+		String item) {
+
+		return _todoLocalService.addTodo(
+			companyId, groupId, userId, userName, item);
+	}
+
 	/**
 	 * Adds the todo to the database. Also notifies the appropriate model listeners.
 	 *
