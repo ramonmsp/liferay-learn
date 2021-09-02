@@ -48,6 +48,14 @@ public class TodoTable extends BaseTable<TodoTable> {
 		"createDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<TodoTable, Date> modifiedDate = createColumn(
 		"modifiedDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
+	public final Column<TodoTable, Integer> status = createColumn(
+		"status", Integer.class, Types.INTEGER, Column.FLAG_DEFAULT);
+	public final Column<TodoTable, Long> statusByUserId = createColumn(
+		"statusByUserId", Long.class, Types.BIGINT, Column.FLAG_DEFAULT);
+	public final Column<TodoTable, String> statusByUserName = createColumn(
+		"statusByUserName", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
+	public final Column<TodoTable, Date> statusDate = createColumn(
+		"statusDate", Date.class, Types.TIMESTAMP, Column.FLAG_DEFAULT);
 	public final Column<TodoTable, String> name = createColumn(
 		"name", String.class, Types.VARCHAR, Column.FLAG_DEFAULT);
 

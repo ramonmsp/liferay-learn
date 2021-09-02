@@ -33,11 +33,12 @@ public class TodoLocalServiceWrapper
 	@Override
 	public com.acme.f2m9.model.Todo addTodo(
 			long companyId, long groupId, long userId, String userName,
-			String item)
+			String item,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _todoLocalService.addTodo(
-			companyId, groupId, userId, userName, item);
+			companyId, groupId, userId, userName, item, serviceContext);
 	}
 
 	/**
@@ -376,6 +377,17 @@ public class TodoLocalServiceWrapper
 	@Override
 	public int getTodosCount() {
 		return _todoLocalService.getTodosCount();
+	}
+
+	@Override
+	public com.acme.f2m9.model.Todo updateStatus(
+			long userId, com.acme.f2m9.model.Todo todo, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			   com.liferay.portal.kernel.exception.SystemException {
+
+		return _todoLocalService.updateStatus(
+			userId, todo, status, serviceContext);
 	}
 
 	/**

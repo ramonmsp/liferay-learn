@@ -39,6 +39,7 @@ List<Todo> todoList = TodoLocalServiceUtil.getTodos(-1, -1);
 				<c:forEach items="<%= todoList %>" var="todo">
 					<tr>
 						<td>${todo.name }</td>
+						<td>${todo.status }</td>
 					</tr>
 				</c:forEach>
 			</tbody>

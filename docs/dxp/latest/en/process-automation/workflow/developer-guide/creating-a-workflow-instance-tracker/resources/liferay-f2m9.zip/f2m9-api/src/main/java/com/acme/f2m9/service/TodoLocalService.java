@@ -30,6 +30,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -67,7 +68,7 @@ public interface TodoLocalService
 	@Indexable(type = IndexableType.REINDEX)
 	public Todo addTodo(
 			long companyId, long groupId, long userId, String userName,
-			String item)
+			String item, ServiceContext serviceContext)
 		throws PortalException;
 
 	/**
@@ -310,6 +311,10 @@ public interface TodoLocalService
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int getTodosCount();
+
+	public Todo updateStatus(
+			long userId, Todo todo, int status, ServiceContext serviceContext)
+		throws PortalException, SystemException;
 
 	/**
 	 * Updates the todo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.

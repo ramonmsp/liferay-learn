@@ -19,6 +19,7 @@ import com.acme.f2m9.model.Todo;
 import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.model.PersistedModel;
 import com.liferay.portal.kernel.util.OrderByComparator;
 
@@ -47,10 +48,12 @@ public class TodoLocalServiceUtil {
 	 */
 	public static Todo addTodo(
 			long companyId, long groupId, long userId, String userName,
-			String item)
+			String item,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
 		throws PortalException {
 
-		return getService().addTodo(companyId, groupId, userId, userName, item);
+		return getService().addTodo(
+			companyId, groupId, userId, userName, item, serviceContext);
 	}
 
 	/**
@@ -343,6 +346,14 @@ public class TodoLocalServiceUtil {
 	 */
 	public static int getTodosCount() {
 		return getService().getTodosCount();
+	}
+
+	public static Todo updateStatus(
+			long userId, Todo todo, int status,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		return getService().updateStatus(userId, todo, status, serviceContext);
 	}
 
 	/**
