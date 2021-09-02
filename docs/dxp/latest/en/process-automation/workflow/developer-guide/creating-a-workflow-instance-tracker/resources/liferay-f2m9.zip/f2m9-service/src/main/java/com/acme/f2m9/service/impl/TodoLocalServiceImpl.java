@@ -14,15 +14,22 @@
 
 package com.acme.f2m9.service.impl;
 
-import org.osgi.service.component.annotations.Component;
-
 import com.acme.f2m9.model.Todo;
 import com.acme.f2m9.service.base.TodoLocalServiceBaseImpl;
+
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.model.User;
 import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.util.ContentTypes;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
+
+import java.util.Date;
+
+import org.osgi.service.component.annotations.Component;
 
 /**
  * @author Brian Wing Shun Chan
@@ -35,20 +42,65 @@ public class TodoLocalServiceImpl extends TodoLocalServiceBaseImpl {
 
 	@Indexable(type = IndexableType.REINDEX)
 	public Todo addTodo(
-		long companyId, long groupId, long userId, String userName,
-		String item) throws PortalException {
+			long companyId, long groupId, long userId, String userName,
+			String item, ServiceContext serviceContext)
+		throws PortalException {
 
 		Todo todo = todoPersistence.create(counterLocalService.increment());
 
+		Date now = new Date();
+
 		todo.setCompanyId(companyId);
+		todo.setCreateDate(serviceContext.getCreateDate(now));
 		todo.setGroupId(groupId);
+		todo.setModifiedDate(serviceContext.getModifiedDate(now));
 		todo.setName(item);
 		todo.setUserId(userId);
 		todo.setUserName(userName);
-		
-		assetEntryLocalService.updateEntry(userId, groupId, todo.getCreateDate(), todo.getModifiedDate(), Todo.class.getName(), todo.getTodoId(), todo.getUuid(), 0, null , null, true, true, null, null, null, null, ContentTypes.TEXT, todo.getName(), null, null, null, null, 0, 0, 1.0);
 
-		return todoPersistence.update(todo);
+		todo.setStatus(WorkflowConstants.STATUS_DRAFT);
+		todo.setStatusByUserId(userId);
+		todo.setStatusByUserName(userName);
+		todo.setStatusDate(serviceContext.getModifiedDate(null));
+
+		todo = todoPersistence.update(todo);
+
+		assetEntryLocalService.updateEntry(
+			userId, groupId, todo.getCreateDate(), todo.getModifiedDate(),
+			Todo.class.getName(), todo.getTodoId(), todo.getUuid(), 0, null,
+			null, true, true, null, null, null, null, ContentTypes.TEXT,
+			todo.getName(), null, null, null, null, 0, 0, 1.0);
+
+		WorkflowHandlerRegistryUtil.startWorkflowInstance(
+			todo.getCompanyId(), todo.getGroupId(), todo.getUserId(),
+			Todo.class.getName(), todo.getPrimaryKey(), todo, serviceContext);
+
+		return todo;
+	}
+
+	public Todo updateStatus(
+			long userId, Todo todo, int status, ServiceContext serviceContext)
+		throws PortalException {
+
+		User user = userLocalService.getUser(userId);
+
+		todo.setStatus(status);
+		todo.setStatusByUserId(userId);
+		todo.setStatusByUserName(user.getFullName());
+		todo.setStatusDate(new Date());
+
+		todo = todoPersistence.update(todo);
+
+		if (status == WorkflowConstants.STATUS_APPROVED) {
+			assetEntryLocalService.updateVisible(
+				Todo.class.getName(), todo.getTodoId(), true);
+		}
+		else {
+			assetEntryLocalService.updateVisible(
+				Todo.class.getName(), todo.getTodoId(), false);
+		}
+
+		return todo;
 	}
 
 }

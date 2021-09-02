@@ -61,7 +61,7 @@ public class TodoCacheModel implements CacheModel<Todo>, Externalizable {
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(27);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -79,6 +79,14 @@ public class TodoCacheModel implements CacheModel<Todo>, Externalizable {
 		sb.append(createDate);
 		sb.append(", modifiedDate=");
 		sb.append(modifiedDate);
+		sb.append(", status=");
+		sb.append(status);
+		sb.append(", statusByUserId=");
+		sb.append(statusByUserId);
+		sb.append(", statusByUserName=");
+		sb.append(statusByUserName);
+		sb.append(", statusDate=");
+		sb.append(statusDate);
 		sb.append(", name=");
 		sb.append(name);
 		sb.append("}");
@@ -123,6 +131,23 @@ public class TodoCacheModel implements CacheModel<Todo>, Externalizable {
 			todoImpl.setModifiedDate(new Date(modifiedDate));
 		}
 
+		todoImpl.setStatus(status);
+		todoImpl.setStatusByUserId(statusByUserId);
+
+		if (statusByUserName == null) {
+			todoImpl.setStatusByUserName("");
+		}
+		else {
+			todoImpl.setStatusByUserName(statusByUserName);
+		}
+
+		if (statusDate == Long.MIN_VALUE) {
+			todoImpl.setStatusDate(null);
+		}
+		else {
+			todoImpl.setStatusDate(new Date(statusDate));
+		}
+
 		if (name == null) {
 			todoImpl.setName("");
 		}
@@ -149,6 +174,12 @@ public class TodoCacheModel implements CacheModel<Todo>, Externalizable {
 		userName = objectInput.readUTF();
 		createDate = objectInput.readLong();
 		modifiedDate = objectInput.readLong();
+
+		status = objectInput.readInt();
+
+		statusByUserId = objectInput.readLong();
+		statusByUserName = objectInput.readUTF();
+		statusDate = objectInput.readLong();
 		name = objectInput.readUTF();
 	}
 
@@ -179,6 +210,19 @@ public class TodoCacheModel implements CacheModel<Todo>, Externalizable {
 		objectOutput.writeLong(createDate);
 		objectOutput.writeLong(modifiedDate);
 
+		objectOutput.writeInt(status);
+
+		objectOutput.writeLong(statusByUserId);
+
+		if (statusByUserName == null) {
+			objectOutput.writeUTF("");
+		}
+		else {
+			objectOutput.writeUTF(statusByUserName);
+		}
+
+		objectOutput.writeLong(statusDate);
+
 		if (name == null) {
 			objectOutput.writeUTF("");
 		}
@@ -195,6 +239,10 @@ public class TodoCacheModel implements CacheModel<Todo>, Externalizable {
 	public String userName;
 	public long createDate;
 	public long modifiedDate;
+	public int status;
+	public long statusByUserId;
+	public String statusByUserName;
+	public long statusDate;
 	public String name;
 
 }

@@ -1,14 +1,14 @@
 package com.acme.f2m9.search;
 
-import java.util.Locale;
-
-import org.osgi.service.component.annotations.Component;
-
 import com.liferay.petra.string.StringPool;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.search.Field;
 import com.liferay.portal.kernel.search.Summary;
 import com.liferay.portal.search.spi.model.result.contributor.ModelSummaryContributor;
+
+import java.util.Locale;
+
+import org.osgi.service.component.annotations.Component;
 
 @Component(
 	property = "indexer.class.name=com.acme.f2m9.model.Todo",

@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.model.BaseModel;
 import com.liferay.portal.kernel.model.GroupedModel;
 import com.liferay.portal.kernel.model.ShardedModel;
 import com.liferay.portal.kernel.model.StagedAuditedModel;
+import com.liferay.portal.kernel.model.WorkflowedModel;
 
 import java.util.Date;
 
@@ -37,7 +38,8 @@ import org.osgi.annotation.versioning.ProviderType;
  */
 @ProviderType
 public interface TodoModel
-	extends BaseModel<Todo>, GroupedModel, ShardedModel, StagedAuditedModel {
+	extends BaseModel<Todo>, GroupedModel, ShardedModel, StagedAuditedModel,
+			WorkflowedModel {
 
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -204,6 +206,87 @@ public interface TodoModel
 	public void setModifiedDate(Date modifiedDate);
 
 	/**
+	 * Returns the status of this todo.
+	 *
+	 * @return the status of this todo
+	 */
+	@Override
+	public int getStatus();
+
+	/**
+	 * Sets the status of this todo.
+	 *
+	 * @param status the status of this todo
+	 */
+	@Override
+	public void setStatus(int status);
+
+	/**
+	 * Returns the status by user ID of this todo.
+	 *
+	 * @return the status by user ID of this todo
+	 */
+	@Override
+	public long getStatusByUserId();
+
+	/**
+	 * Sets the status by user ID of this todo.
+	 *
+	 * @param statusByUserId the status by user ID of this todo
+	 */
+	@Override
+	public void setStatusByUserId(long statusByUserId);
+
+	/**
+	 * Returns the status by user uuid of this todo.
+	 *
+	 * @return the status by user uuid of this todo
+	 */
+	@Override
+	public String getStatusByUserUuid();
+
+	/**
+	 * Sets the status by user uuid of this todo.
+	 *
+	 * @param statusByUserUuid the status by user uuid of this todo
+	 */
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid);
+
+	/**
+	 * Returns the status by user name of this todo.
+	 *
+	 * @return the status by user name of this todo
+	 */
+	@AutoEscape
+	@Override
+	public String getStatusByUserName();
+
+	/**
+	 * Sets the status by user name of this todo.
+	 *
+	 * @param statusByUserName the status by user name of this todo
+	 */
+	@Override
+	public void setStatusByUserName(String statusByUserName);
+
+	/**
+	 * Returns the status date of this todo.
+	 *
+	 * @return the status date of this todo
+	 */
+	@Override
+	public Date getStatusDate();
+
+	/**
+	 * Sets the status date of this todo.
+	 *
+	 * @param statusDate the status date of this todo
+	 */
+	@Override
+	public void setStatusDate(Date statusDate);
+
+	/**
 	 * Returns the name of this todo.
 	 *
 	 * @return the name of this todo
@@ -217,5 +300,69 @@ public interface TodoModel
 	 * @param name the name of this todo
 	 */
 	public void setName(String name);
+
+	/**
+	 * Returns <code>true</code> if this todo is approved.
+	 *
+	 * @return <code>true</code> if this todo is approved; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isApproved();
+
+	/**
+	 * Returns <code>true</code> if this todo is denied.
+	 *
+	 * @return <code>true</code> if this todo is denied; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDenied();
+
+	/**
+	 * Returns <code>true</code> if this todo is a draft.
+	 *
+	 * @return <code>true</code> if this todo is a draft; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isDraft();
+
+	/**
+	 * Returns <code>true</code> if this todo is expired.
+	 *
+	 * @return <code>true</code> if this todo is expired; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isExpired();
+
+	/**
+	 * Returns <code>true</code> if this todo is inactive.
+	 *
+	 * @return <code>true</code> if this todo is inactive; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isInactive();
+
+	/**
+	 * Returns <code>true</code> if this todo is incomplete.
+	 *
+	 * @return <code>true</code> if this todo is incomplete; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isIncomplete();
+
+	/**
+	 * Returns <code>true</code> if this todo is pending.
+	 *
+	 * @return <code>true</code> if this todo is pending; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isPending();
+
+	/**
+	 * Returns <code>true</code> if this todo is scheduled.
+	 *
+	 * @return <code>true</code> if this todo is scheduled; <code>false</code> otherwise
+	 */
+	@Override
+	public boolean isScheduled();
 
 }

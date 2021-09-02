@@ -34,6 +34,7 @@ import com.liferay.portal.kernel.service.UserLocalServiceUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PortalUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 
 import java.io.Serializable;
 
@@ -79,6 +80,8 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 		{"groupId", Types.BIGINT}, {"companyId", Types.BIGINT},
 		{"userId", Types.BIGINT}, {"userName", Types.VARCHAR},
 		{"createDate", Types.TIMESTAMP}, {"modifiedDate", Types.TIMESTAMP},
+		{"status", Types.INTEGER}, {"statusByUserId", Types.BIGINT},
+		{"statusByUserName", Types.VARCHAR}, {"statusDate", Types.TIMESTAMP},
 		{"name", Types.VARCHAR}
 	};
 
@@ -94,11 +97,15 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 		TABLE_COLUMNS_MAP.put("userName", Types.VARCHAR);
 		TABLE_COLUMNS_MAP.put("createDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("modifiedDate", Types.TIMESTAMP);
+		TABLE_COLUMNS_MAP.put("status", Types.INTEGER);
+		TABLE_COLUMNS_MAP.put("statusByUserId", Types.BIGINT);
+		TABLE_COLUMNS_MAP.put("statusByUserName", Types.VARCHAR);
+		TABLE_COLUMNS_MAP.put("statusDate", Types.TIMESTAMP);
 		TABLE_COLUMNS_MAP.put("name", Types.VARCHAR);
 	}
 
 	public static final String TABLE_SQL_CREATE =
-		"create table F2M9_Todo (uuid_ VARCHAR(75) null,todoId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,name VARCHAR(75) null)";
+		"create table F2M9_Todo (uuid_ VARCHAR(75) null,todoId LONG not null primary key,groupId LONG,companyId LONG,userId LONG,userName VARCHAR(75) null,createDate DATE null,modifiedDate DATE null,status INTEGER,statusByUserId LONG,statusByUserName VARCHAR(75) null,statusDate DATE null,name VARCHAR(75) null)";
 
 	public static final String TABLE_SQL_DROP = "drop table F2M9_Todo";
 
@@ -174,6 +181,10 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 		model.setUserName(soapModel.getUserName());
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setModifiedDate(soapModel.getModifiedDate());
+		model.setStatus(soapModel.getStatus());
+		model.setStatusByUserId(soapModel.getStatusByUserId());
+		model.setStatusByUserName(soapModel.getStatusByUserName());
+		model.setStatusDate(soapModel.getStatusDate());
 		model.setName(soapModel.getName());
 
 		return model;
@@ -343,6 +354,20 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 		attributeGetterFunctions.put("modifiedDate", Todo::getModifiedDate);
 		attributeSetterBiConsumers.put(
 			"modifiedDate", (BiConsumer<Todo, Date>)Todo::setModifiedDate);
+		attributeGetterFunctions.put("status", Todo::getStatus);
+		attributeSetterBiConsumers.put(
+			"status", (BiConsumer<Todo, Integer>)Todo::setStatus);
+		attributeGetterFunctions.put("statusByUserId", Todo::getStatusByUserId);
+		attributeSetterBiConsumers.put(
+			"statusByUserId", (BiConsumer<Todo, Long>)Todo::setStatusByUserId);
+		attributeGetterFunctions.put(
+			"statusByUserName", Todo::getStatusByUserName);
+		attributeSetterBiConsumers.put(
+			"statusByUserName",
+			(BiConsumer<Todo, String>)Todo::setStatusByUserName);
+		attributeGetterFunctions.put("statusDate", Todo::getStatusDate);
+		attributeSetterBiConsumers.put(
+			"statusDate", (BiConsumer<Todo, Date>)Todo::setStatusDate);
 		attributeGetterFunctions.put("name", Todo::getName);
 		attributeSetterBiConsumers.put(
 			"name", (BiConsumer<Todo, String>)Todo::setName);
@@ -535,6 +560,87 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 
 	@JSON
 	@Override
+	public int getStatus() {
+		return _status;
+	}
+
+	@Override
+	public void setStatus(int status) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_status = status;
+	}
+
+	@JSON
+	@Override
+	public long getStatusByUserId() {
+		return _statusByUserId;
+	}
+
+	@Override
+	public void setStatusByUserId(long statusByUserId) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_statusByUserId = statusByUserId;
+	}
+
+	@Override
+	public String getStatusByUserUuid() {
+		try {
+			User user = UserLocalServiceUtil.getUserById(getStatusByUserId());
+
+			return user.getUuid();
+		}
+		catch (PortalException portalException) {
+			return "";
+		}
+	}
+
+	@Override
+	public void setStatusByUserUuid(String statusByUserUuid) {
+	}
+
+	@JSON
+	@Override
+	public String getStatusByUserName() {
+		if (_statusByUserName == null) {
+			return "";
+		}
+		else {
+			return _statusByUserName;
+		}
+	}
+
+	@Override
+	public void setStatusByUserName(String statusByUserName) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_statusByUserName = statusByUserName;
+	}
+
+	@JSON
+	@Override
+	public Date getStatusDate() {
+		return _statusDate;
+	}
+
+	@Override
+	public void setStatusDate(Date statusDate) {
+		if (_columnOriginalValues == Collections.EMPTY_MAP) {
+			_setColumnOriginalValues();
+		}
+
+		_statusDate = statusDate;
+	}
+
+	@JSON
+	@Override
 	public String getName() {
 		if (_name == null) {
 			return "";
@@ -557,6 +663,86 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 	public StagedModelType getStagedModelType() {
 		return new StagedModelType(
 			PortalUtil.getClassNameId(Todo.class.getName()));
+	}
+
+	@Override
+	public boolean isApproved() {
+		if (getStatus() == WorkflowConstants.STATUS_APPROVED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isDenied() {
+		if (getStatus() == WorkflowConstants.STATUS_DENIED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isDraft() {
+		if (getStatus() == WorkflowConstants.STATUS_DRAFT) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isExpired() {
+		if (getStatus() == WorkflowConstants.STATUS_EXPIRED) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isInactive() {
+		if (getStatus() == WorkflowConstants.STATUS_INACTIVE) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isIncomplete() {
+		if (getStatus() == WorkflowConstants.STATUS_INCOMPLETE) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isPending() {
+		if (getStatus() == WorkflowConstants.STATUS_PENDING) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean isScheduled() {
+		if (getStatus() == WorkflowConstants.STATUS_SCHEDULED) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	public long getColumnBitmask() {
@@ -623,6 +809,10 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 		todoImpl.setUserName(getUserName());
 		todoImpl.setCreateDate(getCreateDate());
 		todoImpl.setModifiedDate(getModifiedDate());
+		todoImpl.setStatus(getStatus());
+		todoImpl.setStatusByUserId(getStatusByUserId());
+		todoImpl.setStatusByUserName(getStatusByUserName());
+		todoImpl.setStatusDate(getStatusDate());
 		todoImpl.setName(getName());
 
 		todoImpl.resetOriginalValues();
@@ -745,6 +935,27 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 			todoCacheModel.modifiedDate = Long.MIN_VALUE;
 		}
 
+		todoCacheModel.status = getStatus();
+
+		todoCacheModel.statusByUserId = getStatusByUserId();
+
+		todoCacheModel.statusByUserName = getStatusByUserName();
+
+		String statusByUserName = todoCacheModel.statusByUserName;
+
+		if ((statusByUserName != null) && (statusByUserName.length() == 0)) {
+			todoCacheModel.statusByUserName = null;
+		}
+
+		Date statusDate = getStatusDate();
+
+		if (statusDate != null) {
+			todoCacheModel.statusDate = statusDate.getTime();
+		}
+		else {
+			todoCacheModel.statusDate = Long.MIN_VALUE;
+		}
+
 		todoCacheModel.name = getName();
 
 		String name = todoCacheModel.name;
@@ -833,6 +1044,10 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 	private Date _createDate;
 	private Date _modifiedDate;
 	private boolean _setModifiedDate;
+	private int _status;
+	private long _statusByUserId;
+	private String _statusByUserName;
+	private Date _statusDate;
 	private String _name;
 
 	public <T> T getColumnValue(String columnName) {
@@ -872,6 +1087,10 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 		_columnOriginalValues.put("userName", _userName);
 		_columnOriginalValues.put("createDate", _createDate);
 		_columnOriginalValues.put("modifiedDate", _modifiedDate);
+		_columnOriginalValues.put("status", _status);
+		_columnOriginalValues.put("statusByUserId", _statusByUserId);
+		_columnOriginalValues.put("statusByUserName", _statusByUserName);
+		_columnOriginalValues.put("statusDate", _statusDate);
 		_columnOriginalValues.put("name", _name);
 	}
 
@@ -912,7 +1131,15 @@ public class TodoModelImpl extends BaseModelImpl<Todo> implements TodoModel {
 
 		columnBitmasks.put("modifiedDate", 128L);
 
-		columnBitmasks.put("name", 256L);
+		columnBitmasks.put("status", 256L);
+
+		columnBitmasks.put("statusByUserId", 512L);
+
+		columnBitmasks.put("statusByUserName", 1024L);
+
+		columnBitmasks.put("statusDate", 2048L);
+
+		columnBitmasks.put("name", 4096L);
 
 		_columnBitmasks = Collections.unmodifiableMap(columnBitmasks);
 	}
