@@ -26,14 +26,14 @@
 
 4.  *[保存]* をクリックします。
 
-5.  [サイト設定](../06-site-settings/README.md)を構成します。
+5.  [サイト設定](../site-settings/README.rst)を構成します。
 
 6.  フォームの下の*[Pages]* パネルを開きます。
 
     ![サイト構成ページのドロップダウンを展開し、サイトテンプレートのオプションを表示。](building-sites-with-site-templates/images/04.png)
 
-    ``` note::
-       [*Enable propagation of changes from the Site template*]をオンにすると、サイトテンプレートが変更された場合にサイトが更新を受信できるようになります。 サイトテンプレートから作成されたサイトに直接変更が加えられた場合、そのサイトはサイトテンプレートから更新を受け取りません。 詳細については、`Merging Site Template Changes <./merging-site-template-changes.md>`を参照してください。
+    ```{note}
+    [*Enable propagation of changes from the Site template*]をオンにすると、サイトテンプレートが変更された場合にサイトが更新を受信できるようになります。 サイトテンプレートから作成されたサイトに直接変更が加えられた場合、そのサイトはサイトテンプレートから更新を受け取りません。 詳細については、`Merging Site Template Changes <./merging-site-template-changes.md>`を参照してください。
     ```
 
 7.  *[保存]* をクリックしてサイトを作成します。
@@ -42,8 +42,8 @@
 
 9.  *[Actions]* をクリックし、新しいサイトの横にある*[Go to Public Pages]* または*[Go to Private Pages]* を選択して表示します。
 
-    ``` tip::
-       To view a newly created *blank site*, you must first create a page for it. See `Adding a Page to a Site <../creating-pages/adding-pages/adding-a-page-to-a-site.md>`_ for more information.
+    ```{tip}
+    To view a newly created *blank site*, you must first create a page for it. See [Adding a Page to a Site](../creating-pages/adding-pages/adding-a-page-to-a-site.md) for more information.
     ```
 
 ## 追加情報

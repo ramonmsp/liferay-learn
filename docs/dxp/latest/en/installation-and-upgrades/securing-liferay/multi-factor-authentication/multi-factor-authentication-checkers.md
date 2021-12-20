@@ -1,12 +1,12 @@
 # Multi-Factor Authentication Checkers
 
-Liferay DXP 7.3 ships with two additional factor checkers for Multi-Factor Authentication. Both of them are disabled by default, because they're only useful in particular circumstances. Once Multi-Factor Authentication is enabled, however, you can configure them. 
+Liferay DXP 7.4 ships with two additional factor checkers for Multi-Factor Authentication. Both of them are disabled by default, because they're only useful in particular circumstances. Once Multi-Factor Authentication is enabled, however, you can configure them. 
 
 ![When you enable Multi-Factor Authentication, the other factor checkers appear.](./multi-factor-authentication-checkers/images/01.png)
 
 ## IP Address MFA Checker
 
-The IP Address checker is useful when Liferay DXP serves a group of users from an internal network or connecting through a VPN. When you enable this checker, users' IP addresses are compared with allowed IP address masks. If they match, users can bypass the other checkers and log in. This essentially defines trusted networks as the extra factor in authenticating. 
+The IP Address checker is useful when Liferay DXP serves a group of users from an internal network or connecting through a VPN. When you enable this checker, users' IP addresses are compared with allowed IP address masks. If they match, users can bypass the other checkers and log in. This essentially defines trusted networks as the extra factor in authenticating. Note that by default, only the first IP Address and mask pictured below are enabled. 
 
 ![The IP Address factor checker by default checks for private networks.](./multi-factor-authentication-checkers/images/02.png)
 

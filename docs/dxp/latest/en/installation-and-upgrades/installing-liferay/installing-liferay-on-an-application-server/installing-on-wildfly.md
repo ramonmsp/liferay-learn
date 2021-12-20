@@ -1,34 +1,45 @@
 # Installing on WildFly
 
-Installing on WildFly requires deploying dependencies, modifying scripts, modifying config `xml` files, and deploying the DXP WAR file. In addition, make the optional database and mail server configurations to optimize the DXP instance.
+Installing on WildFly requires installing the DXP WAR, installing dependencies, configuring WildFly, and deploying DXP on WildFly. You must also configure your database and mail server connections.
+
+## Prerequisites
 
 Liferay DXP requires Java JDK 8 or 11. See [the compatibility matrix](https://help.liferay.com/hc/en-us/articles/360049238151) for further information.
 
 Download these files from the [Help Center](https://customer.liferay.com/downloads) (subscription) or from [Liferay Community Downloads](https://www.liferay.com/downloads-community). Administrators must download the following:
 
 * DXP WAR file
-* Dependencies ZIP file
 * OSGi Dependencies ZIP file
+* Dependencies ZIP file (DXP 7.3 and earlier)
 
-Before proceeding, you should understand the difference between [*Liferay Home*](../../reference/liferay-home.md) and `$WILDFLY_HOME` because they are referenced below as shorthand:
+The installation steps use these terms:
 
-* `Liferay.home` is the folder containing the WildFly server folder. After installing and deploying DXP, the Liferay Home folder contains the WildFly server folder as well as `data`, `deploy`, `logs`, and `osgi` folders.
+[`[Liferay Home]`](../../reference/liferay-home.md): The folder containing the WildFly server folder (referred to as `$WILDFLY_HOME`). After installing and deploying DXP, it generates `data`, `deploy`, and `logs` folders.
 
-* `$WILDFLY_HOME` refers to the WildFly server folder. It is usually named `wildfly-[version]`.
+`$WILDFLY_HOME`: The WildFly server folder. It is usually named `wildfly-[version]`.
 
-Installing Liferay DXP on WildFly requires the following steps:
+## Installing the DXP WAR
 
-1. [Installing dependencies to the application server](#installing-dependencies)
-1. [Configuring the application server for DXP](#configuring-wildfly)
-1. [Connect to a Database](#connect-to-a-database)
-1. [Connect to a Mail Server](#connect-to-a-mail-server)
-1. [Deploying the DXP WAR file to the application server](#deploying-dxp)
+1. If you're starting with a clean Wildfly installation and a `$WILDFLY_HOME/standalone/deployments/ROOT.war` folder exists, delete all of its subfolders and files.
+1. Unzip the DXP WAR file into the `$WILDFLY_HOME/standalone/deployments/ROOT.war` folder (create this folder if it doesn't exist).
 
 ## Installing Dependencies
 
-1. Create the folder `$WILDFLY_HOME/modules/com/liferay/portal/main` if it does not already exist and extract the Dependencies ZIP JARs here.
-1. The Portal/DXP 7.4+ WAR includes drivers for MariaDB, MySQL, and PostgreSQL. Earlier WARs don't have them. If your WAR doesn't have the driver you want, download your database vendor's JDBC JAR file to the `$WILDFLY_HOME/modules/com/liferay/portal/main` folder. Please see the [compatibility matrix](https://help.liferay.com/hc/en-us/articles/360049238151) for a list of supported databases.
-1. Create the file `module.xml` in the `$WILDFLY_HOME/modules/com/liferay/portal/main` folder. In the file, declare the portal module and all of its required resources and dependencies:
+1. Unzip the OSGi Dependencies ZIP file into the `[Liferay Home]/osgi` folder (create this folder if it doesn't exist). Liferay's OSGi runtime depends on these modules.
+1. The DXP 7.4+ WAR file includes drivers for MariaDB and PostgreSQL. Earlier WARs don't have them. If the 7.4+ WAR doesn't have the driver for the supported database you're using, download your database vendor's JDBC JAR file and place it in the `$WILDFLY_HOME/standalone/deployments/ROOT.war/WEB-INF/shielded-container-lib` folder.
+
+    Please see the [compatibility matrix](https://help.liferay.com/hc/en-us/articles/360049238151) for a list of supported databases.
+
+```{note}
+A Hypersonic database is bundled with DXP and is useful for testing purposes. **Do not** use HSQL for production DXP instances.
+```
+
+### Installing Dependencies for Earlier Versions
+
+For DXP 7.3 and earlier, follow these additional steps:
+
+1. Unzip the Dependencies ZIP file to a folder called `$WILDFLY_HOME/modules/com/liferay/portal/main` (create this folder if it doesn't exist).
+1. Create a file called `module.xml` in the `$WILDFLY_HOME/modules/com/liferay/portal/main` folder. In the file, declare resource-root elements with paths set to your database vendor's JAR file, the portal module, sand all of its required resources and dependencies:
 
     ```xml
     <?xml version="1.0"?>
@@ -51,38 +62,29 @@ Installing Liferay DXP on WildFly requires the following steps:
 
     Replace `[place your database vendor's JAR file name here]` with the driver JAR for your database.
 
-    For each JAR in the Liferay dependencies ZIP, add a `resource-root` element with its `path` attribute set to the JAR name. For example, add a `resource-root` element like this for the `com.liferay.petra.concurrent.jar` file:
+    For each JAR in the Dependencies ZIP, add a `resource-root` element with its `path` attribute set to the JAR name. For example, add a `resource-root` element like this for the `com.liferay.petra.concurrent.jar` file:
 
     ```xml
     <resource-root path="com.liferay.petra.concurrent.jar" />
     ```
 
-1. Create an `osgi` folder in your [Liferay Home](../../reference/liferay-home.md) folder. Extract the OSGi Dependencies ZIP file that you downloaded into the `[Liferay Home]/osgi` folder.
-
-   The `osgi` folder provides the necessary modules for the OSGi runtime.
-
-```{note}
-A Hypersonic database is bundled with DXP and is useful for testing purposes. **Do not** use HSQL for production DXP instances.
-```
-
 **Checkpoint:**
 
-1. The contents of the Dependencies zip have been placed in the `$WILDFLY_HOME/modules/com/liferay/portal/main` folder.
+1. The OSGi dependencies have been unzipped in the `[Liferay Home]/osgi` folder.
 1. Your database vendor's JDBC driver is installed.
 1. The `module.xml` has listed all JARs in the `<resource-root>` elements.
-1. The OSGi dependencies have been unzipped in the `osgi` folder located inside the `${Liferay.home}` folder.
 
-### Running DXP on WildFly in Standalone Mode vs. Domain Mode
+## Running DXP on WildFly in Standalone Mode vs. Domain Mode
 
 WildFly can be launched in either *standalone* mode or *domain* mode. Domain mode allows multiple application server instances to be managed from a single control point. A collection of such application servers is known as a *domain*. For more information on standalone mode vs. domain mode, please refer to the section on this topic in the [WildFly Admin Guide](https://docs.jboss.org/author/display/WFLY/Admin+Guide#AdminGuide-Operatingmodes).
 DXP fully supports WildFly in standalone mode but not in domain mode.
 
-Administrators can run DXP on WildFly in domain mode, but this method is not fully supported. In particular, DXP's auto-deploy does not work with a managed deployment, since WildFly manages the content of a managed deployment by copying files (exploded or non-exploded). This prevents JSP hooks and Ext plugins from working as intended. For example, JSP hooks don't work on WildFly running in managed domain mode, since DXP's JSP override mechanism relies on the application server. Since JSP hooks and Ext plugins are deprecated, however, you may not be using them.
+DXP supports WildFly when it runs in standalone mode but not when it runs in domain mode. DXP's auto-deploy does not work with a managed deployment, since WildFly manages the content of a managed deployment by copying files (exploded or non-exploded). This prevents JSP hooks and Ext plugins from working as intended. For example, JSP hooks don't work on WildFly running in managed domain mode, since DXP's JSP override mechanism relies on the application server. Since JSP hooks and Ext plugins are deprecated, however, you may not be using them.
 
-The command line interface is recommended for domain mode deployments.
+If you use domain mode deployment, use the command line interface.
 
 ```{note}
-This does not prevent DXP from running in a clustered environment on multiple WildFly servers. Administrators can set up a cluster of DXP instances running on WildFly servers running in standalone mode. Please refer to the [DXP clustering articles](../../setting-up-liferay/clustering-for-high-availability.md) for more information.
+This does not prevent DXP from running in a clustered environment on multiple WildFly servers. You can set up a cluster of DXP instances running on WildFly servers running in standalone mode. Please refer to the [clustering articles](../../setting-up-liferay/clustering-for-high-availability.md) for more information.
 ```
 
 ## Configuring WildFly
@@ -95,13 +97,13 @@ Configuring WildFly to run DXP includes these things:
 
 Make the following modifications to `$WILDFLY_HOME/standalone/configuration/standalone.xml`:
 
-1. In the `<jsp-config>` tag, set the Java VM compatibility for Liferay source and class files. They are compatible with Java 8 by default.
+1. Configure the servlet container to use Java 8 VM compatibility with JSPs. Locate the default servlet container `<servlet-container name="default">` in the `<subsystem xmlns="urn:jboss:domain:undertow:12.0" ...` element. In the servlet container's `<jsp-config>` element, set `development`, `source-vm`, and `target-vm` attributes like this:
 
     ```xml
     <jsp-config development="true" source-vm="1.8" target-vm="1.8" />
     ```
 
-1. Locate the closing `</extensions>` tag. Directly beneath that tag, insert the following system properties:
+1. Locate the closing `</extensions>` tag in the `<server>`s. Directly beneath that closing tag, insert the following system properties, if they don't already exist:
 
     ```xml
     <system-properties>
@@ -110,21 +112,19 @@ Make the following modifications to `$WILDFLY_HOME/standalone/configuration/stan
     </system-properties>
     ```
 
-1. Add the following `<filter-spec>` tag within the `<console-handler>` tag which is directly below the `<level name="INFO"/>` tag:
+1. Filter out `WFLYSRV0059` and `WFLYEE0007` messages from the log. In the `<subsystem xmlns="urn:jboss:domain:logging:8.0">` element's `<console-handler>` tag, add the following `<filter-spec>` tag directly below the `<level name="INFO"/>` tag.
 
     ```xml
     <filter-spec value="not(any(match(&quot;WFLYSRV0059&quot;),match(&quot;WFLYEE0007&quot;)))" />
     ```
 
-1. Add a timeout for the deployment scanner by setting `deployment-timeout="600"` as seen in the excerpt below.
+1. Add a deployment scanner timeout by adding a `deployment-timeout="600"` setting to the `<deployment-scanner>` tag in the `<subsystem xmlns="urn:jboss:domain:deployment-scanner:2.0">` element. For example,
 
     ```xml
-    <subsystem xmlns="urn:jboss:domain:deployment-scanner:2.0">
-        <deployment-scanner deployment-timeout="600" path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}"/>
-    </subsystem>
+    <deployment-scanner deployment-timeout="600" path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}"/>
     ```
 
-1. Add the following JAAS security domain to the security subsystem `<security-domains>` defined in the element `<subsystem xmlns="urn:jboss:domain:deployment-scanner:2.0">`.
+1. Add Liferay's JAAS security domain to the `<subsystem xmlns="urn:jboss:domain:security:2.0">`'s `<security-domains>` element. Here is the domain code to add:
 
     ```xml
     <security-domain name="PortalRealm">
@@ -134,17 +134,17 @@ Make the following modifications to `$WILDFLY_HOME/standalone/configuration/stan
     </security-domain>
     ```
 
-1. Remove the welcome content code snippets:
+1. Comment out the welcome content elements from the `<subsystem xmlns="urn:jboss:domain:undertow:12.0" ...>` element. For example,
 
     ```xml
-    <location name="/" handler="welcome-content"/>
+    <!--<location name="/" handler="welcome-content"/>-->
     ```
 
     and
 
     ```xml
     <handlers>
-        <file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>
+        <!--<file name="welcome-content" path="${jboss.home.dir}/welcome-content"/>-->
     </handlers>
     ```
 
@@ -156,11 +156,11 @@ Before continuing, verify the following properties have been set in the `standal
 1. The new `<filter-spec>` is added.
 1. The `<deployment-timeout>` is set to `600`.
 1. The new `<security-domain>` is created.
-1. Welcome content is removed.
+1. Welcome content is disabled.
 
 Next, configure the JVM and startup scripts:
 
-In the `$WILDFLY_HOME/bin/` folder, open the standalone domain's configuration script file `standalone.conf` (`standalone.conf.bat` on Windows):
+In the `$WILDFLY_HOME/bin/` folder, open the standalone domain's configuration script file `standalone.conf`:
 
 * Set the file encoding to `UTF-8`
 * Set the user time zone to `GMT`
@@ -168,28 +168,12 @@ In the `$WILDFLY_HOME/bin/` folder, open the standalone domain's configuration s
 * Increase the default amount of memory available.
 
 ```{important}
-For DXP to work properly, the application server JVM must use the `GMT` time zone and `UTF-8` file encoding.
+DXP requires the application server JVM to use the `GMT` time zone and `UTF-8` file encoding.
 ```
 
-Make the following edits as applicable for the respective operating system:
+Make the following edits to your `standalone.conf` script.
 
-**Windows:**
-
-1. Comment out the initial `JAVA_OPTS` assignment:
-
-    ```bash
-    rem set "JAVA_OPTS=-Xms64M -Xmx512M -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=2560m"
-    ```
-
-1. Add the following `JAVA_OPTS` assignment one line above the `:JAVA_OPTS_SET` line found at end of the file:
-
-    ```bash
-    set "JAVA_OPTS=%JAVA_OPTS% -Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=true -Djboss.as.management.blocking.timeout=480 -Duser.timezone=GMT -Xms2560m -Xmx2560m -XX:MaxMetaspaceSize=512m -XX:MetaspaceSize=200m"
-    ```
-
-**Unix:**
-
-1. Below the `if [ "x$JAVA_OPTS" = "x" ];` statement, replace this `JAVA_OPTS` statement:
+1. Below the `if [ "x$JAVA_OPTS" = "x" ];` statement, remove the JVM sizing options from the `JAVA_OPTS` assignment. For example, replace this
 
     ```bash
     JAVA_OPTS="-Xms64m -Xmx512m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=256m -Djava.net.preferIPv4Stack=true"
@@ -201,33 +185,52 @@ Make the following edits as applicable for the respective operating system:
     JAVA_OPTS="-Djava.net.preferIPv4Stack=true"
     ```
 
-1. Add the following statement to the bottom of the file:
+1. Add this Java options setting at the end of the file:
 
     ```bash
-    JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF-8 -Djava.net.preferIPv4Stack=true -Djboss.as.management.blocking.timeout=480 -Duser.timezone=GMT -Xms2560m -Xmx2560m -XX:MaxMetaspaceSize=512m -XX:MetaspaceSize=200m"
+    JAVA_OPTS="$JAVA_OPTS -Dfile.encoding=UTF-8 -Djava.locale.providers=JRE,COMPAT,CLDR -Djava.net.preferIPv4Stack=true -Dlog4j2.formatMsgNoLookups=true -Duser.timezone=GMT -Xms2560m -Xmx2560m -XX:MaxNewSize=1536m -XX:MaxMetaspaceSize=768m -XX:MetaspaceSize=768m -XX:NewSize=1536m -XX:SurvivorRatio=7"
     ```
 
-This sets the file encoding to UTF-8, prefers an IPv4 stack over IPv6, sets the time zone to GMT, gives the JVM 2GB of RAM, and limits Metaspace to 512MB.
+The Java options and memory arguments are explained below.
 
-On JDK 11, add this JVM argument to display four-digit years.
+**JVM Options Explained**
 
-```bash
--Djava.locale.providers=JRE,COMPAT,CLDR
+| Option | Explanation |
+| :----- | :---------- |
+| `-Dfile.encoding=UTF-8` | DXP requires UTF-8 file encoding. |
+| `-Djava.locale.providers=JRE,COMPAT,CLDR` | This is required for displaying four-digit dates on JDK 11. |
+| `-Djava.net.preferIPv4Stack=true` | Prefers an IPv4 stack over IPv6. |
+| `-Dlog4j2.formatMsgNoLookups=true` | Resolves a remote code execution (RCE) vulnerability. See [LPS-143663](https://issues.liferay.com/browse/LPS-143663) for details. |
+| `-Duser.timezone=GMT` | DXP requires the application server JVM to use the GMT time zone. |
+
+**Memory Arguments Explained**
+
+| Memory Arguments | Explanation |
+| :--------------- | :---------- |
+| `-Xms` | Initial space for the heap. |
+| `-Xmx` | Maximum space for the heap. |
+| `-XX:NewSize`| Initial new space. Setting the new size to half of the total heap typically provides better performance than using a smaller new size. |
+| `-XX:MaxNewSize` | Maximum new space. |
+| `-XX:MetaspaceSize` | Initial space for static content. |
+| `-XX:MaxMetaspaceSize` | Maximum space for static content. |
+| `-XX:SurvivorRatio` | Ratio of the new space to the survivor space. The survivor space holds young generation objects before being promoted to old generation space. |
+
+```{note}
+After installing DXP, these configurations (including these JVM options) can be further tuned for improved performance. Please see [Tuning Liferay](../../setting-up-liferay/tuning-liferay.md) and [Tuning Your JVM](../../setting-up-liferay/tuning-your-jvm.md) for more information.
 ```
 
-After installation, tune the system (including these JVM options) for performance.
+If you're using the IBM JDK with the WildFly server, complete these additional steps:
 
-If using the IBM JDK with the WildFly server, complete the following additional steps:
-
-1. Navigate to the `$WILDFLY_HOME/modules/com/liferay/portal/main/module.xml` file and insert the following dependency within the `<dependencies>` element:
+1. Navigate to the `$WILDFLY_HOME/modules/com/liferay/portal/main/module.xml` file and insert this dependency within the `<dependencies>` element:
 
     `<module name="ibm.jdk" />`
 
-1. Navigate to the `$WILDFLY_HOME/modules/system/layers/base/sun/jdk/main/module.xml` file and insert the following path names inside the `<paths>...</paths>` element:
+1. Navigate to the `$WILDFLY_HOME/modules/system/layers/base/sun/jdk/main/module.xml` file and insert these paths inside the `<paths>...</paths>` element:
 
     ```xml
     <path name="com/sun/crypto" />
     <path name="com/sun/crypto/provider" />
+    <path name="com/sun/image/codec/jpeg" />
     <path name="com/sun/org/apache/xml/internal/resolver" />
     <path name="com/sun/org/apache/xml/internal/resolver/tools" />
     ```
@@ -236,18 +239,18 @@ The added paths resolve issues with deployment exceptions and image uploading pr
 
 **Checkpoint:**
 
-1. The file encoding, user time-zone, preferred protocol stack have been set in the `JAVA_OPTS` in the `standalone.conf.bat` file.
+1. The file encoding, user time-zone, preferred protocol stack have been set in the `JAVA_OPTS` in the `standalone.conf.sh` script.
 1. The default amount of memory available has been increased.
 
 The prescribed script modifications are now complete for the DXP installation on WildFly.
 
 ## Connect to a Database
 
-The easiest way to handle database configuration is to let DXP manage the data source. Use [Basic Configuration](../../../getting-started/using-the-setup-wizard.md) to configure DXP's built-in data source. If using the built-in data source, skip this section.
+The easiest way to handle database configuration is to let DXP manage the data source. Use the[Setup Wizard](../running-liferay-for-the-first-time.md) to configure DXP's built-in data source. If using the built-in data source, skip this section.
 
 If using WildFly to manage the data source, follow these steps:
 
-1. Get the JDBC JAR from your Portal/DXP WAR (7.4+) or from the database vendor and copy it to the `$WILDFLY_HOME/modules/com/liferay/portal/main` folder.
+1. Get the JDBC JAR from your DXP WAR (7.4+) or from the database vendor and copy it to the `$WILDFLY_HOME/modules/com/liferay/portal/main` folder.
 
 1. Add the data source inside the `$WILDFLY_HOME/standalone/configuration/standalone.xml` file's `<datasources>` element:
 
@@ -268,7 +271,7 @@ If using WildFly to manage the data source, follow these steps:
     If the data source `jndi-name` must be changed, edit the `datasource` element in the `<default-bindings>` tag.
     ```
 
-1. Add the driver to the `standalone.xml` file's `<drivers>` element also found within the `<datasources>` element.
+1. Add the driver class name to the `standalone.xml` file's `<drivers>` element also found within the `<datasources>` element.
 
     ```xml
     <drivers>
@@ -300,7 +303,7 @@ If using WildFly to manage the data source, follow these steps:
     </subsystem>
     ```
 
-1. In a [`portal-ext.properties`](../../reference/portal-properties.md) file in the Liferay Home folder, specify the data source:
+1. In a [`portal-ext.properties`](../../reference/portal-properties.md) file in the Liferay Home folder, specify the JNDi data source. For example,
 
     ```properties
     jdbc.default.jndi.name=java:jboss/datasources/ExampleDS
@@ -310,7 +313,7 @@ The data source is now configured and ready to go.
 
 ## Connect to a Mail Server
 
-As with database configuration, the easiest way to configure mail is to let DXP handle the mail session. If you want to use DXP's built-in mail session, skip this section and [configure the mail session](../../setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md) in the Control Panel.
+As with database configuration, the easiest way to configure mail is to let DXP handle the mail session. If you want to use DXP's built-in mail session, skip this section and [configure the mail session](../../setting-up-liferay/configuring-mail.md) in the Control Panel.
 
 If you want to manage your mail session with WildFly, follow these steps:
 
@@ -331,7 +334,7 @@ If you want to manage your mail session with WildFly, follow these steps:
     </socket-binding-group>
     ```
 
-1. In the [`portal-ext.properties`](../../reference/portal-properties.md) file in Liferay Home, reference the mail session:
+1. In the [`portal-ext.properties`](../../reference/portal-properties.md) file in Liferay Home, reference the mail session. For example,
 
     ```properties
     mail.session.jndi.name=java:jboss/mail/MailSession
@@ -339,14 +342,10 @@ If you want to manage your mail session with WildFly, follow these steps:
 
 ## Deploying DXP
 
-1. If the folder `$WILDFLY_HOME/standalone/deployments/ROOT.war` already exists in the WildFly installation, delete all of its subfolders and files. Otherwise, create a new folder called `$WILDFLY_HOME/standalone/deployments/ROOT.war`.
-1. Unzip the DXP `.war` file into the `ROOT.war` folder.
-1. To trigger deployment of `ROOT.war`, create an empty file named `ROOT.war.dodeploy` in the `$WILDFLY_HOME/standalone/deployments/` folder. On startup, WildFly detects this file and deploys it as a web application.
-1. Start the WildFly application server by navigating to `$WILDFLY_HOME/bin` and running `standalone.bat` or `standalone.sh`.
+1. To trigger deploying `ROOT.war`, create an empty file called `ROOT.war.dodeploy` in the `$WILDFLY_HOME/standalone/deployments/` folder.
+1. Start the WildFly application server by navigating to `$WILDFLY_HOME/bin` and running `standalone.sh`. WildFly detects the `ROOT.war.dodeploy` file and deploys the web application matching the file prefix (i.e., `ROOT.war`).
 
-```{note}
-After deploying DXP, you may see excessive warnings and log messages, such as the ones below, involving `PhaseOptimizer`. These are benign and can be ignored. Make sure to adjust your app server's logging level or log filters to avoid excessive benign log messages.
-```
+After deploying DXP, you may see excessive warnings and log messages such as the ones below, involving `PhaseOptimizer`. These are benign and can be ignored. You can turn off these messages by adjusting the app server's logging level or log filters.
 
 ```
 May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
@@ -358,12 +357,16 @@ INFO: pass supports: [ES3 keywords as identifiers, getters, reserved words as pr
 current AST contains: [ES3 keywords as identifiers, getters, reserved words as properties, setters, string continuation, trailing comma, array pattern rest, arrow function, binary literal, block-scoped function declaration, class, computed property, const declaration, default parameter, destructuring, extended object literal, for-of loop, generator, let declaration, member declaration, new.target, octal literal, RegExp flag 'u', RegExp flag 'y', rest parameter, spread expression, super, template literal, exponent operator (**), async function, trailing comma in param list, object literals with spread, object pattern rest
 ```
 
+If you have a Liferay DXP Enterprise subscription, DXP requests your activation key. See [Activating Liferay DXP](../../setting-up-liferay/activating-liferay-dxp.md) for more information.
+
+Congratulations! You're running DXP on WildFly.
+
 ## Next Steps
 
-You can [sign in as your administrator user](../../../getting-started/introduction-to-the-admin-account.md) and start [building a solution on DXP](../../../building-solutions-on-dxp/README.md). Or you can explore [additional Liferay DXP setup](../../setting-up-liferay.md) topics:
+You can [sign in as your administrator user](../../../getting-started/introduction-to-the-admin-account.md) and start [building a solution on DXP](../../../building_solutions_on_dxp.html. Or you can explore [additional Liferay DXP setup](../../setting-up-liferay.md) topics:
 
 * [Installing the Marketplace Plugin](../../../system-administration/installing-and-managing-apps/getting-started/using-marketplace.md#appendix-installing-the-marketplace-plugin)
-* [Accessing EE Plugins During a Trial Period](../../../system-administration/installing-and-managing-apps/installing-apps/accessing-ee-plugins-during-a-trial-period.md)
+* [Accessing Plugins During a Trial Period](../../../system-administration/installing-and-managing-apps/installing-apps/accessing-ee-plugins-during-a-trial-period.md)
 * [Installing a Search Engine](../../../using-search/installing-and-upgrading-a-search-engine/installing-a-search-engine.md)
-* [Securing Liferay DXP](../../securing-liferay/securing-liferay.md)
+* [Securing Liferay DXP](../../securing-liferay.md)
 * [Clustering for High Availability](../../setting-up-liferay/clustering-for-high-availability.md)

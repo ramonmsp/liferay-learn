@@ -1,0 +1,10 @@
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+	compileOnly project(":f2m9-api")
+}
+
+buildService {
+	apiDir = "../f2m9-api/src/main/java"
+}
+
+group = "com.acme.f2m9"

@@ -18,7 +18,7 @@ First, deploy an example to see how Fragment configuration options work:
 1. Run the command below to start the Docker container:
 
     ```bash
-    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
     ```
 
 1. Download and unzip the [example Fragment Collection](https://learn.liferay.com/dxp/latest/en/site-building/developer-guide/developing-page-fragments/liferay-c7f8.zip):
@@ -66,8 +66,8 @@ First, deploy an example to see how Fragment configuration options work:
 
     ![The Collection is available.](./adding-configuration-options-to-fragments/images/01.png)
 
-    ```note::
-       For Liferay DXP 7.1 and 7.2, instead navigate to *Site* → *Site Builder* → *Page Fragments* under the Product Menu to get to the Fragments page.
+    ```{note}
+    For Liferay DXP 7.1 and 7.2, instead navigate to *Site* → *Site Builder* → *Page Fragments* under the Product Menu to get to the Fragments page.
     ```
 
 1. Go to the Home Page and click the (![Edit icon](../../../images/icon-edit-pencil.png)) icon to edit the Content Page.
@@ -146,8 +146,8 @@ This selector is a part of a field set labeled *C7F8* (the label is optional). I
 
 ![Here is the selector for the C7F8 Card Fragment](./adding-configuration-options-to-fragments/images/03.png)
 
-```warning::
-   The Fragments Editor won't save the configuration until it's valid. Make sure your JSON configuration is valid before previewing it.
+```{warning}
+The Fragments Editor won't save the configuration until it's valid. Make sure your JSON configuration is valid before previewing it.
 ```
 
 The configuration values selected by the user are made available to the HTML through the FreeMarker context. They are referenced in the HTML with the notation `${configuration.fieldName}`. The example  (`${configuration.textAppliedStyle}`) returns `dark` or `light` depending on the configuration value selected by the user, setting the CSS class to `text-light` or `text-dark`:
@@ -198,7 +198,7 @@ The example demonstrates a select configuration. See the [Configuration Types Re
 
 Malicious code can be inserted into the text field, wreaking havoc for other Fragment users. You must escape Fragment text values to guard against cross-site scripting (XSS) attacks.
 
-For generic cases, an HTML `escape()` method is available. See the [`HtmlUtil`](https://docs.liferay.com/dxp/portal/7.3-latest/javadocs/portal-kernel/com/liferay/portal/kernel/util/HtmlUtil.html) class for more information.
+For generic cases, an HTML `escape()` method is available. See the [`HtmlUtil`](https://learn.liferay.com/reference/latest/en/dxp/javadocs/portal-kernel/com/liferay/portal/kernel/util/HtmlUtil.html) class for more information.
 
 ```html
 <div class="fragment_38816">
@@ -220,8 +220,8 @@ Now that you know how the configuration works, you can modify it.
 
 1. Under the Site Menu on the left side of the screen, go to *Design* &rarr; *Fragments*. The Collection appears in the Collection list.
 
-    ```note::
-       For Liferay DXP 7.1 and 7.2, instead navigate to *Site* → *Site Builder* → *Page Fragments* under the Product Menu to get to the Fragments page.
+    ```{note}
+    For Liferay DXP 7.1 and 7.2, instead navigate to *Site* → *Site Builder* → *Page Fragments* under the Product Menu to get to the Fragments page.
     ```
 
 1. Select the *C7F8 Collection*, click *Actions* (![Actions Icon](../../../images/icon-actions.png)) for the C7F8 Card and select *Edit*. The Fragments Editor appears.
@@ -249,8 +249,8 @@ Now that you know how the configuration works, you can modify it.
     [/#if]
     ```
 
-```note::
-  You can also access the configuration's value through the JavaScript with the syntax ``const configurationValue = configuration.textAppliedStyle;``.
+```{note}
+You can also access the configuration's value through the JavaScript with the syntax `const configurationValue = configuration.textAppliedStyle;`.
 ```
 
 ## Propagate the Changes and Test

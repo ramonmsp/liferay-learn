@@ -4,23 +4,23 @@ WebSphereにLiferay DXPをインストールするには、DXP WARファイル�
 
 > IBM®WebSphere®はInternational Business Machines Corporationの商標であり、世界中の多くの国で登録されています。
 
-``` tip::
-   このインストールおよび設定プロセス全体を通して、WebSphereは[*Save*]をクリックして変更をマスター構成に適用するようにプロンプトを出します。 変更を保存するには、この操作が必要です。
+```{tip}
+このインストールおよび設定プロセス全体を通して、WebSphereは[*Save*]をクリックして変更をマスター構成に適用するようにプロンプトを出します。 変更を保存するには、この操作が必要です。
 ```
 
 ## 前提条件
 
 Liferay DXPが正しく機能するには、WebSphere 9（フィックスパック11が最新）がインストールされている必要があります。 このフィックスパックについて詳しくは、[IBMサポート](http://www-01.ibm.com/support/docview.wss?uid=swg24043005)にアクセスしてください。 Liferay DXPは現在、WebSphere Application Liberty Profileをサポートしていません。
 
-``` important::
-   DXPをインストールする前に、 `Installing a Liferay DXP Tomcat Bundle <../installing-a-liferay-dxp-tomcat-bundle.md>`_ および `Configuring a Database <../configuring-a-database.md>`_ の記事を確認してください。
+```{important}
+DXPをインストールする前に、 [Installing a Liferay DXP Tomcat Bundle](../installing-a-liferay-dxp-tomcat-bundle.md) および [Configuring a Database](../configuring-a-database.md) の記事を確認してください。
 ```
 
 次のファイルは、WebSphereアプリケーションサーバーにLiferay DXPをインストールするために必要であり、[ヘルプセンター](https://customer.liferay.com/downloads)（サブスクリプション）または[Liferayコミュニティのダウンロード](https://www.liferay.com/downloads-community)から入手できます。
 
-  - DXP WARファイル
-  - 依存関係のZIPファイル
-  - OSGi依存関係のZIPファイル
+* DXP WARファイル
+* 依存関係のZIPファイル
+* OSGi依存関係のZIPファイル
 
 利用可能なLiferay DXPのダウンロードについて詳しくは、[Installing a Liferay DXP Tomcat Bundle](../installing-a-liferay-dxp-tomcat-bundle.md)を参照してください。
 
@@ -46,14 +46,14 @@ WebSphereにDXPをインストールするための基本的な手順は次の�
 
 2.  *アドバンスト*プロファイルの作成オプションをクリックし、*[Next]* をクリックします。 アドバンスト プロファイルを使用して、プロファイルの場所やプロファイルの名前、ノードとホストなどの設定値を指定したり、特定のポートを割り当てたり、オプションで管理コンソールとサンプルアプリケーションをデプロイするかどうか、またWeb IBM HTTP ServerのWebサーバー定義を追加するかどうかを選択します。 これらのオプションの詳細については、WebSphereのドキュメントを参照してください。
 
-    ![図1：アドバンストプロファイルオプションを選択して、独自の設定を指定します。](./installing-liferay-on-websphere/images/01.png)
+    ![図1：アドバンストプロファイルオプションを選択して、独自の設定を指定します。](./installing-on-websphere/images/01.png)
 
 3.  *[Deploy the administrative console]* ボックスをオンにします。 これにより、アプリケーションサーバーを操作するためのWebベースのUIが有効になります。 デフォルトのアプリケーションをスキップします。 （これらは開発マシンにのみインストールしてください。）*[Next]* をクリックします。
 
 4.  プロファイル名と場所を設定します。 環境に適したパフォーマンス調整設定を指定します。
 
-    ``` note::
-       パフォーマンス調整設定の詳細については、WebSphereのドキュメントを参照してください。 [*Next*]をクリックします。
+    ```{note}
+    パフォーマンス調整設定の詳細については、WebSphereのドキュメントを参照してください。 [*Next*]をクリックします。
     ```
 
 5.  サーバーのノード、サーバー、およびホスト名を選択します。 これらはユーザーの環境に固有です。 *[Next]* をクリックします。
@@ -74,14 +74,14 @@ WebSphereにDXPをインストールするための基本的な手順は次の�
 
 WebSphereはプロファイルを作成し、プロファイルが正常に作成されたことを示すメッセージで終了します。
 
-![図2：プロファイルを作成する前の設定例](./installing-liferay-on-websphere/images/02.png)
+![図2：プロファイルを作成する前の設定例](./installing-on-websphere/images/02.png)
 
 最後に、アプリケーションサーバーをシャットダウンします。
 
 ### WebSphereアプリケーションサーバーの構成
 
-``` warning::
-   アプリケーションサーバーの実行中は構成変更を行わないでください。
+```{warning}
+アプリケーションサーバーの実行中は構成変更を行わないでください。
 ```
 
 このバージョンのWebSphereでは、サーブレットフィルターはWebアプリケーションの起動時ではなく、最初のアクセス時に初期化されます。 これにより、特定のアプリをDXPにデプロイするときに問題が発生する可能性があります。 アプリケーションの起動時（つまり、デプロイ時）に初期化するようにサーブレットフィルターを構成するには、WebSphereアプリケーションサーバーで以下の`webcontainer`プロパティを設定します。
@@ -105,8 +105,8 @@ WebSphereアプリケーションサーバーで`webcontainer`プロパティを
 <jvmEntries xmi:id="JavaVirtualMachine_1183122130078" ... maximumHeapSize="2560">
 ```
 
-``` note::
-   ここで使用されるJVMパラメーターは、本番環境システムの初期デプロイを意図したデフォルトです。 管理者は、特定の環境に最適な値に設定を変更する必要があります。 これらは、必要に応じて調整する必要があります。
+```{note}
+ここで使用されるJVMパラメーターは、本番環境システムの初期デプロイを意図したデフォルトです。 管理者は、特定の環境に最適な値に設定を変更する必要があります。 これらは、必要に応じて調整する必要があります。
 ```
 
 管理者は、`server.xml`の`<jvmEntries genericJvmArguments=.../>`属性でUTF-8プロパティを設定できます。 これは必須です。設定しないと、国際文字は正しく解析されません。 最大および最小ヒープサイズを`2560m`に設定します。 `jvmEntries`タグ内に以下を追加します。
@@ -115,8 +115,8 @@ WebSphereアプリケーションサーバーで`webcontainer`プロパティを
 <jvmEntries xmi:id="JavaVirtualMachine_1183122130078" ...genericJvmArguments="-Dfile.encoding=UTF-8 -Duser.timezone=GMT -Xms2560m -Xmx2560m">
 ```
 
-``` important::
-   DXPが適切に機能するには、アプリケーションサーバーJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
+```{important}
+DXPが適切に機能するには、アプリケーションサーバーJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
 ```
 
 あるいは、WebSphere管理コンソールからUTF-8プロパティを設定します。 （下記参照。）
@@ -153,9 +153,9 @@ com.ibm.ws.exception.RuntimeWarning: com.ibm.ws.webcontainer.exception.WebAppNot
 
 DXPはJDBCを介してデータベースと通信します。 データベースJDBCドライバーのJARファイルをユーザードメインのlibフォルダに追加します。 次のデータベース用のJDBCドライバーのJARをダウンロードできます。
 
-  - [MariaDB](https://downloads.mariadb.org/)
-  - [MySQL](http://dev.mysql.com/downloads/connector/j)
-  - [PostgreSQL](https://jdbc.postgresql.org/download/postgresql-42.0.0.jar)
+* [MariaDB](https://downloads.mariadb.org/)
+* [MySQL](http://dev.mysql.com/downloads/connector/j)
+* [PostgreSQL](https://jdbc.postgresql.org/download/postgresql-42.0.0.jar)
 
 HypersonicデータベースはDXPにバンドルされており、テスト目的には問題ありませんが、本番環境のDXPインスタンスには使用しないでください。
 
@@ -184,11 +184,11 @@ Liferay DXPは、DXPに組み込まれているデータソースを使用する
 
 WebSphereを使用してデータベース接続を管理する場合は、以下の手順に従ってください。 それ以外の場合、DXPの組み込みデータソースを使用する場合は、このセクションをスキップしてください。
 
-``` warning::
-   Liferayは、デモ目的でデフォルトでHSQLを使用しています。 HSQLは、Liferay DXPの本番環境インスタンスでは使用*しない*でください。
+```{warning}
+Liferayは、デモ目的でデフォルトでHSQLを使用しています。 HSQLは、Liferay DXPの本番環境インスタンスでは使用*しない*でください。
 ```
 
-![図3：WebSphere JDBCプロバイダー](./installing-liferay-on-websphere/images/03.png)
+![図3：WebSphere JDBCプロバイダー](./installing-on-websphere/images/03.png)
 
 1.  WebSphereを起動します。
 
@@ -204,7 +204,7 @@ WebSphereを使用してデータベース接続を管理する場合は、以�
 
 7.  設定を確認し、*[Finish]* をクリックします。 最終的な構成は次のようになります。
 
-    ![図4：完成したJDBCプロバイダーの構成。](./installing-liferay-on-websphere/images/04.png)
+    ![図4：完成したJDBCプロバイダーの構成。](./installing-on-websphere/images/04.png)
 
 8.  新しいプロバイダー構成が表に表示されたらクリックします。
 
@@ -222,7 +222,7 @@ WebSphereを使用してデータベース接続を管理する場合は、以�
 
 15. *user*を検索語句に入力し、*[Go]* をクリックします。
 
-    ![図5：WebSphereでのデータソースプロパティの変更](././installing-liferay-on-websphere/images/05.png)
+    ![図5：WebSphereでのデータソースプロパティの変更](././installing-on-websphere/images/05.png)
 
 16. *user*プロパティを選択し、ユーザー名の値をデータベースに付与します。
 
@@ -234,8 +234,8 @@ WebSphereを使用してデータベース接続を管理する場合は、以�
     jdbc:mysql://localhost/lportal?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
     ```
 
-    ``` tip::
-       URLの例については、 `Database Templates <../../reference/database-templates.md>`_ の`jdbc.default.url`の値を参照してください。
+    ```{tip}
+    URLの例については、 [Database Templates](../../reference/database-templates.md) の`jdbc.default.url`の値を参照してください。
     ```
 
 
@@ -247,7 +247,7 @@ WebSphereを使用してデータベース接続を管理する場合は、以�
 
 ## メール設定
 
-DXPの組み込みメールセッションを使用する場合は、このセクションをスキップしてください。 DXPの組み込みメールセッションの使用方法については、[Configuring Mail](../../setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)の記事をご覧ください。
+DXPの組み込みメールセッションを使用する場合は、このセクションをスキップしてください。 DXPの組み込みメールセッションの使用方法については、[Configuring Mail](../../setting-up-liferay/configuring-mail.md)の記事をご覧ください。
 
 WebSphereを使用してメールセッションを管理する場合は、次の手順に従います。
 
@@ -265,7 +265,7 @@ WebSphereを使用してメールセッションを管理する場合は、次�
 
 6.  *[Security] → [Global Security]* をクリックし、*[Use Java 2 security to restrict application access to local resources]* が選択されている場合は選択を解除します。
 
-    ![図6：メールセッションでのJavaセキュリティの適用](./installing-liferay-on-websphere/images/06.png)
+    ![図6：メールセッションでのJavaセキュリティの適用](./installing-on-websphere/images/06.png)
 
 7.  *[Apply]* をクリックします。
 
@@ -322,7 +322,7 @@ User 0 is not allowed to access URL http://localhost:9081/web/guest/home and por
 
 9.  DXPがインストールされたら、*[Save to Master Configuration]* をクリックします。
 
-    ![図7：デプロイする前に、デプロイオプションを確認します。](./installing-liferay-on-websphere/images/07.png)
+    ![図7：デプロイする前に、デプロイオプションを確認します。](./installing-on-websphere/images/07.png)
 
 DXPがインストールされました。 DXPを開始する前に、いくつかの必要な手順があります。
 
@@ -372,9 +372,9 @@ DXPをデプロイした後、`PhaseOptimizer`に関連する以下のような�
 
 ## 次のステップ
 
-  - [Installing a Liferay DXP Tomcat Bundle](../installing-a-liferay-dxp-tomcat-bundle.md)
-  - [Activating Liferay DXP](../../setting-up-liferay/activating-liferay-dxp.md)
-  - Installing and Configuring a Search Engine
-  - [Securing Liferay DXP](../../securing-liferay/introduction-to-securing-liferay.md)
-  - [Introduction to Clustering Liferay DXP](../../setting-up-liferay/clustering-for-high-availability.md)
-  - Maintaining Liferay DXP
+* [Installing a Liferay DXP Tomcat Bundle](../installing-a-liferay-dxp-tomcat-bundle.md)
+* [Activating Liferay DXP](../../setting-up-liferay/activating-liferay-dxp.md)
+* Installing and Configuring a Search Engine
+* [Securing Liferay DXP](../../securing-liferay.md)
+* [Introduction to Clustering Liferay DXP](../../setting-up-liferay/clustering-for-high-availability.md)
+* Maintaining Liferay DXP

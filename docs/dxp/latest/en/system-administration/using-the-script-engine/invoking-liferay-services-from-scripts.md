@@ -1,6 +1,6 @@
 # Invoking Liferay Services From Scripts
 
-Many scripting scenarios require invoking Liferay services. [Liferay `*ServiceUtil` classes](https://docs.liferay.com/dxp/portal/7.3-latest/javadocs/portal-kernel/) are the fastest and most convenient way to invoke Liferay services in the [Script Console](./running-scripts-from-the-script-console.md). Use Groovy to invoke Liferay services the same way you would use Java. Groovy's syntax facilitates writing concise, elegant scripts.
+Many scripting scenarios require invoking Liferay services. [Liferay `*ServiceUtil` classes](https://learn.liferay.com/reference/latest/en/dxp/javadocs/portal-kernel/) are the fastest and most convenient way to invoke Liferay services in the [Script Console](./running-scripts-from-the-script-console.md). Use Groovy to invoke Liferay services the same way you would use Java. Groovy's syntax facilitates writing concise, elegant scripts.
 
 We'll demonstrate by comparing Java code and Groovy code that uses `UserLocalServiceUtil` to retrieve a list of users and print their names to Liferay's log.
 
@@ -42,8 +42,8 @@ for (user in users){
 
 Importing `com.liferay.portal.kernel.model.User` and `java.util.List` isn't necessary because the Script Console makes them available. And the Groovy syntax is simpler than the Java syntax.
 
-```note::
-   If the service doesn't have a ``*ServiceUtil`` class, use a `Service Tracker <../../liferay-internals/dependency-injection/using-a-service-tracker.md>`_ to access the service.
+```{note}
+If the service doesn't have a `*ServiceUtil` class, use a [Service Tracker](../../building-applications/core-frameworks/dependency-injection.md) to access the service.
 ```
 
 ## Next Steps

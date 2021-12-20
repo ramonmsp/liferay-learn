@@ -30,11 +30,21 @@ function check_usage {
 
 	if [ "${#}" -ge 1 ]
 	then
-		if [ "${1}" != "prod" ]  &&  [[ ${1} != *".md" ]]
+		if [ "${1}" != "prod" ] && [ "${1}" != "reference" ]  &&  [[ ${1} != *".md" ]]
 		then
-			echo "Usage: Pass no arguments to build for development. Pass \"prod\" to build for production. Pass the file name of a markdown article to build a single article preview."
+			echo "Usage: Pass no arguments to build for development. Pass \"prod\" to build for production. Pass \"reference\" to build for development but also include reference documentation. Pass the file name of a markdown article to build a single article preview."
 
 			exit 1
+		fi
+
+		if [[ ${1} == *".md" ]]
+		then
+			if [[ -z $(find ../docs -name "${1}") ]]
+			then
+				echo "File ${1} does not exist."
+
+				exit 1
+			fi
 		fi
 	fi
 }
@@ -61,7 +71,7 @@ function configure_env {
 
 	check_utils 7z pip3
 
-	pip install pipenv
+	pip install pipenv==2021.5.29
 
 	pipenv install
 
@@ -149,6 +159,7 @@ function generate_sphinx_input {
 		sed -i "s/${LIFERAY_LEARN_DXP_DOCKER_IMAGE_TOKEN}/${LIFERAY_LEARN_DXP_DOCKER_IMAGE_VALUE}/g" "${md_file_name}"
 		sed -i "s/${LIFERAY_LEARN_PORTAL_DOCKER_IMAGE_TOKEN}/${LIFERAY_LEARN_PORTAL_DOCKER_IMAGE_VALUE}/g" "${md_file_name}"
 		sed -i "s/${LIFERAY_LEARN_PORTAL_GIT_TAG_TOKEN}/${LIFERAY_LEARN_PORTAL_GIT_TAG_VALUE}/g" "${md_file_name}"
+		sed -i "s/${LIFERAY_LEARN_PORTAL_WORKSPACE_TOKEN}/${LIFERAY_LEARN_PORTAL_WORKSPACE_TOKEN_VALUE}/g" "${md_file_name}"
 	done
 }
 
@@ -261,7 +272,7 @@ function unzip_reference_docs {
 	# liferay-ce-portal-doc-*.zip
 	#
 
-	if [[ ${1} != *".md" ]]
+	if [ "${1}" == "prod" ] || [ "${1}" == "reference" ]
 	then
 		curl -L https://github.com/liferay/liferay-portal/releases/download/"${LIFERAY_LEARN_PORTAL_GIT_TAG_VALUE}"/"${LIFERAY_LEARN_PORTAL_DOC_FILE_NAME}" > liferay-ce-portal-doc.zip
 

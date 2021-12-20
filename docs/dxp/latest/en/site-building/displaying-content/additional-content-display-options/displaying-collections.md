@@ -6,8 +6,8 @@ You can display a Collection by adding a Collection Page, or a Collection Displa
 
 By default, any User can see a Collection's content. However, you can create *Personalized Variations* of these items using Segments. For more information, see [Customizing Collections Using Segments](../../../content-authoring-and-management/collections-and-collection-pages/about-collections-and-collection-pages.md#customizing-collections).
 
-```note::
-   Before displaying a Collection, you must create one. For more information, see `Creating Collections <../../../content-authoring-and-management/collections-and-collection-pages/creating-collections.md>`_.
+```{note}
+Before displaying a Collection, you must create one. For more information, see [Creating Collections](../../../content-authoring-and-management/collections-and-collection-pages/creating-collections.md).
 ```
 
 ## Displaying Collections on a Page
@@ -34,8 +34,8 @@ Follow these steps to add a Collection Page:
 
 1. To show the Collection, map its content to page elements. See the [Mapping Components](#mapping-components-to-display-a-collection-s-assets) section for more information.
 
-```important::
-   You cannot create a child page under a Collection Page.
+```{important}
+You cannot create a child page under a Collection Page.
 ```
 
 You now have a Collection Page displaying your chosen Collection, within a Collection Display Fragment.
@@ -85,8 +85,8 @@ You can also configure the item style (how each asset is individually displayed)
 
 Map these elements to the assets in the Collection Display Fragment by dragging them into the cells of the fragment.
 
-```note::
-   Depending on the option you have chosen for a Collection Display Fragment's List style, you may not be able to drag components into the fragment. If you cannot drag components into the fragment, then you can only configure the style to display the assets by selecting a different option under `List item style`, unless you choose a different List style.
+```{note}
+Depending on the option you have chosen for a Collection Display Fragment's List style, you may not be able to drag components into the fragment. If you cannot drag components into the fragment, you can choose a different List style or select a different option under `List item style`. 
 ```
 
 1. In the Page Editor, click the *Collection Display* representing your Collection.
@@ -97,8 +97,8 @@ Map these elements to the assets in the Collection Display Fragment by dragging 
 
     ![Add fragments or widgets to the Collection Display and configure the display properties.](./displaying-collections/images/06.gif)
 
-    ```note::
-        If the Collection Display contains more than one item, you can drag the Fragment or Widget to any of them. The rest of the items in your Collection automatically use the same layout settings.
+    ```{note}
+    If the Collection Display contains more than one item, you can drag the Fragment or Widget to any of them. The rest of the items in your Collection automatically use the same layout settings.
     ```
 
 1. Click the Fragment or Widget on the Collection Display.
@@ -111,9 +111,33 @@ Map these elements to the assets in the Collection Display Fragment by dragging 
 
 1. Add more Fragments or Widgets as necessary and map the content to the content Fields.
 
-    ![Add Fragments and Widgets to the Collection Display and map the content fields.](./displaying-collections/images/08.gif)
+   ![Add Fragments and Widgets to the Collection Display and map the content fields.](./displaying-collections/images/08.gif)
 
 1. Click *Publish*.
+
+## Paginating Display Items
+
+> Available: Liferay DXP 7.4+
+
+Starting with Liferay DXP 7.4, you can paginate the Collection items using the Pagination configuration. This option provides two important advantages:
+
+* It is easier to show Collections with a large number of items. Instead of showing all the items in the Collection, you can decide how many items to show at once, while allowing users to move back and forward through the list of items in the Collection.
+* Breaking the visible list of items into smaller groups reduces the server overhead, improving the server response time and user experience.
+
+To paginate the display items in the Collection Display,
+
+1. Click the Edit icon (![Edit icon](../../../images/icon-edit.png)) on the Content Page with the Collection Display.
+
+1. Click the Browser icon (![Add widget icon](../../../images/icon-cursor.png)) to open the Fragments and Widgets panel.
+
+1. Under Page Elements, select the Collection Display you want to paginate.
+
+1. In the General Settings, choose the pagination options:
+
+    * Pagination: None (no pagination), Numeric, or Simple (Previous/Next controls).
+    * Maximum Number of Items: Number of items you want to show on each page.
+
+    ![Choose the pagination options for the Collection Display items.](./images/../displaying-collections/images/12.gif)
 
 ## Viewing Collections Usage Throughout the Site
 
@@ -135,28 +159,28 @@ Content Sets are primarily displayed through the Asset Publisher. It is currentl
 To display the Content Sets, start with a blank page, and then add the necessary Asset Publishers and configure them to display the Content Sets.
 
 1. Create a new *Home* page for your site as a Widget Page with a 1 column layout. If you're using a fresh Liferay DXP bundle, you can just remove the *Hello World* widget from the sample *Home* page.
-2. Open the *Add* menu and add two *Content Management* &rarr; *Asset Publishers* to the page stacked vertically.
-3. Click ![Options](../../../images/icon-app-options.png) &rarr; *Configuration* for the top Asset Publisher.
-4. Under *Asset Selection* choose *Content Set*.
+1. Open the *Add* menu and add two *Content Management* &rarr; *Asset Publishers* to the page stacked vertically.
+1. Click ![Options](../../../images/icon-app-options.png) &rarr; *Configuration* for the top Asset Publisher.
+1. Under *Asset Selection* choose *Content Set*.
 
     ![The Asset Publisher has a number of options available for selecting its source for content.](./displaying-collections/images/20.png)
 
-5. Open *Select Content Set* and click *Select*.
-6. Click on the *Space Program Images* Content Set.
-7. Click *Save*.
+1. Open *Select Content Set* and click *Select*.
+1. Click on the *Space Program Images* Content Set.
+1. Click *Save*.
 
 Now the images will appear at the top of the page. You can manage the way the content is displayed---like what metadata appears---or even create a *Widget Template* to style the content, but the items which display and the order in which they appear are determined by the Content Set.
 
 Now configure the bottom Asset Publisher with the other Content Set.
 
 1. Click ![Options](../../../images/icon-app-options.png) &rarr; *Configuration* for the bottom Asset Publisher.
-2. Under *Asset Selection* choose *Content Set*.
-3. Open *Select Content Set* and click *Select*.
-4. Click on the *Trending* Content Set.
+1. Under *Asset Selection* choose *Content Set*.
+1. Open *Select Content Set* and click *Select*.
+1. Click on the *Trending* Content Set.
 
     ![Select the Content Set you want to use.](./displaying-collections/images/21.png)
 
-5. Click *Save*.
+1. Click *Save*.
 
 Again, you can manage various display settings, but the items which appear and their order are determined by the Content Set criteria.
 
@@ -167,15 +191,15 @@ Again, you can manage various display settings, but the items which appear and t
 To demonstrate both the management of both static and dynamic Content Sets, upload a new image, tag it, and add it to the static set manually.
 
 1. Upload a new image, and under *Categorization* tag it as *trending*.
-2. Without lifting another finger, the image is added to the top of the *Trending* Content List.
+1. Without lifting another finger, the image is added to the top of the *Trending* Content List.
 
     ![The result is dynamically added to the Content List wherever it is displayed.](./displaying-collections/images/23.png)
 
-3. To add it to the manual set, go back to *Site Administration* &rarr; *Content & Data* &rarr; *Site Builder*.
-4. Click on *Space Program Images* or select ![Options](../../../images/icon-options.png) &rarr; *Edit* next to *Space Program Images*.
-5. Next to *Asset Entries* click *Select* &rarr; *Basic Document*.
-6. Select the new image and click *Add*.
-7. Navigate back to the *Home* page to see your image added to the list.
+1. To add it to the manual set, go back to *Site Administration* &rarr; *Content & Data* &rarr; *Site Builder*.
+1. Click on *Space Program Images* or select ![Options](../../../images/icon-options.png) &rarr; *Edit* next to *Space Program Images*.
+1. Next to *Asset Entries* click *Select* &rarr; *Basic Document*.
+1. Select the new image and click *Add*.
+1. Navigate back to the *Home* page to see your image added to the list.
 
 Content Sets are a powerful feature which provide one place to easily define content and other assets to be displayed all over your site. Their reusability also means less repeated work involved in getting great content delivered to your users.
 

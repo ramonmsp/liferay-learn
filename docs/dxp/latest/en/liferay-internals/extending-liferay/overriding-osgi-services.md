@@ -32,14 +32,14 @@ To override an OSGi service, you'll follow these steps:
 
 1. (Optional) If necessary, reference and invoke the service you're overriding in your service.
 
-The [sample modules](./liferay-s1j6.zip) demonstrate how to override an OSGi service. These modules include an API for defining a new OSGi service type, an initial implementation of that type, and a generic portlet that references the initial implementation. Also included are alternate implementations of the API to demonstrate how to override the initial implementation.
+The sample modules demonstrate how to override an OSGi service. These modules include an API for defining a new OSGi service type, an initial implementation of that type, and a generic portlet that references the initial implementation. Also included are alternate implementations of the API to demonstrate how to override the initial implementation.
 
 ## Deploy Sample Modules for Overriding
 
-1. Start a new [Liferay Docker container](../../installation-and-upgrades/installing-liferay/using-liferay-docker-images/docker-container-basics.md).
+1. Start a new [Liferay Docker container](../../installation-and-upgrades/installing-liferay/using-liferay-docker-images.md).
 
    ```bash
-   docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+   docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
    ```
 
 1. Download and unzip the example modules.
@@ -136,14 +136,14 @@ Component Configuration Id: 8338
 --------------------------------
 [...]
 References:   (total 1)
-  - _s1J6: com.acme.s1j6.S1J6 SATISFIED 1..1 static
+  - _s1j6: com.acme.s1j6.S1J6 SATISFIED 1..1 static
     target=(*) scope=bundle (1 binding):
     * Bound to [17776] from bundle 1357 (com.acme.s1j6.able.impl:1.0.0)
 ```
 
 This abbreviated output lists the following reference configuration details:
 
-**Reference Name**: The name of the field that references the `S1J6AbleImpl` service is `_s1J6`.
+**Reference Name**: The name of the field that references the `S1J6AbleImpl` service is `_s1j6`.
 
 **Reference Policy**: The component's reference policy is `static` (default).
 
@@ -215,7 +215,7 @@ Follow these steps to deploy `S1J6BakerImpl`, `S1J6CharlieImpl`, and `S1J6DogImp
 
    ```
    References:   (total 1)
-     - _s1J6: com.acme.s1j6.S1J6 SATISFIED 1..1 static
+     - _s1j6: com.acme.s1j6.S1J6 SATISFIED 1..1 static
        target=(*) scope=bundle (1 binding):
        * Bound to [3248] from bundle 1359 (com.acme.s1j6.baker.impl:1.0.0)
    ```
@@ -252,7 +252,7 @@ Follow these steps to deploy `S1J6BakerImpl`, `S1J6CharlieImpl`, and `S1J6DogImp
 
    ```
    References:   (total 1)
-     - _s1J6: com.acme.s1j6.S1J6 SATISFIED 1..1 static
+     - _s1j6: com.acme.s1j6.S1J6 SATISFIED 1..1 static
        target=(*) scope=bundle (1 binding):
        * Bound to [3249] from bundle 1360 (com.acme.s1j6.charlie.impl:1.0.0)
    ```

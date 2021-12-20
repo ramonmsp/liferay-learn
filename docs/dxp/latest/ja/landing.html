@@ -9,14 +9,15 @@
 					icon: '#getting-started-logo',
 					sectionName: 'はじめに',
 					sectionURL: 'getting_started.html',
+					showAll: false,
 					subsections: [
+						{
+							name: 'Liferay DXP 7.3 新機能一覧',
+							url: 'getting-started/whats-new-73.html'
+						},
 						{
 							name: 'Dockerイメージから始める',
 							url: 'getting-started/starting-with-a-docker-image.html'
-						},
-						{
-							name: '管理者アカウントの概要',
-							url: 'getting-started/introduction-to-the-admin-account.html'
 						},
 						{
 							name: 'DXPのナビゲート',
@@ -47,6 +48,7 @@
 					icon: '#site-building-logo',
 					sectionName: 'サイトの構築',
 					sectionURL: 'site_building.html',
+					showAll: false,
 					subsections: [
 						{
 							name: 'サイトを追加する',
@@ -66,18 +68,19 @@
 					icon: '#content-authoring-and-management-logo',
 					sectionName: 'コンテンツの作成と管理',
 					sectionURL: 'content_authoring_and_management.html',
+					showAll: false,
 					subsections: [
 						{
 							name: '基本的なWebコンテンツの記事の追加',
-							url: 'content-authoring-and-management/web-content/user-guide/web-content-articles/adding-a-basic-web-content-article.html'
+							url: 'content-authoring-and-management/web-content/web-content-articles/adding-a-basic-web-content-article.html'
 						},
 						{
-							name: 'ファイルのアップロード',
-							url: 'content-authoring-and-management/documents-and-media/uploading-and-managing/uploading-files.html'
+							name: 'コンテンツダッシュボードについて',
+							url: 'content-authoring-and-management/content-dashboard/about-the-content-dashboard.html'
 						},
 						{
-							name: 'ユーザーガイド',
-							url: 'content-authoring-and-management/04-content-sets/user_guide.html'
+							name: 'コレクションとコレクションページについて',
+							url: 'content-authoring-and-management/collections-and-collection-pages/about-collections-and-collection-pages.html'
 						},
 					]
 				},
@@ -85,25 +88,27 @@
 					icon: '#process-automation-logo',
 					sectionName: 'プロセスの自動化',
 					sectionURL: 'process_automation.html',
+					showAll: false,
 					subsections: [
 						{
 							name: 'フォームの概要',
-							url: 'process-automation/forms/user-guide/introduction-to-forms.html'
+							url: 'process-automation/forms/introduction-to-forms.html'
 						},
 						{
 							name: 'フォームの共有',
-							url: 'process-automation/forms/user-guide/sharing-forms.html'
+							url: 'process-automation/forms/sharing-forms-and-managing-submissions/sharing-forms.html'
 						},
 						{
 							name: 'ワークフローのアクティブ化',
-							url: 'process-automation/workflow/user-guide/activating-workflow.html'
+							url: 'process-automation/workflow/using-workflows/activating-workflow.html'
 						},
 					]
 				},
 				{
 					icon: '#using-search-logo',
 					sectionName: 'Using Search',
-					sectionURL: 'using_search.html',
+					sectionURL: 'using-search.html',
+					showAll: false,
 					subsections: [
 						{
 							name: '検索の概要',
@@ -114,8 +119,8 @@
 							url: 'using-search/search-pages-and-widgets/working-with-search-pages/search-pages.html'
 						},
 						{
-							name: '検索エンジンのインストールの概要',
-							url: 'using-search/installing-and-upgrading-a-search-engine/introduction-to-installing-a-search-engine.html'
+							name: '検索エンジンのインストール',
+							url: 'using-search/installing-and-upgrading-a-search-engine/installing-a-search-engine.html'
 						},
 					]
 				},
@@ -123,6 +128,7 @@
 					icon: '#collaboration-and-social-logo',
 					sectionName: 'コラボレーションとソーシャルメディア',
 					sectionURL: 'collaboration_and_social.html',
+					showAll: false,
 					subsections: [
 						{
 							name: 'メッセージボードの概要',
@@ -141,7 +147,8 @@
 				{
 					icon: '#users-and-permissions-logo',
 					sectionName: 'ユーザーと権限',
-					sectionURL: 'users_and_permissions.html',
+					sectionURL: 'users-and-permissions.html',
+					showAll: false,
 					subsections: [
 						{
 							name: 'ユーザーについて',
@@ -161,14 +168,15 @@
 					icon: '#system-administration-logo',
 					sectionName: 'サイトの管理',
 					sectionURL: 'system_administration.html',
+					showAll: false,
 					subsections: [
 						{
 							name: 'アプリのインストールと管理',
-							url: 'system-administration/installing_and_managing_apps.html'
+							url: 'system-administration/installing-and-managing-apps.html'
 						},
 						{
 							name: 'ファイルストレージの構成',
-							url: 'system-administration/file-storage/configuring-file-storage.html'
+							url: 'system-administration/file-storage.html'
 						},
 						{
 							name: 'スクリプトエンジンの使用',
@@ -179,38 +187,40 @@
 				{
 					icon: '#developing-applications-logo',
 					sectionName: 'アプリケーションの開発',
-					sectionURL: 'developing_applications.html',
+					sectionURL: 'building-applications.html',
+					showAll: false,
 					subsections: [
 						{
 							name: 'アプリビルダーの概要',
-							url: 'developing-applications/developing-low-code-applications/app-builder-overview.html'
+							url: 'building-applications/app-builder.html'
 						},
 						{
-							name: 'Reactの使用',
-							url: 'developing-applications/developing-a-single-page-application/using-react.html'
+							name: '開発者ツールの概要',
+							url: 'building-applications/tooling/developer-tools-overview.html'
 						},
 						{
-							name: 'サービスビルダー',
-							url: 'developing-applications/data-frameworks/service-builder.html'
+							name: 'ブレードCLIのインストールと更新',
+							url: 'building-applications/tooling/blade-cli/installing-and-updating-blade-cli.html'
 						},
 					]
 				},
 				{
 					icon: '#liferay-internals-logo',
 					sectionName: 'Liferayの内部',
-					sectionURL: 'liferay_internals.html',
+					sectionURL: 'liferay-internals.html',
+					showAll: false,
 					subsections: [
 						{
-							name: 'モデルリスナーの作成',
-							url: 'liferay-internals/extending-liferay/creating-a-model-listener.html'
+							name: '基礎',
+							url: 'liferay-internals/fundamentals.html'
 						},
 						{
-							name: 'OSGi拡張ポイント',
-							url: 'liferay-internals/extending-liferay/osgi-extension-points.html'
+							name: 'Liferayの拡張',
+							url: 'liferay-internals/extending-liferay.html'
 						},
 						{
-							name: 'Liferayコアのカスタマイズ',
-							url: 'liferay-internals/customizing-the-core/customizing-the-liferay-core.html'
+							name: '参照',
+							url: 'liferay-internals/reference.html'
 						},
 					]
 				},
@@ -218,37 +228,43 @@
 					icon: '#headless-delivery-logo',
 					sectionName: 'Headless Delivery',
 					sectionURL: 'headless_delivery.html',
+					showAll: false,
 					subsections: [
 						{
+							name: 'ヘッドレスプラットフォームとしてのLiferayの使用',
+							url: 'headless-delivery/using-liferay-as-a-headless-platform.html'
+						},
+						{
 							name: 'RESTサービスの使用',
-							url: 'headless-delivery/content-delivery-apis/consuming-rest-services.html'
+							url: 'headless-delivery/consuming-apis/consuming-rest-services.html'
 						},
 						{
 							name: 'GraphQL APIの使用',
-							url: 'headless-delivery/content-delivery-apis/consuming-graphql-apis.html'
+							url: 'headless-delivery/consuming-apis/consuming-graphql-apis.html'
 						},
 						{
-							name: 'データエンジンAPI',
-							url: 'headless-delivery/data_engine_apis.html'
+							name: '認証されていないリクエストを行う',
+							url: 'headless-delivery/consuming-apis/making-unauthenticated-requests.html'
 						},
 					]
 				},
 				{
 					icon: '#installation-and-upgrades-logo',
 					sectionName: 'インストールとアップグレード',
-					sectionURL: 'installation_and_upgrades.html',
+					sectionURL: 'installation-and-upgrades.html',
+					showAll: false,
 					subsections: [
 						{
 							name: 'Liferay-Tomcatバンドルのインストール',
 							url: 'installation-and-upgrades/installing-liferay/installing-a-liferay-tomcat-bundle.html'
 						},
 						{
-							name: 'Liferayの保護の概要',
-							url: 'installation-and-upgrades/securing-liferay/introduction-to-securing-liferay.html'
+							name: 'Liferayのセットアップ',
+							url: 'installation-and-upgrades/setting_up_liferay.html'
 						},
 						{
 							name: 'アップグレードの概要',
-							url: 'installation-and-upgrades/upgrading-liferay-dxp/upgrade-basics/upgrade-overview.html'
+							url: 'installation-and-upgrades/upgrading-liferay/upgrade-basics.html'
 						},
 					]
 				},

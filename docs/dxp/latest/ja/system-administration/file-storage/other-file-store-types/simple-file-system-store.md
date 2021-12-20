@@ -24,8 +24,8 @@ Simple File System Storeは、Liferay DXPデータベースにバインドされ
   - 数値ファイルエントリ名はストレージファイルパスで使用されますが、ドキュメントIDは使用されません。
   - それぞれ異なる`DLFileEntry`テーブル列に格納されます。 数値ファイルエントリ名は`name`列に格納され、ドキュメントIDは`fileEntryId`列に格納されます。
 
-``` warning::
-   ドキュメントライブラリでデータベーストランザクションのロールバックが発生した場合、トランザクションのファイルシステムの変更は元に戻され**ません**。 ドキュメントライブラリファイルとファイルシステムストア内のファイルとの間に不整合が発生する可能性があり、手動での同期が必要になる場合があります。 `DBStore <./dbstore.md>`_ を除くすべてのDXPストアは、この制限に対して脆弱です。
+```{warning}
+ドキュメントライブラリでデータベーストランザクションのロールバックが発生した場合、トランザクションのファイルシステムの変更は元に戻され**ません**。 ドキュメントライブラリファイルとファイルシステムストア内のファイルとの間に不整合が発生する可能性があり、手動での同期が必要になる場合があります。 [DBStore](./dbstore.md) を除くすべてのDXPストアは、この制限に対して脆弱です。
 ```
 
 ## ストアの構成
@@ -54,11 +54,11 @@ dl.store.impl=com.liferay.portal.store.file.system.FileSystemStore
 
 ## クラスター環境でのストアの使用
 
-[クラスター環境](../../installation-and-upgrades/setting-up-liferay/clustering-for-high-availability.md)では、すべてのノードがアクセスできるネットワークマウントファイルシステムをストアに指定します。 ネットワーク化されたファイルシステムは、すべてのノードからアクセス可能で、同時要求をサポートし、ファイルロックをサポートしている必要があります。 そのようなファイルシステムなしでSimple File System Storeを使用し、複数のユーザーが同時に同じファイルに書き込もうとすると、データが破損する可能性があります。
+[クラスター環境](../../../installation-and-upgrades/setting-up-liferay/clustering-for-high-availability.md)では、すべてのノードがアクセスできるネットワークマウントファイルシステムをストアに指定します。 ネットワーク化されたファイルシステムは、すべてのノードからアクセス可能で、同時要求をサポートし、ファイルロックをサポートしている必要があります。 そのようなファイルシステムなしでSimple File System Storeを使用し、複数のユーザーが同時に同じファイルに書き込もうとすると、データが破損する可能性があります。
 
 ## 追加情報
 
-  - [ファイルストレージの構成](../configuring-file-storage.md)
+  - [ファイル ストレージ](../../file-storage.md)
   - [Amazon S3 Store](./amazon-s3-store.md)
   - [DBStore](./dbstore.md)
-  - [File Store Migration](../file-store-migration.md)
+  - [ファイルストアの移行](../file-store-migration.md)

@@ -11,8 +11,8 @@ The Email configuration is where you configure email notifications at the Virtua
 | Password Changed Notification | Notify Users when their password has been changed |
 | Password Reset Notification | Notify Users when a request to reset their password is received |
 
-```note::
-   Your installation must have a `configured connection to a mail server <../../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md>`_ in order to send email notifications.
+```{note}
+Your installation must have a [configured connection to a mail server](../../../installation-and-upgrades/setting-up-liferay/configuring-mail.md) in order to send email notifications.
 ```
 
 ## Account Created Notification
@@ -23,7 +23,7 @@ The Account Created Notification entry defines the email templates, with and wit
 
 ## Email Sender
 
-The Email Sender entry specifies the virtual instance's administrative Name and Address for email notifications, declared as the `[$FROM_NAME$]` and `[$FROM_ADDRESS$]` variables respectively in the email templates. By default, they are from the `admin.email.from.name` and `admin.email.from.address` [portal properties](https://docs.liferay.com/ce/portal/7.3-latest/propertiesdoc/portal.properties.html#Admin%20Portlet). This name and email address appear in the *From* field in all email messages sent by the virtual instance. 
+The Email Sender entry specifies the virtual instance's administrative Name and Address for email notifications, declared as the `[$FROM_NAME$]` and `[$FROM_ADDRESS$]` variables respectively in the email templates. By default, they are from the `admin.email.from.name` and `admin.email.from.address` [portal properties](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#Admin%20Portlet). This name and email address appear in the *From* field in all email messages sent by the virtual instance. 
 
 ![Configure the From name and address for system emails.](./email-settings/images/02.png)
 

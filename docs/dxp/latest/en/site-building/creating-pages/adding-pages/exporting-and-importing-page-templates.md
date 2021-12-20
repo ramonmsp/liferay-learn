@@ -2,8 +2,8 @@
 
 Sometimes it's easier to edit templates in a code editor. Once you've [created a Page Template](./creating-a-page-template.md), you can [export](../../building-sites/importing-exporting-pages-and-content.md) it, edit it locally in the editor of your choice, and then import the template back into Liferay. You can import the template into any Site on the system. 
 
-```tip::
-   Page Templates are part of the larger Collections framework. For more information, see `About Collections and Collection Pages <../../../content-authoring-and-management/collections-and-collection-pages/about-collections-and-collection-pages.md>`_.
+```{tip}
+Page Templates are part of the larger Collections framework. For more information, see [About Collections and Collection Pages](../../../content-authoring-and-management/collections-and-collection-pages/about-collections-and-collection-pages.md).
 ```
 
 For more general information about the Export/Import Framework, see [Importing/ Exporting Sites and Content](../../building-sites/importing-exporting-pages-and-content.md).
@@ -24,8 +24,8 @@ For more general information about the Export/Import Framework, see [Importing/ 
 
 The Page Template downloads as a ZIP file to your local machine. 
 
-```tip::
-   You can export more than one Content Template at once. However, you cannot include Widget Templates with Content Pages in the same ZIP file.
+```{tip}
+You can export more than one Content Template at once. However, you cannot include Widget Templates with Content Pages in the same ZIP file.
 ```
 
 The last published version of the Page Template is always exported. If the Page Template has never been published, it cannot be exported.
@@ -35,13 +35,9 @@ The exported ZIP file contains these files:
 * `page-template-collection.json`: Contains the name of the Collection where the Page Template is saved and any other metadata
 * An optional thumbnail file
 * `page-template.json`: Contains the Page Template name and any other metadata
-* `page-definition.json`: specifies the structure and content of the Page Template
+* `page-definition.json`: specifies the structure and content of the Page Template.
 
-A [Page Definition JSON Schema file](https://github.com/liferay/liferay-portal/blob/[$LIFERAY_LEARN_PORTAL_GIT_TAG$]/modules/apps/layout/layout-page-template-api/src/main/resources/com/liferay/layout/page/template/validator/dependencies/page_definition_json_schema.json) describes the content of the `page-definition.json` file and can be imported into any editor supporting JSON schema validation.
-
-The ZIP file may contain different types of page templates. 
-
-There are [JSON schemas](https://github.com/liferay/liferay-portal/tree/[$LIFERAY_LEARN_PORTAL_GIT_TAG$]/modules/apps/layout/layout-page-template-api/src/main/resources/com/liferay/layout/page/template/validator/dependencies) available for `display-page-template.json`, `master-page.json`, `page-template-collection.json` and `page-template.json`.
+The ZIP file may contain different types of page templates as well, like `display-page-template.json`, `master-page.json`, `page-template-collection.json` and `page-template.json`.
 
 ## Importing a Page Template
 

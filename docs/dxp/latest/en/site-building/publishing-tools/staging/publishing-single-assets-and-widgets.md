@@ -16,8 +16,8 @@ Once you confirm, you're directed to a process page where you can see the publis
 
 Similar to the standard process, single asset publishing includes associated dependencies: images, custom templates, or folders.
 
-```note::
-   Single asset publishing is not supported for page-scoped content.
+```{note}
+Single asset publishing is not supported for page-scoped content.
 ```
 
 ## Publishing Single Widgets
@@ -30,7 +30,7 @@ After changing a widget, you can publish the widget by clicking on the *Actions*
 
 ## Additional Information
 
-* [Staging Overview](./staging-overview.md)
+* [Staging Overview](../staging.md)
 * [Managing Staging Permissions](./managing-staging-permissions.md)
 * [Page Versioning](./page-versioning.md)
 * [Site Staging UI Reference](./site-staging-ui-reference.md)

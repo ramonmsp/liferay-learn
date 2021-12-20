@@ -1,5 +1,9 @@
 # Tracking Custom Assets
 
+```{note}
+Using [event tracking](../events/tracking-events.md) is the recommended way to track your custom assets.
+```
+
 Liferay Analytics Cloud can detect and analyze built-in Liferay DXP assets like Forms, Blogs, Documents and Media, and Web Content. To analyze assets in your custom app, however, you must tag your app’s HTML so the Analytics Cloud JavaScript plugin can detect and track user interaction with your assets.
 
 ## Asset Events
@@ -63,8 +67,8 @@ To track this poll’s events, add the above attributes to the div:
 </div>
 ```
 
-```note::
-   You must add these attributes to each individual asset that you want Analytics Cloud to track. However, you can populate the attributes’ values via a script, therefore automating this process for each asset.
+```{note}
+You must add these attributes to each individual asset that you want Analytics Cloud to track. However, you can populate the attributes’ values via a script, therefore automating this process for each asset.
 ```
 
 ### Tracking Downloads

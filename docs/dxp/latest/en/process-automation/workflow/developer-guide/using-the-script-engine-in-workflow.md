@@ -79,7 +79,7 @@ At virtually any point in a workflow, you can use Liferay's script engine to acc
 * Sending an email to the designated content approver with a list of people to contact if he is unable to review the content
 * Creating an alert to be displayed in the Alerts portlet for any User assigned to approve content
 
-The following workflow script is written using Groovy and is used with a `Condition` Node. The script uses Liferay's [asset framework](../../../developing-applications/data-frameworks/assets.md) to determine an asset's category and uses the category to determine the correct approval process automatically. If the asset is in the `legal` category, it is sent to the `Legal Review` task upon submission. Otherwise, the asset is sent to the `Default Review` task.
+The following workflow script is written using Groovy and is used with a `Condition` Node. The script uses Liferay's [asset framework](../../../building-applications/data-frameworks/assets.md) to determine an asset's category and uses the category to determine the correct approval process automatically. If the asset is in the `legal` category, it is sent to the `Legal Review` task upon submission. Otherwise, the asset is sent to the `Default Review` task.
 
 ```xml
 <script>
@@ -133,15 +133,15 @@ The following workflow script is written using Groovy and is used with a `Condit
 <script-language>groovy</script-language>
 ```
 
-```note::
-   A script's return value determines the next task or state.
+```{note}
+A script's return value determines the next task or state.
 ```
 
 See [Crafting Workflow Definitions](./crafting-xml-workflow-definitions.md) for links to downloadable workflow script examples.
 
 ## Calling OSGi Services
 
-[Service Trackers](../../../liferay-internals/service-trackers.md) retrieve OSGi services that are available. If the Service Tracker returns null for the service, that service is unavailable and you can do something appropriate in response.
+[Service Trackers](../../../building-applications/core-frameworks/dependency-injection.md) retrieve OSGi services that are available. If the Service Tracker returns null for the service, that service is unavailable and you can do something appropriate in response.
 
 Here's a workflow script written in Groovy that uses a `JournalArticleLocalService` to get an article count:
 
@@ -197,5 +197,5 @@ Liferay's Kaleo Workflow Engine and Liferay's Script Engine makes for a powerful
 ## Additional Information
 
 * [Introduction to Workflow](../introduction-to-workflow.md)
-* [Running Scripts From the Script Console](../../../system-administration/using-the-script-engine/running-scripts-from-the-script-console)
+* [Running Scripts From the Script Console](../../../system-administration/using-the-script-engine/running-scripts-from-the-script-console.md)
 * [Script Examples](../../../system-administration/using-the-script-engine/script-examples.md)

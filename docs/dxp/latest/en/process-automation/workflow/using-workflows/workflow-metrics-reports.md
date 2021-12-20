@@ -8,14 +8,16 @@ A table view of all installed workflow processes shows you how many items are ov
 
 Access more detailed reports by clicking on one of the workflow processes.
 
-The Reports UI has two main views, represented as tabs: _Dashboard_ and _Performance_.
+The Reports UI has two main views, represented as tabs: _Dashboard_ and _Performance_. At the top of both screens, a piece of important information is displayed: the detailed date and time that the SLA metrics were last recalculated. To learn about the configurability of the metrics recalculation, see [Configuring the SLA Job Interval](using-workflow-metrics.md#configuring-the-sla-job-interval).
+
+![The last time SLA metrics were recaluclated is displayed prominently.](./workflow-metrics-reports/images/13.png)
 
 The Dashboard view is displayed by default. Included are items currently in the workflow process, even those untracked by the SLA. Untracked items include those that pre-date the SLA itself or those that are in the process but have not reached the step where the SLA is triggered.
 
 The Performance view shows metrics for items that have completed processing in the workflow.
 
-```note::
-   **Requires Elasticsearch:** To use Workflow Metrics, you must be using Elasticsearch to index your Liferay DXP data. Read `here <../../../using-search/installing-and-upgrading-a-search-engine/introduction-to-installing-a-search-engine.md>`_ to learn about installing Elasticsearch.
+```{note}
+**Requires Elasticsearch:** To use Workflow Metrics, you must be using Elasticsearch to index your Liferay DXP data. Read [here](../../../using-search/installing-and-upgrading-a-search-engine/installing-a-search-engine.md) to learn about installing Elasticsearch.
 ```
 
 ## Understanding the Dashboard
@@ -46,7 +48,11 @@ The overall throughput rate for the time period appears in the top of the chart 
 
 **Performance by Step:** See how many SLA breaches occurred at each step and the step's average completion time. If the step is part of at least one SLA definition, discover how many items had their SLA breached at the step and the proportion (as a percentage) of the total breaches that occurred at this step of the process, in comparison with all items that passed through this workflow step.
 
-![View the performance of each workflow step.](./workflow-metrics-reports/images/04.png)
+![View the performance of each workflow step.](./workflow-metrics-reports/images/14.png)
+
+```{note}
+In Liferay 7.4, a version selector was added to the Performance by Step metric. It defaults to displaying metrics for all the workflow definition's versions, but you can choose to display metrics for just one version.
+```
 
 To see a full view of all the step performance metrics, click _View All Steps_.
 
@@ -66,6 +72,10 @@ There's a table view for all the items in the workflow that provides handy filte
 
 **ID**: This is the workflow item's numeric identifier to the system. Importantly, you can click this to enter the Item Detail view.
 
+**Due Date:** This is the date, as calculated by the configured SLA, after which the workflow item is considered to have a SLA status of Overdue. It is not related to the Due Date field displayed in My Workflow Tasks screen, accessed from the User personal menu.
+
+![Hover over the due date to see more detailed information about the SLA.](./workflow-metrics-reports/images/12.png)
+
 **Item Subject**: A human readable summary of the item, to help administrators identify the item.
 
 **Process Step**: Identifies where the item is in the workflow.
@@ -74,7 +84,7 @@ There's a table view for all the items in the workflow that provides handy filte
 
 **Creation Date**: Shows the date and time the item was submitted to the workflow.
 
-The All Items view can be filtered so you can find the subset of items you want to analyze.
+The columns can be clicked to sort the workflow items in ascending or descending order by a particular field. In addition, workflow items can be filtered so you can find the subset you want to analyze.
 
 ### Filtering by SLA Status
 

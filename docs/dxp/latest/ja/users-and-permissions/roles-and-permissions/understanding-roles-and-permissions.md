@@ -12,8 +12,8 @@ Liferay DXPで作業を行うには、 [ユーザー](./../users/understanding-u
 
 <!-- end list -->
 
-``` note::
-   `Site Teams <./../site-building/building-sites/creating-teams-for-sites.md>`_ has a dedicated permissions management User Interface.
+```{note}
+[Site Teams](./../site-building/building-sites/creating-teams-for-sites.md) has a dedicated permissions management User Interface.
 ```
 
 ## ロールと範囲
@@ -82,4 +82,4 @@ Liferay DXPのページに配置された各ウィジェットインスタンス
 
   - [ロール権限の定義](./defining-role-permissions.md)
 
-  - [ロールへのユーザーの割り当て](./assigning-user-to-roles.md)
+  - [ロールへのユーザーの割り当て](./assigning-users-to-roles.md)

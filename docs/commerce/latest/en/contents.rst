@@ -7,15 +7,15 @@ Contents
    :maxdepth: 4
 
    installation_and_upgrades
-   starting_a_store
+   starting-a-store.md
    managing_a_catalog
    creating_store_content
-   promoting_products
+   promoting-products.md
    users-and-accounts.md
-   orders_and_fulfillment
+   orders-and-fulfillment.md
    store_administration
    add_ons_and_connectors
-   developer_guide
+   developer-guide.md
    get_help
 
 Indices and tables

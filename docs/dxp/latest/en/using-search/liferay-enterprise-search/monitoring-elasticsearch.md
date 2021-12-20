@@ -32,8 +32,8 @@ Restart Elasticsearch, then install Kibana.
 
 Make sure the Kibana version matches the Elasticsearch version. Check the [Liferay Enterprise Search compatibility matrix](https://help.liferay.com/hc/en-us/articles/360016511651) for details.
 
-```note:: 
-   Elasticsearch 6.x has reached `end of life <https://www.elastic.co/support/eol#elasticsearch>`_. Liferay 7.2 systems still using Elasticsearch 6.x should be upgraded to Elasticsearch 7.x. See  `Upgrading to Elasticsearch 7 <./../installing-and-upgrading-a-search-engine/elasticsearch/upgrading-elasticsearch/upgrading-to-elasticsearch-7.md>`__ for details.
+```{note}
+Elasticsearch 6.x has reached [end of life](https://www.elastic.co/support/eol#elasticsearch). Liferay 7.2 systems still using Elasticsearch 6.x should be upgraded to Elasticsearch 7.x. See  [Upgrading to Elasticsearch 7](./../installing-and-upgrading-a-search-engine/elasticsearch/upgrading-elasticsearch/upgrading-to-elasticsearch-7.md)_ for details.
 ```
 
 1. [Download Kibana](https://www.elastic.co/downloads/kibana) and extract it. The root folder is referred to as *Kibana Home*.
@@ -233,6 +233,6 @@ The error is caused by Kibana 7.11+'s reliance on TLS version 1.3. The recommend
 ## Related Topics
 
 * [Securing Elasticsearch](../installing-and-upgrading-a-search-engine/elasticsearch/securing-elasticsearch.md)
-* [Cross-Cluster Replication](./cross_cluster_replication.html)
-* [Search Tuning](../search_administration_and_tuning.html)
-* [Liferay Installation and Upgrades](../../installation_and_upgrades.html)
+* [Cross-Cluster Replication](./cross-cluster-replication.md)
+* [Search Tuning](../search-administration-and-tuning.md)
+* [Liferay Installation and Upgrades](../../installation-and-upgrades.md)

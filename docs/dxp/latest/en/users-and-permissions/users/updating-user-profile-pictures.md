@@ -32,7 +32,7 @@ Now, instead of the default icon, the icon is a generic silhouette.
 
 ### Changing the Order of Initials in the Default User Profile Image
 
-The default user icon (with the user initials) can be configured to work for your locale. These settings are configured in a [Language Settings module](../../liferay-internals/extending-liferay/adding-a-language.md).
+The default user icon (with the user initials) can be configured to work for your locale. These settings are configured in a [Language Settings module](../../building-applications/core-frameworks/reference/localization/adding-a-language.md).
 
 `lang.user.default.portrait=initials` sets the type of icon to use for avatars. The default value is *initials*. If set to initials, the next property configures which initials to display, and in what order. Alternatively, specify *image*, which gives you the same non-initials default image shown above.
 
@@ -58,11 +58,11 @@ You can use your own default profile image:
     image.default.user.portrait=com/liferay/portal/dependencies/user_portrait.png
     ```
 
-    ```tip::
-       If you use the binary gender field to collect information on users' genders, then you have two default images to override. Set these properties instead:
-       ::
-         image.default.user.female.portrait=image-filename.png
-         image.default.user.male.portrait=image-filename.png
+    ```{tip}
+    If you use the binary gender field to collect information on users' genders, then you have two default images to override. Set these properties instead:
+    ::
+    image.default.user.female.portrait=image-filename.png
+    image.default.user.male.portrait=image-filename.png
     ```
 
 1. Restart the application server.

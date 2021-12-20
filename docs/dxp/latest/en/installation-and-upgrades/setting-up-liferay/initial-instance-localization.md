@@ -12,8 +12,8 @@ If you want to configure the default virtual instance's localization before star
 
 | **Portal Property** | **Description** |
 | :------------------ | :-------------- |
-| `company.default.locale` | Set it to any available locale, defined for the [`locales`](https://docs.liferay.com/ce/portal/7.3-ga2/propertiesdoc/portal.properties.html#Languages%20and%20Time%20Zones) portal property. |
-| `company.default.time.zone` | Set it to any of the time zones defined in the [`time.zones`](https://docs.liferay.com/ce/portal/7.3-ga2/propertiesdoc/portal.properties.html#Languages%20and%20Time%20Zones) portal property. |
+| `company.default.locale` | Set it to any available locale, defined for the [`locales`](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#Languages%20and%20Time%20Zones) portal property. |
+| `company.default.time.zone` | Set it to any of the time zones defined in the [`time.zones`](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#Languages%20and%20Time%20Zones) portal property. |
 
 For example,
 
@@ -30,7 +30,7 @@ The [Setup Wizard](../installing-liferay/running-liferay-for-the-first-time.md) 
 
 ![Use the Setup Wizard to set the DXP instance's default language and time zone](./initial-instance-localization/images/01.png)
 
-The Setup Wizard is enabled by default for [Liferay-Tomcat Bundles](../installing-liferay/installing-a-liferay-tomcat-bundle.md) and [application server installations](../installing-liferay/installing_liferay_on_an_application_server.html).
+The Setup Wizard is enabled by default for [Liferay-Tomcat Bundles](../installing-liferay/installing-a-liferay-tomcat-bundle.md) and [application server installations](../installing-liferay/installing-liferay-on-an-application-server.md).
 
 If you have already launched DXP, change the instance's default language and time zone in the Control Panel.
 
@@ -40,7 +40,7 @@ A virtual instance's default language and time zone can be modified using the in
 
 ## Conclusion
 
-You have configured your DXP instance's default language and time zone. If want to explore more information on localizing DXP, including how to facilitate choosing locales, please see [Site Localization](../../site-building/site-settings/configuring_site_languages.html).
+You have configured your DXP instance's default language and time zone. If want to explore more information on localizing DXP, including how to facilitate choosing locales, please see [Site Localization](../../site-building/site-settings/site-localization.md).
 
 ## Additional Information
 

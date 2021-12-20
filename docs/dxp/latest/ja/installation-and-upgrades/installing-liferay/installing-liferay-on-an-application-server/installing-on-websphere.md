@@ -4,23 +4,23 @@ WebSphereにLiferay DXPをインストールするには、DXP WARファイル�
 
 > IBM®WebSphere®はInternational Business Machines Corporationの商標であり、世界中の多くの国で登録されています。
 
-``` tip::
-   このインストールおよび設定プロセス全体を通して、WebSphereは[*Save*]をクリックして変更をマスター構成に適用するようにプロンプトを出します。 変更を保存するには、この操作が必要です。
+```{tip}
+このインストールおよび設定プロセス全体を通して、WebSphereは[*Save*]をクリックして変更をマスター構成に適用するようにプロンプトを出します。 変更を保存するには、この操作が必要です。
 ```
 
 ## 前提条件
 
 Liferay DXPが正しく機能するには、WebSphere 9（フィックスパック11が最新）がインストールされている必要があります。 このフィックスパックについて詳しくは、[IBMサポート](http://www-01.ibm.com/support/docview.wss?uid=swg24043005)にアクセスしてください。 Liferay DXPは現在、WebSphere Application Liberty Profileをサポートしていません。
 
-``` important::
-   Before installing DXP, please review the `Installing a Liferay-Tomcat Bundle <../installing-a-liferay-tomcat-bundle.md>`_ and `Configuring a Database <../configuring-a-database.md>`_ articles.
+```{important}
+Before installing DXP, please review the [Installing a Liferay-Tomcat Bundle](../installing-a-liferay-tomcat-bundle.md) and [Configuring a Database](../configuring-a-database.md) articles.
 ```
 
 次のファイルは、WebSphereアプリケーションサーバーにLiferay DXPをインストールするために必要であり、[ヘルプセンター](https://customer.liferay.com/downloads)（サブスクリプション）または[Liferayコミュニティのダウンロード](https://www.liferay.com/downloads-community)から入手できます。
 
-  - DXP WARファイル
-  - 依存関係のZIPファイル
-  - OSGi依存関係のZIPファイル
+* DXP WARファイル
+* 依存関係のZIPファイル
+* OSGi依存関係のZIPファイル
 
 利用可能なLiferay DXPダウンロードの詳細については、「 [Liferay-Tomcatバンドル](../installing-a-liferay-tomcat-bundle.md) インストール」を参照してください。
 
@@ -52,8 +52,8 @@ WebSphereにDXPをインストールするための基本的な手順は次の�
 
 4.  プロファイル名と場所を設定します。 環境に適したパフォーマンス調整設定を指定します。
 
-    ``` note::
-       パフォーマンス調整設定の詳細については、WebSphereのドキュメントを参照してください。 [*Next*]をクリックします。
+    ```{note}
+    パフォーマンス調整設定の詳細については、WebSphereのドキュメントを参照してください。 [*Next*]をクリックします。
     ```
 
 5.  サーバーのノード、サーバー、およびホスト名を選択します。 これらはユーザーの環境に固有です。 *[Next]* をクリックします。
@@ -80,8 +80,8 @@ WebSphereはプロファイルを作成し、プロファイルが正常に作�
 
 ### WebSphereアプリケーションサーバーの構成
 
-``` warning::
-   アプリケーションサーバーの実行中は構成変更を行わないでください。
+```{warning}
+アプリケーションサーバーの実行中は構成変更を行わないでください。
 ```
 
 このバージョンのWebSphereでは、サーブレットフィルターはWebアプリケーションの起動時ではなく、最初のアクセス時に初期化されます。 これにより、特定のアプリをDXPにデプロイするときに問題が発生する可能性があります。 アプリケーションの起動時（つまり、デプロイ時）に初期化するようにサーブレットフィルターを構成するには、WebSphereアプリケーションサーバーで以下の`webcontainer`プロパティを設定します。
@@ -103,8 +103,8 @@ WebSphereアプリケーションサーバーで`webcontainer`プロパティを
 
     <jvmEntries xmi:id="JavaVirtualMachine_1183122130078" ... maximumHeapSize="2560">
 
-``` note::
-   ここで使用されるJVMパラメーターは、本番環境システムの初期デプロイを意図したデフォルトです。 管理者は、特定の環境に最適な値に設定を変更する必要があります。 これらは、必要に応じて調整する必要があります。
+```{note}
+ここで使用されるJVMパラメーターは、本番環境システムの初期デプロイを意図したデフォルトです。 管理者は、特定の環境に最適な値に設定を変更する必要があります。 これらは、必要に応じて調整する必要があります。
 ```
 
 管理者は、`server.xml`の`<jvmEntries genericJvmArguments=.../>`属性でUTF-8プロパティを設定できます。 これは必須です。設定しないと、国際文字は正しく解析されません。 最大および最小ヒープサイズを`2560m`に設定します。 `jvmEntries`タグ内に以下を追加します。
@@ -113,8 +113,8 @@ WebSphereアプリケーションサーバーで`webcontainer`プロパティを
 <jvmEntries xmi:id="JavaVirtualMachine_1183122130078" ...genericJvmArguments="-Dfile.encoding=UTF-8 -Duser.timezone=GMT -Xms2560m -Xmx2560m">
 ```
 
-``` important::
-   DXPが適切に機能するには、アプリケーションサーバーJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
+```{important}
+DXPが適切に機能するには、アプリケーションサーバーJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
 ```
 
 あるいは、WebSphere管理コンソールからUTF-8プロパティを設定します。 （下記参照。）
@@ -127,8 +127,10 @@ WebSphereアプリケーションサーバーで`webcontainer`プロパティを
 
 このタグを削除しないと、次のようなエラーが発生する可能性があります。
 
-    WSVR0501E: Error creating component com.ibm.ws.runtime.component.CompositionUnitMgrImpl@d74fa901
-    com.ibm.ws.exception.RuntimeWarning: com.ibm.ws.webcontainer.exception.WebAppNotLoadedException: Failed to load webapp: Failed to load webapp: SRVE8111E: The application, LiferayEAR, is trying to modify a cookie which matches a pattern in the restricted programmatic session cookies list [domain=*, name=JSESSIONID, path=/].
+```
+WSVR0501E: Error creating component com.ibm.ws.runtime.component.CompositionUnitMgrImpl@d74fa901
+com.ibm.ws.exception.RuntimeWarning: com.ibm.ws.webcontainer.exception.WebAppNotLoadedException: Failed to load webapp: Failed to load webapp: SRVE8111E: The application, LiferayEAR, is trying to modify a cookie which matches a pattern in the restricted programmatic session cookies list [domain=*, name=JSESSIONID, path=/].
+```
 
 ### 構成チェックポイント
 
@@ -149,9 +151,9 @@ WebSphereアプリケーションサーバーで`webcontainer`プロパティを
 
 DXPはJDBCを介してデータベースと通信します。 データベースJDBCドライバーのJARファイルをユーザードメインのlibフォルダに追加します。 次のデータベース用のJDBCドライバーのJARをダウンロードできます。
 
-  - [MariaDB](https://downloads.mariadb.org/)
-  - [MySQL](http://dev.mysql.com/downloads/connector/j)
-  - [PostgreSQL](https://jdbc.postgresql.org/download/postgresql-42.0.0.jar)
+* [MariaDB](https://downloads.mariadb.org/)
+* [MySQL](http://dev.mysql.com/downloads/connector/j)
+* [PostgreSQL](https://jdbc.postgresql.org/download/postgresql-42.0.0.jar)
 
 HypersonicデータベースはDXPにバンドルされており、テスト目的には問題ありませんが、本番環境のDXPインスタンスには使用しないでください。
 
@@ -180,8 +182,8 @@ Liferay DXPは、DXPに組み込まれているデータソースを使用する
 
 WebSphereを使用してデータベース接続を管理する場合は、以下の手順に従ってください。 それ以外の場合、DXPの組み込みデータソースを使用する場合は、このセクションをスキップしてください。
 
-``` warning::
-   Liferayは、デモ目的でデフォルトでHSQLを使用しています。 HSQLは、Liferay DXPの本番環境インスタンスでは使用*しない*でください。
+```{warning}
+Liferayは、デモ目的でデフォルトでHSQLを使用しています。 HSQLは、Liferay DXPの本番環境インスタンスでは使用*しない*でください。
 ```
 
 ![図3：WebSphere JDBCプロバイダー](./installing-on-websphere/images/03.png)
@@ -230,10 +232,9 @@ WebSphereを使用してデータベース接続を管理する場合は、以�
     jdbc:mysql://localhost/lportal?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
     ```
 
-    ``` tip::
-       URLの例については、 `Database Templates <../../reference/database-templates.md>`_ の`jdbc.default.url`の値を参照してください。
+    ```{tip}
+    URLの例については、 [Database Templates](../../reference/database-templates.md) の`jdbc.default.url`の値を参照してください。
     ```
-
 
     [*OK*]をクリックして、マスター構成に保存します。
 
@@ -243,7 +244,7 @@ WebSphereを使用してデータベース接続を管理する場合は、以�
 
 ## メール設定
 
-DXPの組み込みメールセッションを使用する場合は、このセクションをスキップしてください。 DXPの組み込みメールセッションの使用方法については、[Configuring Mail](../../setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)の記事をご覧ください。
+DXPの組み込みメールセッションを使用する場合は、このセクションをスキップしてください。 DXPの組み込みメールセッションの使用方法については、[Configuring Mail](../../setting-up-liferay/configuring-mail.md)の記事をご覧ください。
 
 WebSphereを使用してメールセッションを管理する場合は、次の手順に従います。
 
@@ -275,8 +276,10 @@ WebSphereを使用してメールセッションを管理する場合は、次�
 
 WebSphereでは、デフォルトでCookieをHTTPSセッションに制限しています。 HTTPを使用している場合、ユーザーはDXPにサインインできなくなり、コンソールに次のエラーが表示されます。
 
-    20:07:14,021 WARN  [WebContainer : 1][SecurityPortletContainerWrapper:341]
-    User 0 is not allowed to access URL http://localhost:9081/web/guest/home and portlet com_liferay_login_web_portlet_LoginPortlet
+```
+20:07:14,021 WARN  [WebContainer : 1][SecurityPortletContainerWrapper:341]
+User 0 is not allowed to access URL http://localhost:9081/web/guest/home and portlet com_liferay_login_web_portlet_LoginPortlet
+```
 
 これは、HTTPの使用時にDXPがHTTPS Cookieを使用できないために発生します。 その結果、ページが更新されるたびに新しいセッションが作成されます。 WebSphereでこの問題を解決するには、以下の手順に従ってください。
 
@@ -354,18 +357,20 @@ DXP `.war`は、`ibm-web-ext.xmi`ファイルにあらかじめパッケージ�
 
 DXPをデプロイした後、`PhaseOptimizer`に関連する以下のような警告やログメッセージが過剰になることがあります。 これらは良性なので無視することができます。 このようなログメッセージを回避するために、必ずアプリケーションサーバーのログレベルまたはログフィルターを調整してください。
 
-    |     May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
-    |     WARNING: Skipping pass gatherExternProperties
-    |     May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
-    |     WARNING: Skipping pass checkControlFlow
-    |     May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
-    |     INFO: pass supports: [ES3 keywords as identifiers, getters, reserved words as properties, setters, string continuation, trailing comma, array pattern rest, arrow function, binary literal, block-scoped function declaration, class, computed property, const declaration, default parameter, destructuring, extended object literal, for-of loop, generator, let declaration, member declaration, new.target, octal literal, RegExp flag 'u', RegExp flag 'y', rest parameter, spread expression, super, template literal, modules, exponent operator (**), async function, trailing comma in param list]
-    |     current AST contains: [ES3 keywords as identifiers, getters, reserved words as properties, setters, string continuation, trailing comma, array pattern rest, arrow function, binary literal, block-scoped function declaration, class, computed property, const declaration, default parameter, destructuring, extended object literal, for-of loop, generator, let declaration, member declaration, new.target, octal literal, RegExp flag 'u', RegExp flag 'y', rest parameter, spread expression, super, template literal, exponent operator (**), async function, trailing comma in param list, object literals with spread, object pattern rest]
+```
+|     May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
+|     WARNING: Skipping pass gatherExternProperties
+|     May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
+|     WARNING: Skipping pass checkControlFlow
+|     May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
+|     INFO: pass supports: [ES3 keywords as identifiers, getters, reserved words as properties, setters, string continuation, trailing comma, array pattern rest, arrow function, binary literal, block-scoped function declaration, class, computed property, const declaration, default parameter, destructuring, extended object literal, for-of loop, generator, let declaration, member declaration, new.target, octal literal, RegExp flag 'u', RegExp flag 'y', rest parameter, spread expression, super, template literal, modules, exponent operator (**), async function, trailing comma in param list]
+|     current AST contains: [ES3 keywords as identifiers, getters, reserved words as properties, setters, string continuation, trailing comma, array pattern rest, arrow function, binary literal, block-scoped function declaration, class, computed property, const declaration, default parameter, destructuring, extended object literal, for-of loop, generator, let declaration, member declaration, new.target, octal literal, RegExp flag 'u', RegExp flag 'y', rest parameter, spread expression, super, template literal, exponent operator (**), async function, trailing comma in param list, object literals with spread, object pattern rest]
+```
 
 ## 次のステップ
 
-  - [Liferay-Tomcatバンドルのインストール](../installing-a-liferay-tomcat-bundle.md)
-  - [Activating Liferay DXP](../../setting-up-liferay/activating-liferay-dxp.md)
-  - [検索エンジンのインストール](../../../using-search/installing-and-upgrading-a-search-engine/introduction-to-installing-a-search-engine.md)
-  - [Securing Liferay DXP](../../securing-liferay/introduction-to-securing-liferay.md)
-  - [高可用性のクラスタリング](../../setting-up-liferay/clustering-for-high-availability.md)
+* [Liferay-Tomcatバンドルのインストール](../installing-a-liferay-tomcat-bundle.md)
+* [Activating Liferay DXP](../../setting-up-liferay/activating-liferay-dxp.md)
+* [検索エンジンのインストール](../../../using-search/installing-and-upgrading-a-search-engine/installing-a-search-engine.md)
+* [Securing Liferay DXP](../../securing-liferay.md)
+* [高可用性のクラスタリング](../../setting-up-liferay/clustering-for-high-availability.md)

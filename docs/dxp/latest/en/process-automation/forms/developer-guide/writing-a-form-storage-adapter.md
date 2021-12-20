@@ -17,7 +17,7 @@ To see how storage adapters work, deploy an example and then add some form data 
 1. Start Liferay DXP. If you don't already have a docker container, use
 
     ```bash
-    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
     ```
 
     If you already have a docker container, use
@@ -42,8 +42,8 @@ To see how storage adapters work, deploy an example and then add some form data 
     ./gradlew deploy -Ddeploy.docker.container.id=$(docker ps -lq)
     ```
 
-    ```tip::
-       This command is the same as copying the deployed jars to /opt/liferay/osgi/modules on the Docker container.
+    ```{tip}
+    This command is the same as copying the deployed jars to /opt/liferay/osgi/modules on the Docker container.
     ```
 
 1. Confirm the deployment in the Liferay Docker container console.
@@ -94,8 +94,8 @@ The `DDMFileSystemStorageAdapter` implements the `DDMStorageAdapter` interface, 
 public class R2F1DDMStorageAdapter implements DDMStorageAdapter {
 ```
 
-```note::
-   The ``r2f1-ddm-storage-adapter`` key is localized into the value `R2F1 Dynamic Data Mapping Storage Adapter` by the ``src/main/resources/content/Language.properties`` file and the ``Provide-Capability`` header in the ``bnd.bnd`` file.
+```{note}
+The `r2f1-ddm-storage-adapter` key is localized into the value `R2F1 Dynamic Data Mapping Storage Adapter` by the `src/main/resources/content/Language.properties` file and the `Provide-Capability` header in the `bnd.bnd` file.
 ```
 
 The `service` component property registers your implementation as a `DDMStorageAdapter` service.

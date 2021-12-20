@@ -1,3 +1,0 @@
-# Using JSF
-
-Coming soon!

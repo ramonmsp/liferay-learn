@@ -2,17 +2,17 @@
 
 Site Templates define a preconfigured structure for a Site, which includes the pages, theme, content, layouts, page templates, applications and app configurations defined for each page. Changes made to a Site Template are automatically propagated to the sites that use it, unless specified otherwise.
 
-```note::
-  While Site Templates propagate changes to a Site, they should not be used as a means of propagating Site data. To propagate Site data, `export the data and import it into another Site <./importing-exporting-pages-and-content.md>`_ instead.
+```{note}
+While Site Templates propagate changes to a Site, they should not be used as a means of propagating Site data. To propagate Site data, [export the data and import it into another Site](./importing-exporting-pages-and-content.md) instead.
 ```
 
 Three Site Templates are provided out-of-the-box:
 
-* **Blank Site:** Creates a Site that doesn't contain any pages or content.
+- **Blank Site:** Creates a Site that doesn't contain any Pages or content.
 
-* **Community Site:** Creates a preconfigured Site with the Message Boards, Search, Polls, Recent Content, Wiki, and navigation applications pre-deployed to Site pages.
+- **Community Site:** Creates a preconfigured Site with the Message Boards, Search, Polls, Recent Content, Wiki, and navigation applications pre-deployed to Site Pages.
 
-* **Intranet Site:** Creates a preconfigured Site for an intranet. The Home page displays the activities of the members of the Site, a language selector, and a list of the recent content created in the intranet on the home page. It also provides two additional pages for Documents and Media and external News obtained through public feeds.
+- **Intranet Site:** Creates a preconfigured Site for an intranet. The Home page displays the Site members' activities, a language selector, and a list of the recent content created in the intranet on the home page. It also provides two additional pages for Documents and Media and external News obtained through public feeds.
 
 ## Creating a Site from a Site Template
 
@@ -26,18 +26,31 @@ To create a Site using a Site Template, follow these steps:
 
 1. Enter a name for the Site.
 
-    * Checking *Create default pages as private (available only to members).* will prevent guest users from viewing Site pages.
+    ```{note}
+    Checking the *Create default pages as private (available only to members).* box prevents guest users from viewing Site pages.
+    ```
 
 1. Click *Save*.
 
-1. Configure your [Site settings](../site_settings.md).
+1. Configure your [Site settings](../site-settings/site-settings-ui-reference.md).
 
-1. Open the *Pages* panel below the form.
+    - In Liferay DXP 7.4+
 
-    ![The Site Configuration Pages drop down expanded to show Site Template options.](building-sites-with-site-templates/images/02.png)
+      1. From the Site Menu, go to *Configuration* &rarr; *Site Settings*.
+      1. In the Content and Data section, click *Pages*.
+      1. Under the Site Scope, click *Pages*.
 
-    ```note::
-       *Enable propagation of changes from the Site Template* enables the Site to receive updates if the Site Template is modified. If changes are made directly to a Site created from a Site Template, the Site will no longer receive updates from the Site Template. See `Merging Site Template Changes <./merging-site-template-changes.md>`_ for more information.
+            ![In Liferay DXP 7.4+, change the Pages settings from the Pages section.](./building-sites-with-site-templates/images/03.png)
+
+    - In previous Liferay DXP versions
+
+      1. From the Site Menu, go to *Configuration* &rarr; *Settings*.
+      1. Under the General area, expand the *Pages* section.
+
+            ![In previous Liferay DXP versions, change the Pages settings from the Pages section.](./building-sites-with-site-templates/images/02.png)
+
+    ```{note}
+    *Enable propagation of changes from the Site Template* enables the Site to receive updates if the Site Template is modified. If changes are made directly to a Site created from a Site Template, the Site will no longer receive updates from the Site Template. See [Merging Site Template Changes](./merging-site-template-changes.md) for more information.
     ```
 
 1. Click *Save* to create your Site.
@@ -46,12 +59,12 @@ To create a Site using a Site Template, follow these steps:
 
 1. Click *Actions* ( ![Actions icon](../../images/icon-actions.png) ) beside your new Site and select *Go to Public Pages* or *Go to Private Pages* to view it.
 
-    ```tip::
-       To view a newly created *blank site*, you must first create a page for it. See `Adding a Page to a Site <../creating-pages/adding-pages/adding-a-page-to-a-site.md>`_ for more information.
+    ```{tip}
+    To view a newly created *blank site*, you must first create a page for it. See [Adding a Page to a Site](../creating-pages/adding-pages/adding-a-page-to-a-site.md) for more information.
     ```
 
 ## Related Information
 
-* [Introduction to Site Building](../introduction-to-site-building.md)
-* [Creating a Site Template](./building-sites-with-site-templates.md)
-* [Adding Members to Sites](./site-membership/adding-members-to-sites.md)
+- [Introduction to Site Building](../introduction-to-site-building.md)
+- [Creating a Site Template](./building-sites-with-site-templates.md)
+- [Adding Members to Sites](./site-membership/adding-members-to-sites.md)

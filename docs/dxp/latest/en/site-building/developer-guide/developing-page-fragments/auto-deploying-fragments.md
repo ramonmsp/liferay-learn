@@ -13,7 +13,7 @@ Start with auto-deploying an example Fragment Collection.
 1. Run the command below to start the Docker container:
 
     ```bash
-    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
     ```
 
 1. Download and unzip the [example auto-deployable Fragment Collection](https://learn.liferay.com/dxp/latest/en/site-building/developer-guide/developing-page-fragments/liferay-a2f8.zip):
@@ -50,8 +50,8 @@ Start with auto-deploying an example Fragment Collection.
 
 1. Verify that the Fragment Collection is available. Open your browser to `https://localhost:8080`. From the Site Menu on the left side of the screen, go to *Design* &rarr; *Fragments*. The *A2F8 Collection* is in the Fragment Collections list.
 
-```note::
-   If an imported Fragment has invalid rules, it is automatically saved as a draft.
+```{note}
+If an imported Fragment has invalid rules, it is automatically saved as a draft.
 ```
 
 ![The Collection is available.](./auto-deploying-fragments/images/01.png)
@@ -93,8 +93,8 @@ Both keys in this JSON file are optional. In your `liferay-deploy-fragments.json
 }
 ```
 
-```note::
-   The Fragments Toolkit's `npm run compress command <./using-the-fragments-toolkit.md>`_ facilitates creating Fragment ZIP files and their deployment descriptors.
+```{note}
+The Fragments Toolkit's [npm run compress command](./using-the-fragments-toolkit.md) facilitates creating Fragment ZIP files and their deployment descriptors.
 ```
 
 ## Modify the Fragment Collection and Redeploy

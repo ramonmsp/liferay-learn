@@ -61,8 +61,8 @@ To add a _Countries of the World_ data provider:
 
 1. Click _Save_ when finished.
 
-```note::
-   ``$..`` before ``nameCurrentValue`` is the JsonPath syntax to navigate the JSON data structure and specify the path to the output. Learn more about `JsonPath <https://github.com/json-path/JsonPath>`_ and `here <http://goessner.net/articles/JsonPath/>`_.
+```{note}
+`$..` before `nameCurrentValue` is the JsonPath syntax to navigate the JSON data structure and specify the path to the output. Learn more about [JsonPath](https://github.com/json-path/JsonPath) and [here](http://goessner.net/articles/JsonPath/).
 ```
 
 ## Using Inputs as Filters for the REST Data Provider
@@ -78,7 +78,7 @@ For example, to apply a region (for example, Americas, Europe, or Oceania) filte
    * **Parameter**: Region
    * **Input Type**: Text
    * **Outputs Label**: Countries of the World with Regions
-   * **Outputs Path**: `*$..name*`
+   * **Outputs Path**: `$..name`
    * **Output Type**: List
 
    To understand more about these values, see [Data Providers Overview](./data-providers-overview.md).

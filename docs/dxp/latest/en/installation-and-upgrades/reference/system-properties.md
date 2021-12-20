@@ -1,10 +1,10 @@
 # System Properties
 
-DXP runs in the application server's JVM. System properties can be passed directly to the JVM as arguments to `java` in the format `-D[name1]=[value1]` or can be loaded using DXP System Properties files. System properties differ from [Portal Properties](./portal-properties.md) because they're available to the application server and all of its applications.
+Liferay DXP/Portal runs in the application server's JVM. System properties can be passed directly to the JVM as arguments to `java` in the format `-D[name1]=[value1]` or can be loaded using DXP System Properties files. System properties differ from [Portal Properties](./portal-properties.md) because they're available to the application server and all of its applications.
 
 Your application server's prescribed script is the safest place to add/modify system properties. It can be used to centralize the system properties. Passing all properties in as JVM arguments eliminates timing issues by setting all properties at application server startup. The application server, DXP, and all other web applications can use the properties immediately.
 
-DXP uses the [`portal-impl.jar/system.properties`](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/system.properties.html) file, however, as a convenience to set required properties. The `system.properties` file can be extended or overridden using a `system-ext.properties` file. System properties files are loaded by the Portal application class loader after application server startup. Here are some functionalities that DXP configures using system properties:
+DXP uses the [`portal-impl.jar/system.properties`](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/system.properties.html) file, however, as a convenience to set required properties. The `system.properties` file can be extended or overridden using a `system-ext.properties` file. System properties files are loaded by the Portal application class loader after application server startup. Here are some functionalities that DXP configures using system properties:
 
 * File encoding
 * Logging
@@ -17,11 +17,11 @@ DXP uses System Properties files in these ways:
 * DXP _extends_ properties using new properties in `system.properties` (and in `system-ext.properties`), unless the system property `system.properties.set` is `false`
 * DXP _overrides_ properties using new values in `system.properties` (and in `system-ext.properties`), unless the system property `system.properties.set.override` is `false`.
 
-```warning::
-   Setting or reseting system properties after application server startup has risks:
+```{warning}
+Setting or reseting system properties after application server startup has risks:
 
-   * If permissions are enabled on the application server, they may forbid changing system values.
-   * System properties are treated as immutable. Another process on the application server can conceivably cache an initial property value before DXP resets the value. In such a case, the system attempts to operate with different values for the same property.
+* If permissions are enabled on the application server, they may forbid changing system values.
+* System properties are treated as immutable. Another process on the application server can conceivably cache an initial property value before DXP resets the value. In such a case, the system attempts to operate with different values for the same property.
 ```
 
 Here both ways of specifying system properties are demonstrated:
@@ -67,7 +67,7 @@ If you want to use DXP's `system.properties` file and you want to extend/overrid
 
 1. Start the application server.
 
-1. Deploy the DXP web application. For more information, please see the instructions for [installing on your application server](../installing-liferay/installing_liferay_on_an_application_server.html).
+1. Deploy the DXP web application. For more information, please see the instructions for [installing on your application server](../installing-liferay/installing-liferay-on-an-application-server.md).
 
 Liferay DXP handles system properties in a flexible way, leaving you free to configure your system as best suits you.
 

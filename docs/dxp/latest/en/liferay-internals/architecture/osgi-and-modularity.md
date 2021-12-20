@@ -22,7 +22,7 @@ Liferay commonly uses three kinds of modules:
 
 1. **Client** modules consume the APIs.
 
-You'll learn how to create each one by developing a simple command in [Gogo Shell](../fundamentals/using-the-gogo-shell/using-the-gogo-shell.md) to greet users when they enter their names.
+You'll learn how to create each one by developing a simple command in [Gogo Shell](../fundamentals/using-the-gogo-shell.md) to greet users when they enter their names.
 
 ![Gogo shell command that greets users.](./osgi-and-modularity/images/01.png)
 
@@ -32,15 +32,15 @@ It's time to see what module projects look like and see Liferay's modular develo
 
 Start using the example.
 
-1. Start a [Liferay Docker container](../../installation-and-upgrades/installing-liferay/using-liferay-docker-images/docker-container-basics.md).
+1. Start a [Liferay Docker container](../../installation-and-upgrades/installing-liferay/using-liferay-docker-images.md).
 
     ```bash
-    docker run -it -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
     ```
 
 1. Download and unzip `liferay-r9u2.zip`.
 
-    ```curl
+    ```bash
     curl hhttps://learn.liferay.com/dxp/latest/en/liferay-internals/architecture/liferay-r9u2.zip -O
     ```
 
@@ -66,7 +66,7 @@ Start using the example.
     STARTED com.acme.r9u2.osgi.commands_1.0.0
     ```
 
-1. Open the [Gogo Shell](../fundamentals/using-the-gogo-shell/using-the-gogo-shell.md).
+1. Open the [Gogo Shell](../fundamentals/using-the-gogo-shell.md).
 
 1. In the Gogo Shell command field, enter a `r9u2:greet` command to generate a greeting.
 
@@ -110,7 +110,7 @@ Very simple, right? Beyond the Java source file, there are only two other files:
 The `build.gradle` file specifies the module's dependencies.
 
 ```{literalinclude} ./osgi-and-modularity/resources/liferay-r9u2.zip/r9u2-api/build.gradle
-   :language: groovy
+:language: groovy
 ```
 
 It depends on one artifact: the Liferay release API JAR. It is a large JAR packed with Liferay, Bnd, and OSGi artifacts associated with the Liferay product release.
@@ -120,8 +120,8 @@ The module's name is *Acme R9U2 API*. Its symbolic name---a name that ensures un
 Finally, there's the Java class, which in this case is an interface:
 
 ```{literalinclude} ./osgi-and-modularity/resources/liferay-r9u2.zip/r9u2-api/src/main/java/com/acme/r9u2/Greeter.java
-   :language: java
-   :lines: 5-10
+:language: java
+:lines: 5-10
 ```
 
 The interface's `@ProviderType` annotation tells the service registry that anything implementing the interface is a provider. The interface's one method asks for a `String` and doesn't return anything. 
@@ -160,8 +160,8 @@ Pretty cool, eh?
 All that's left, then, is the class that provides the implementation:
 
 ```{literalinclude} ./osgi-and-modularity/resources/liferay-r9u2.zip/r9u2-impl/src/main/java/com/acme/r9u2/internal/R9U2Greeter.java
-   :language: java
-   :lines: 7-15
+:language: java
+:lines: 7-15
 ```
 
 The example `greet` method prints an enthusiastic greeting using the given name.
@@ -169,7 +169,7 @@ The example `greet` method prints an enthusiastic greeting using the given name.
 Here is the implementation module `build.gradle` file.
 
 ```{literalinclude} ./osgi-and-modularity/resources/liferay-r9u2.zip/r9u2-impl/build.gradle
-   :language: groovy
+:language: groovy
 ```
 
 It includes a compile-time dependency on the `r9u2-api` module project because it requires the module's `Greeter` class.
@@ -178,7 +178,7 @@ That's all there is to an implementation module.
 
 ## Client
 
-The consumer or client uses the API that the API module defines and the implementation module implements. Liferay has many different kinds of consumer modules. [Portlets](../../developing-applications/developing-a-java-web-application/reference/portlets.md) are the most common consumer module type, but since they are a topic all by themselves, this example stays simple by creating an command for the Apache Felix Gogo shell. Note that consumers can, of course, consume many different APIs to provide functionality. 
+The consumer or client uses the API that the API module defines and the implementation module implements. Liferay has many different kinds of consumer modules. [Portlets](../../building-applications/developing-a-java-web-application/reference/portlets.md) are the most common consumer module type, but since they are a topic all by themselves, this example stays simple by creating an command for the Apache Felix Gogo shell. Note that consumers can, of course, consume many different APIs to provide functionality. 
 
 A consumer module has the same structure as the other module types:
 
@@ -206,14 +206,14 @@ There's nothing new here: you declare the same things you declared for the provi
 The client module depends on the API module and the `release.portal.api` artifact. Here's the `r9u2-osgi-commands` module's `build.gradle` file:
 
 ```{literalinclude} ./osgi-and-modularity/resources/liferay-r9u2.zip/r9u2-osgi-commands/build.gradle
-   :language: groovy
+:language: groovy
 ```
 
 Your Java class has a little bit more going on:
 
 ```{literalinclude} ./osgi-and-modularity/resources/liferay-r9u2.zip/r9u2-osgi-commands/src/main/java/com/acme/r9u2/internal/osgi/commands/R9U2OSGiCommands.java
-   :language: java
-   :lines: 8-21
+:language: java
+:lines: 8-21
 ```
 
 The method above invokes a `Greeter`'s `greet` method. `com.acme.r9u2.Greeter` is the OSGi service type that the implementation module registers. Getting a `Greeter` service from the registry requires adding an [`@Reference`](https://docs.osgi.org/javadoc/osgi.cmpn/7.0.0/org/osgi/service/component/annotations/Reference.html) annotation to the `Greeter` field `_greeter`.
@@ -241,6 +241,6 @@ Are you excited yet? Are you ready to start developing? Here are some resources 
 
 * [OSGi Alliance](https://www.osgi.org/)
 * [Getting started with OSGi at OSGi EnRoute](https://enroute.osgi.org/)
-* [Developing Applications](../../developing_applications.html)
-* [Developer Tools Overview](../../developing-applications/tooling/developer-tools-overview.md)
+* [Building Applications](../../building-applications/developing-a-java-web-application.md)
+* [Developer Tools Overview](../../building-applications/tooling/developer-tools-overview.md)
 * [Starting with a Docker Image](../../getting-started/starting-with-a-docker-image.md)

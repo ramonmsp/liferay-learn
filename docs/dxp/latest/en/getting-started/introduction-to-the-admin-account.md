@@ -10,8 +10,8 @@ The Admin User account is created by default in any new installation of Liferay 
 
     ![Sign In Link](./introduction-to-the-admin-account/images/01.png "Sign In Link")
 
-    ```note::
-       If a Liferay DXP bundle is being used, you may be presented with the `Setup Wizard <../installation-and-upgrades/installing-liferay/running-liferay-for-the-first-time.md>`_. Follow the on-screen instructions to configure your Admin user.
+    ```{note}
+    If a Liferay DXP bundle is being used, you may be presented with the [Setup Wizard](../installation-and-upgrades/installing-liferay/running-liferay-for-the-first-time.md). Follow the on-screen instructions to configure your Admin user.
     ```
 
 1. Enter the default admin credentials to log in.
@@ -19,8 +19,8 @@ The Admin User account is created by default in any new installation of Liferay 
     * Email address: `test@liferay.com`
     * Password: `test`
 
-    ```warning::
-       It is **highly** recommended that the default login credentials be updated when starting a new Liferay DXP installation.
+    ```{warning}
+    It is **highly** recommended that the default login credentials be updated when starting a new Liferay DXP installation.
     ```
 
 ## Configuring the Admin User
@@ -35,7 +35,7 @@ The Admin User account is created by default in any new installation of Liferay 
 
 ### Changing Account Information
 
-1. Click the _User Avatar_ &rarr; _Account Settings_.
+1. Click _User Avatar_ &rarr; _Account Settings_.
 
     ![Account Settings](./introduction-to-the-admin-account/images/03.png "Account Settings")
 
@@ -47,7 +47,7 @@ The Admin User account is created by default in any new installation of Liferay 
 
 To log out of your account:
 
-1. Click the _User Avatar_ &rarr; _Sign Out_.
+1. Click _User Avatar_ &rarr; _Sign Out_.
 
     ![Signing Out](./introduction-to-the-admin-account/images/05.png "Signing Out")
 
@@ -59,7 +59,7 @@ To create a new admin account follow these steps:
 
 1. Create a new User. See [Adding Users](../users-and-permissions/users/adding-and-managing-users.md) to learn how.
 
-1. Click the *Roles* link in the left navigation pane (in the *Edit User* page's *General* tab).
+1. Click the *Roles* link in the left navigation pane (on the Edit User page under General).
 
     ![Click the Roles link to edit the User's Roles.](./introduction-to-the-admin-account/images/06.png)
 

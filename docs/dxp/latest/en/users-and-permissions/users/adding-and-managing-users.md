@@ -11,17 +11,17 @@ Core user management activities include adding, editing, and deleting users. The
 
 1. Fill out the Add User form and click *Save*. At a minimum, provide a Screen Name, First Name, Last Name, and Email Address for the User.
 
-    ```note::
-        Screen names and email addresses are not interchangeable. A screen name cannot contain an `@` symbol because it is used in the URL to a User's private page.
+    ```{note}
+    Screen names and email addresses are not interchangeable. A screen name cannot contain an `@` symbol because it is used in the URL to a User's private page.
 
-        The Add User functionality is split over several independent forms. Save the first form to create the User, and then you'll see a success message saying `Success. Your request completed successfully.`
+    The Add User functionality is split over several independent forms. Save the first form to create the User, and then you'll see a success message saying `Success. Your request completed successfully.`
     ```
 
 Once you create the User, additional information can be added.
 
 ### Setting Passwords for New Users
 
-When you create a User, Liferay DXP generates his/her password. If a [mail server was set up](../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md), Liferay DXP sends an email message with the User's new password.
+When you create a User, Liferay DXP generates his/her password. If a [mail server was set up](../../installation-and-upgrades/setting-up-liferay/configuring-mail.md), Liferay DXP sends an email message with the User's new password.
 
 If you haven't set up a mail server, click the *Password* item from the General menu and manually set a password for your new user. Enter the new password twice.
 
@@ -50,7 +50,7 @@ If you haven't set up a mail server, click the *Password* item from the General 
 Removing Users is a two-step process for several reasons:
 
 * You or the User may decide you really wanted that account.
-* Users are often tied to content with possible [legal ramifications](../managing_user_data.md) in your country.
+* Users are often tied to content with possible [legal ramifications](../managing-user-data.md) in your country.
 * You may need time to review a User's account activity before removing all evidence of that User's existence.
 
 For these and more reasons, you must first *deactivate* a User before *deleting* that User.

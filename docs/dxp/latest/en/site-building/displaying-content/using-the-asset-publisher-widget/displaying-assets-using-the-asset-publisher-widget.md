@@ -1,6 +1,6 @@
 # Displaying Assets Using the Asset Publisher Widget
 
-As you create web content, remember that pieces of [content](../../../content_authoring_and_management.md) are assets, just like message board entries and blog posts. The most common type of asset is [Web Content](../../../content-authoring-and-management/web-content/web-content-articles/adding-a-basic-web-content-article.md).
+As you create web content, remember that pieces of content are assets, just like message board entries and blog posts. The most common type of asset is [Web Content](../../../content-authoring-and-management/web-content/web-content-articles/adding-a-basic-web-content-article.md).
 The Asset Publisher Widget supports these asset types by default:
 
 * Blogs Entry
@@ -17,8 +17,8 @@ The Asset Publisher Widget supports these asset types by default:
 * Web Content Folder
 * Wiki Page
 
-```note::
-    Starting with Liferay DXP 7.2, developers can use the `Info Framework <https://help.liferay.com/hc/en-us/articles/360029067251-Introduction-to-The-Info-Framework>`_ to display Assets from `Information Lists <https://help.liferay.com/hc/en-us/articles/360029067271-Creating-an-Information-List-Provider>`_.
+```{note}
+Starting with Liferay DXP 7.2, developers can use the [Info Framework](https://help.liferay.com/hc/en-us/articles/360029067251-Introduction-to-The-Info-Framework) to display Assets from [Information Lists](https://help.liferay.com/hc/en-us/articles/360029067271-Creating-an-Information-List-Provider).
 ```
 
 Manual selection gives you control over what assets are displayed, but maintaining the list can be tedious if you find yourself updating the list on a regular basis. In this case, it's more convenient to use the Asset Publisher Widget to select content dynamically.

@@ -1,13 +1,13 @@
 # Portal Properties
 
-Configuration options are specified using *Portal Properties*, sets of name/value pairs read from properties files and Docker environment variables on server startup. [Default values](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html) are specified in the `portal-impl.jar/portal.properties` file.
+Configuration options are specified using *Portal Properties*, sets of name/value pairs read from properties files and Docker environment variables on server startup. [Default values](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html) are specified in the `portal-impl.jar/portal.properties` file.
 
 Some properties can be changed through the user interface (UI), but others can only be changed in a properties file or Docker environment variables. These include connecting to a database, declaring the location of the [Liferay Home](./liferay-home.md) folder, and [changing how users authenticate](../securing-liferay/authentication-basics.md#configuring-authentication-type-using-properties) (by screen name instead of by email address).
 
 Liferay installations use properties files. By convention, `portal-ext.properties` should be created in your [`[Liferay Home]`](./liferay-home.md) folder or `[USER_HOME]` folder to override default property values. You must restart DXP to apply a new or modified properties file.
 
-```warning::
-   Never directly modify the ``portal-impl.jar/portal.properties`` file; instead, create a separate file to override properties you want to change. The ``portal-ext.properties`` file has been defined for this purpose.
+```{warning}
+Never directly modify the `portal-impl.jar/portal.properties` file; instead, create a separate file to override properties you want to change. The `portal-ext.properties` file has been defined for this purpose.
 ```
 
 Using a `portal-ext.properties` file to override default properties has these benefits:
@@ -16,7 +16,7 @@ Using a `portal-ext.properties` file to override default properties has these be
 * You can store configurations in a version control system to simplify configuration management.
 * Setting properties in the file before initial startup is the quickest way to configure Liferay.
 
-Portal properties are applied to Liferay Docker containers with environment variables (Env variables) and properties files. Please see [Configuring Containers](../installing-liferay/using-liferay-docker-images/configuring-containers.md#using-liferay-env-variables) to configure Docker containers with portal properties.  
+Portal properties are applied to Liferay Docker containers with environment variables (Env variables) and properties files. Please see [Configuring Containers](../installing-liferay/using-liferay-docker-images/configuring-containers.md#using-liferay-env-variables) to configure Docker containers with portal properties. 
 
 **Contents:**
 
@@ -24,16 +24,16 @@ Portal properties are applied to Liferay Docker containers with environment vari
 * [Portal Property Priority](#portal-property-priority)
 * [Using System Settings and Configuration Files](#using-system-settings-and-configuration-files)
 
-```note::
-   As of DXP 7.3, the per-virtual instance portal properties file feature has been removed. DXP no longer applies per-instance properties from files of the format ``portal-[companyId].properties``) to instances matching the company IDs.
+```{note}
+As of DXP 7.3, the per-virtual instance portal properties file feature has been removed. DXP no longer applies per-instance properties from files of the format `portal-[companyId].properties`) to instances matching the company IDs.
 ```
 
 ## Using Portal Properties
 
 When creating `[Liferay Home]/portal-ext.properties`, a best practice is to copy the relevant section from `portal-impl.jar/portal.properties` into your `portal-ext.properties` file, and then change the value to what you want.
 
-```note::
-   If you use the `Setup Wizard <../installing-liferay/running-liferay-for-the-first-time.md>`_, DXP sets those properties in a file called `portal-setup-wizard.properties` in ``[Liferay Home]``.
+```{note}
+If you use the [Setup Wizard](../installing-liferay/running-liferay-for-the-first-time.md), DXP sets those properties in a file called `portal-setup-wizard.properties` in `[Liferay Home]`.
 ```
 
 Here are a few configuration examples.
@@ -53,7 +53,7 @@ For more database configuration details, see [Database Configurations](./databas
 
 ### Setting the Liferay Home Location
 
-Some application servers (e.g., WebLogic) require [customizing the Liferay Home location](../installing-liferay/installing-liferay-on-an-application-server/installing-on-weblogic.md#declare-the-liferay-home-folder) before deploying the DXP WAR file. The [`liferay.home`](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html#Liferay%20Home) property sets the location.
+Some application servers (e.g., WebLogic) require [customizing the Liferay Home location](../installing-liferay/installing-liferay-on-an-application-server/installing-on-weblogic.md#declare-the-liferay-home-folder) before deploying the DXP WAR file. The [`liferay.home`](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#Liferay%20Home) property sets the location.
 
 ```properties
 liferay.home=/home/jbloggs/liferay
@@ -77,21 +77,17 @@ company.security.auth.type=userId
 
 ## Portal Property Priority
 
-A special property called `include-and-override` defines property override order.
+Portal properties are set from three sources:
 
-1. There are three property sources:
+* The `portal.properties` bundled in the `portal-impl.jar`
+* Extension properties files (e.g., `portal-ext.properties`)
+* [Environment variables](../installing-liferay/using-liferay-docker-images/configuring-containers.md#using-liferay-env-variables)
 
-    * The `portal-impl.jar/portal.properties` file
-    * Extension properties files
-    * [Env variables](../installing-liferay/using-liferay-docker-images/configuring-containers.md#using-liferay-env-variables)
-
-1. The last value defined for a *shared property* (a property defined multiple times) takes priority.
-
-1. Property sources are read in a [deterministic order](#configuration-processing).
+For a given property, the last value read takes priority. The property sources are read in a [deterministic order](#configuration-processing) that is configurable through a property called `include-and-override`.
 
 ### Configuration Processing
 
-Properties are defined in this order:
+By default, properties are read in this order:
 
 ```properties
 portal-impl.jar/portal.properties
@@ -107,7 +103,7 @@ include-and-override=${liferay.home}/${external-properties}
 [Liferay Docker Env variables]
 ```
 
-The `portal-impl.jar/portal.properties` file specifies the above `include-and-override` definitions. DXP checks each of the files for additional `include-and-override` definitions, which means you can define your own.
+The `portal-impl.jar/portal.properties` file specifies the above `include-and-override` definitions. If any other valid properties source defines additional or competing `include-and-override` property values, these are used to override the defaults.
 
 ![The list of included extension files your DXP server is using is available in the Server Administration page of the Control Panel's Configuration section](./portal-properties/images/01.png)
 
@@ -115,11 +111,9 @@ The `${external-properties}` definition represents any properties file assigned 
 
 Liferay Docker containers aggregate Liferay environment variables into a Portal Properties source that's added to the list.
 
-```important::
-   If you override a property in more than one file, the **last** defined property source wins. All others are ignored.
+```{important}
+If you override a property in more than one file, the **last** defined property source wins. All others are ignored.
 ```
-
-![All of your DXP server's Portal Properties are available to view in the Server Administration page in the Control Panel's Configuration section.](./portal-properties/images/02.png)
 
 ### Portal Property Priority Examples
 
@@ -178,8 +172,8 @@ Resulting configuration:
 mail.session.jndi.name=mail/DevMailSession
 ```
 
-```tip::
-   Using as few properties files as necessary simplifies managing DXP configuration.
+```{tip}
+Using as few properties files as necessary simplifies managing DXP configuration.
 ```
 
 ## Using System Settings and Configuration Files
@@ -192,7 +186,7 @@ Go to *Control Panel* at *Configuration* &rarr; *System Settings* to find System
 
 ## Additional Information
 
-* [Portal Properties](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html)
+* [Portal Properties](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html)
 * [Portal Developer Properties](../../liferay-internals/reference/portal-developer-properties.md)
 * [Configuring Containers](../installing-liferay/using-liferay-docker-images/configuring-containers.md)
 * [System Settings](../../system-administration/configuring-liferay/system-settings.md)

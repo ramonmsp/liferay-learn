@@ -1,6 +1,6 @@
 # Blacklisting OSGi Components
 
-The Component Blacklist is a convenient way to manage multiple [OSGi Declarative Service Components](https://help.liferay.com/hc/articles/360028846452-Declarative-Services) (components). The list is an [OSGi configuration](../../configuring-liferay/configuration-files-and-factories/using-configuration-files.md#creating-configuration-files) that DXP uses to disable components. These lists save you the trouble of modifying them individually with the [Application Manager](./using-the-app-manager.md) or [Gogo shell](../../../liferay-internals/fundamentals/using-the-gogo-shell/using-the-gogo-shell.md).
+The Component Blacklist is a convenient way to manage multiple [OSGi Declarative Service Components](https://help.liferay.com/hc/articles/360028846452-Declarative-Services) (components). The list is an [OSGi configuration](../../configuring-liferay/configuration-files-and-factories/using-configuration-files.md#creating-configuration-files) that DXP uses to disable components. These lists save you the trouble of modifying them individually with the [Application Manager](./using-the-app-manager.md) or [Gogo shell](../../../liferay-internals/fundamentals/using-the-gogo-shell.md).
 
 The blacklist can be exported from the Control Panel to an OSGi configuration (`.config`) file. Modifying the file and deploying it to DXP has these additional effects:
 
@@ -27,8 +27,8 @@ Follow these steps to disable OSGi components:
 
 1. Add the names of any components not already listed (e.g., components of modules not yet installed) that you want to prevent from enabling.
 
-    ```important::
-       Configuration values can't contain extra spaces. Extra spaces can short-circuit lists or invalidate the configuration entry.
+    ```{important}
+    Configuration values can't contain extra spaces. Extra spaces can short-circuit lists or invalidate the configuration entry.
     ```
 
 1. To deploy the configuration file, copy it into the folder `[Liferay Home]/osgi/configs`. The Liferay Home folder is typically the app server's parent folder.
@@ -43,8 +43,8 @@ To re-enable and permit enabling of blacklisted OSGi components, follow these st
 
 To enable *all* the blacklisted components, remove the configuration file.
 
-```note::
-   To temporarily re-enable a blacklisted component, remove its name from the Component Blacklist Configuration module in System Settings and click *Update*. If you're using a component blacklist config file (in the ``[Liferay Home]/osgi/configs`` folder) and want the component to enable on subsequent server startup, make sure to remove the component's name from the file.
+```{note}
+To temporarily re-enable a blacklisted component, remove its name from the Component Blacklist Configuration module in System Settings and click *Update*. If you're using a component blacklist config file (in the ``[Liferay Home]/osgi/configs`` folder) and want the component to enable on subsequent server startup, make sure to remove the component's name from the file.
 ```
 
 Congratulations! Now you can manage multiple components using a simple list.
@@ -53,4 +53,4 @@ Congratulations! Now you can manage multiple components using a simple list.
 
 * [Blacklisting Apps](./blacklisting-apps.md)
 * [Managing Apps](./using-the-app-manager.md)
-* [Using the Felix Gogo shell](../../../liferay-internals/fundamentals/using-the-gogo-shell/using-the-gogo-shell.md)
+* [Using the Felix Gogo shell](../../../liferay-internals/fundamentals/using-the-gogo-shell.md)

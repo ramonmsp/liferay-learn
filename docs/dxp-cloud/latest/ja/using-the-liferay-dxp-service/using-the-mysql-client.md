@@ -2,8 +2,8 @@
 
 アプリケーションの問題のトラブルシューティングやカスタム開発を行うために、データベース内のデータを表示することが必要になる場合があります。 データベースにアクセスするには、組み込みのMySQLクライアントを使用して、データベースと直接やり取りする必要があります。 この機能は、DXP Cloudの最新バージョンで利用でき、いくつかの短い手順でアクセスできます。
 
-``` note::
-   管理者*と貢献者*の権限を持つDXPクラウドユーザーのみがMySQLクライアントを使用することができます。
+```{note}
+管理者*と貢献者*の権限を持つDXP CloudユーザーのみがMySQLクライアントを使用することができます。
 ```
 
 ## 前提条件
@@ -17,8 +17,8 @@ Liferayサービスを通じてMySQLクライアントを使用する前に、�
 | **DXP（7.1を使用）**  | liferaycloud/liferay-dxp-7.1.10-ga1-fp17-3.0.19 |
 | **DXP（7.2を使用）**  | liferaycloud/liferay-dxp-7.2.10-sp1-fp4-3.0.19  |
 
-``` warning::
-   データベースイメージを MySQL クライアントをサポートするバージョンにアップグレードすると、データベースの読み取り専用ユーザが初期化されます。 アップグレード前にこのユーザーのパスワードを設定しなかった場合、デフォルトのパスワードが使用され、後で変更することはできません。 詳細は `Changing the Read-Only Database Password <#changing the read-only-database-password>`_ を参照してください。
+```{warning}
+データベースイメージを MySQL クライアントをサポートするバージョンにアップグレードすると、データベースの読み取り専用ユーザが初期化されます。 アップグレード前にこのユーザーのパスワードを設定しなかった場合、デフォルトのパスワードが使用され、後で変更することはできません。 詳細は [Changing the Read-Only Database Password](#changing the read-only-database-password) を参照してください。
 ```
 
 ## MySQLクライアントへのアクセス
@@ -46,7 +46,7 @@ Liferayサービスを通じてMySQLクライアントを使用する前に、�
 
 <p spaces-before="0">デフォルトのユーザーは、データベースに対して読み取りクエリのみを実行でき、データを操作することはできません。 しかし、データベース内のデータを操作できるようにするために <0>重要な</0> であれば、シェルにこのコマンドを入力することで、データベースの認証情報を使用してログインすることができます（ <1>mysql</1>とだけ入力するのではなく）。</p>
 
-<p spaces-before="0">However, if it is <em x-id="3">critical</em> to be able to manipulate data in the database, you can login using the database credentials by typing this command into the shell (instead of only typing <code>mysql`):
+<p spaces-before="0">しかし、データベース内のデータを操作できることが <em x-id="3">重要</em> であれば、シェルにこのコマンドを入力することで（ <code>mysql`とだけ入力するのではなく）、データベースの認証情報を使ってログインすることができます。
 
 ``` bash
 mysql -u <user_name> -p <database_name>
@@ -56,10 +56,10 @@ mysql -u <user_name> -p <database_name>
 
 ### 読み取り専用データベースのパスワードの変更
 
-If you have not yet deployed the database service on a supported version, then you can set your own password for the default user by setting the `LCP_DATABASE_READONLY_USER_PASSWORD` environment variable in the database service's `LCP.json`.
+サポートされているバージョンのデータベース サービスをまだデプロイしていない場合は、データベース サービスの `LCP_DATABASE_READONLY_USER_PASSWORD` 環境変数の `LCP.json`に独自のパスワードを設定することで、デフォルト ユーザーに独自のパスワードを設定することができます。
 
-``` important::
-   MySQL クライアントをサポートするバージョンを使用してデータベースサービスをデプロイしている場合、デフォルトユーザーはすでにデフォルトパスワードで初期化されています。 このパスワードは後で変更することはできないので、データベースサービスをデプロイする前に ``LCP_DATABASE_READONLY_USER_PASSWORD`` 環境変数を追加してください(初めてデプロイする場合や、上記よりも古いバージョンのイメージから更新する場合など)。 それ以外の場合は、デフォルトの生成されたパスワードを使用する必要があります。
+```{important}
+MySQL クライアントをサポートするバージョンを使用してデータベースサービスをデプロイしている場合、デフォルトユーザーはすでにデフォルトパスワードで初期化されています。 このパスワードは後で変更することはできないので、データベースサービスをデプロイする前に `LCP_DATABASE_READONLY_USER_PASSWORD` 環境変数を追加してください(初めてデプロイする場合や、上記よりも古いバージョンのイメージから更新する場合など)。 それ以外の場合は、デフォルトの生成されたパスワードを使用する必要があります。
 ```
 
 次に、適切なDockerイメージバージョン（またはそれ以降）に更新し、 [を使用してサービス](../build-and-deploy/walking-through-the-deployment-life-cycle.md) 再デプロイし、MySQLクライアントが使用できるようにします。

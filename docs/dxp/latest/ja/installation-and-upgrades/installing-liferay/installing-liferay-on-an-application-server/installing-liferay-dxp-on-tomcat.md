@@ -1,9 +1,9 @@
 # TomcatへのDXPのインストール
 
-``` important::
-   `Tomcatバンドル <../installing-a-liferay-dxp-tomcat-bundle.md>`_ または `Dockerイメージ<../../../getting-started/starting-with-a-dxp-docker-image.md>`_ を使用することが、Liferay DXPの使用を開始する最も早い方法です。 この記事は、Tomcatアプリケーションサーバーの設定を完全に制御したいユーザーを対象としています。
+```{important}
+[Tomcatバンドル](../installing-a-liferay-dxp-tomcat-bundle.md) または [Dockerイメージ](../../../getting-started/starting-with-a-dxp-docker-image.md) を使用することが、Liferay DXPの使用を開始する最も早い方法です。 この記事は、Tomcatアプリケーションサーバーの設定を完全に制御したいユーザーを対象としています。
 
-   続行する前に、 `Installing a Liferay DXP Tomcat Bundle <../installing-a-liferay-dxp-tomcat-bundle.md>`_ および `Configuring a Database <../configuring-a-database.md>`_ の記事を確認してください。
+続行する前に、 [Installing a Liferay DXP Tomcat Bundle](../installing-a-liferay-dxp-tomcat-bundle.md) および [Configuring a Database](../configuring-a-database.md) の記事を確認してください。
 ```
 
 TomcatにLiferay DXPをインストールするには、DXP WARファイルをデプロイし、DXPの依存関係をデプロイし、DXP用にTomcatを構成する必要があります。
@@ -12,14 +12,14 @@ TomcatにLiferay DXPをインストールするには、DXP WARファイルを�
 
 依存関係、スクリプト、および構成をLiferay Tomcatバンドルファイルからコピーする（または手動でダウンロードして構成する）ことに加えて、[ヘルプセンター](https://customer.liferay.com/downloads)（サブスクリプション）またはLiferayLiferayコミュニティダウンロード</a>から次のファイルをダウンロードする必要があります。
 
-  - DXP WARファイル
-  - 依存関係のZIPファイル
-  - OSGi依存関係のZIPファイル
+* DXP WARファイル
+* 依存関係のZIPファイル
+* OSGi依存関係のZIPファイル
 
 Liferay DXPには**Java JDK 8または11**が必要です。 JDKをインストールするには、[www.java.com](https://www.java.com/)を参照してください。
 
-``` note::
-   `Liferay DXP互換性マトリックス<https://web.liferay.com/documents/14/21598941/Liferay+DXP+7.2+Compatibility+Matrix/b6e0f064-db31-49b4-8317-a29d1d76abf7?>`_ には、サポートされているデータベースと環境が明記されています。
+```{note}
+[Liferay DXP互換性マトリックス](https://web.liferay.com/documents/14/21598941/Liferay+DXP+7.2+Compatibility+Matrix/b6e0f064-db31-49b4-8317-a29d1d76abf7?) には、サポートされているデータベースと環境が明記されています。
 ```
 
 以下はTomcatにDXPをインストールするための基本的な手順です。
@@ -41,9 +41,9 @@ DXPは、DXP Tomcatバンドルに含まれている多くのJARに依存して�
 
 DXPはJDBCを介してデータベースと通信します。 データベースJDBCドライバーのJARファイルをユーザードメインの`lib`フォルダに追加します。 次のデータベース用のJDBCドライバーのJARをダウンロードできます。
 
-  - [MariaDB](https://downloads.mariadb.org/)
-  - [MySQL](http://dev.mysql.com/downloads/connector/j)
-  - [PostgreSQL](https://jdbc.postgresql.org/download/postgresql-42.0.0.jar)
+* [MariaDB](https://downloads.mariadb.org/)
+* [MySQL](http://dev.mysql.com/downloads/connector/j)
+* [PostgreSQL](https://jdbc.postgresql.org/download/postgresql-42.0.0.jar)
 
 HypersonicデータベースはDXPにバンドルされており、テスト目的で役立ちます。 本番環境用のDXPインスタンスにはHSQLを使用**しない**でください。
 
@@ -51,9 +51,9 @@ HypersonicデータベースはDXPにバンドルされており、テスト目�
 
 DXPを実行するためのTomcatの構成には、次のものが含まれます。
 
-  - 環境変数を設定する
-  - DXPのWebアプリケーションコンテキストを指定する
-  - プロパティと記述子を設定する
+* 環境変数を設定する
+* DXPのWebアプリケーションコンテキストを指定する
+* プロパティと記述子を設定する
 
 手順は次のとおりです。
 
@@ -83,12 +83,12 @@ DXPを実行するためのTomcatの構成には、次のものが含まれま�
     
     <!-- end list -->
     
-    ``` important::
-       DXPでは、アプリケーションサーバーのJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
+    ```{important}
+    DXPでは、アプリケーションサーバーのJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
     ```
 
-    ``` Note::
-       JDK 11では、次のJVM引数を追加して4桁の年を表示することをお勧めします：``-Djava.locale.providers=JRE,COMPAT,CLDR``
+    ```{note}
+    JDK 11では、次のJVM引数を追加して4桁の年を表示することをお勧めします：`-Djava.locale.providers=JRE,COMPAT,CLDR`
     ```
 
 
@@ -271,7 +271,7 @@ Liferay DXPは、DXPに組み込まれているデータソースを使用する
 
 ## メール設定
 
-メールを設定する最も簡単な方法は、DXPに[組み込みのメールセッション](../../setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)を使用することです。 組み込みのメールセッションを使用する場合は、このセクションをスキップできます。
+メールを設定する最も簡単な方法は、DXPに[組み込みのメールセッション](../../setting-up-liferay/configuring-mail.md)を使用することです。 組み込みのメールセッションを使用する場合は、このセクションをスキップできます。
 
 Tomcatを使用してメールセッションを管理する場合は、次の手順に従います。
 
@@ -319,9 +319,9 @@ DXPはTomcatで実行されています。
 
 ## 次のステップ
 
-[管理者ユーザーとしてサインイン](../../../getting-started/introduction-to-the-admin-account.md)して、[DXPでソリューションの構築](../../../building-solutions-on-dxp/README.md)を開始できます。 または、[Liferay DXPのその他のセットアップ](../../setting-up-liferay.md)トピックを参照できます。
+[管理者ユーザーとしてサインイン](../../../getting-started/introduction-to-the-admin-account.md)して、[DXPでソリューションの構築](../../../building-solutions-on-dxp/README.rst)を開始できます。 または、[Liferay DXPのその他のセットアップ](../../setting-up-liferay.md)トピックを参照できます。
 
-  - [Installing the Marketplace Plugin](../../../system-administration/installing-and-managing-apps/installing-the-marketplace-plugin.md)
-  - Installing and Configuring a Search Engine
-  - [Securing Liferay DXP](../../securing-liferay/introduction-to-securing-liferay.md)
-  - [Introduction to Clustering Liferay DXP](../../setting-up-liferay/clustering-for-high-availability.md)
+* [マーケットプレイスプラグインのインストール](../../../system-administration/installing-and-managing-apps/using-marketplace.md#appendix-installing-the-marketplace-plugin)
+* Installing and Configuring a Search Engine
+* [Securing Liferay DXP](../../securing-liferay.md)
+* [Introduction to Clustering Liferay DXP](../../setting-up-liferay/clustering-for-high-availability.md)

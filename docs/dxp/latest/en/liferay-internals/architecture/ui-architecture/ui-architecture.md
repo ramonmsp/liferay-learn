@@ -1,3 +1,0 @@
-# UI Architecture
-
-Coming soon!

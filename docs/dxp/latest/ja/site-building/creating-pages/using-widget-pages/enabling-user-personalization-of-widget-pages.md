@@ -31,8 +31,8 @@
 
 <!-- end list -->
 
-``` note::
-  Site members can't change a non-instanceable app's configuration inside a customizable region since those apps are tied to the site they've been added to.
+```{note}
+Site members can't change a non-instanceable app's configuration inside a customizable region since those apps are tied to the site they've been added to.
 ```
 
 サイトメンバーは、コントロールメニューのページの[ *オプション* ]メニュー（![Options](../../../images/icon-options.png)）からこれらのコンテキストオプションにアクセスできます。
@@ -49,7 +49,7 @@
 
 ## ページをカスタマイズするためのロール許可の付与
 
-デフォルトでは、サイトメンバーはページのカスタマイズを行うことができますが、サイト以外のメンバーとゲストは行うことができません。 管理者は、既存のロールの権限を更新するか、 [を指定して新しいロール](../../../users-and-permissions/roles-and-permissions/README.md) を作成し、それを他のユーザーに割り当てて、ページをカスタマイズできるようにすることができます。 次の手順に従って、ページをカスタマイズするためのロール権限を付与します。
+デフォルトでは、サイトメンバーはページのカスタマイズを行うことができますが、サイト以外のメンバーとゲストは行うことができません。 管理者は、既存のロールの権限を更新するか、 [を指定して新しいロール](../../../users-and-permissions/roles-and-permissions/creating-and-managing-roles.md) を作成し、それを他のユーザーに割り当てて、ページをカスタマイズできるようにすることができます。 次の手順に従って、ページをカスタマイズするためのロール権限を付与します。
 
 1.  製品メニューを開き、 *[コントロールパネル]* → *[ユーザー]* → *[ロール]* に移動します。
 
@@ -63,6 +63,6 @@
 
 <!-- end list -->
 
-``` note::
-  The *Customize* permission also lets users customize the look and feel of apps and import or export app settings.
+```{note}
+The *Customize* permission also lets users customize the look and feel of apps and import or export app settings.
 ```

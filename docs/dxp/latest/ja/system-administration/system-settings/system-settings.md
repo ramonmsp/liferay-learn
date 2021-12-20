@@ -6,14 +6,14 @@
 
 関心のあるセクション（コンテンツやデータなど）を探して必要な構成に移動し、そのカテゴリ（ワークフローなど）を参照します。
 
-![システム設定のエントリは、セクション（コンテンツやデータなど）とカテゴリ（アセットなど）で構成されています。](./system-settings/images/02.png)
+![システム設定のエントリは、セクション（コンテンツやデータなど）とカテゴリ（アセットなど）で構成されています。](../configuring-liferay/system-settings/images/02.png)
 
 参照してもシステム設定エントリが見つからない場合は、検索バーを使用して検索します。
 
-![システム設定エントリを検索できます。](./system-settings/images/03.png)
+![システム設定エントリを検索できます。](../configuring-liferay/system-settings/images/03.png)
 
-``` note::
-   Some system-scoped configurations can be made in properties files and in the Server Administration application in the Control Panel.
+```{note}
+Some system-scoped configurations can be made in properties files and in the Server Administration application in the Control Panel.
 ```
 
 Liferay DXPには多くのアプリケーションが含まれています。 アプリケーションとそのサービスには、いくつかの構成可能である [スコープ](./understanding-configuration-scope.md)アプリケーションの開発者によって定義されるように、。 システム設定で行われた構成は、システムスコープであるか、別のスコープで上書きできるシステム全体のデフォルト構成を設定します。
@@ -28,15 +28,15 @@ Liferay DXPには多くのアプリケーションが含まれています。 �
 
 2.  変更を加えて、[ *保存*]をクリックします。 構成の変更が保存され、システム全体に適用されます。
 
-    ``` important::
-       Content generated using templates (e.g., FreeMarker templates and Application Display Templates) is cached. Cached content might not reflect configuration changes until the cache is invalidated (cleared). The Server Administration -> Resources tab provides cache clearing options.
+    ```{important}
+    Content generated using templates (e.g., FreeMarker templates and Application Display Templates) is cached. Cached content might not reflect configuration changes until the cache is invalidated (cleared). The Server Administration -> Resources tab provides cache clearing options.
     ```
 
 ## システム設定エントリのリセット
 
 システム設定をデフォルト値にリセットするには、アクションボタン（![Actions](../../images/icon-actions.png)）をクリックし、次に[ *デフォルト値のリセット*]をクリックします。
 
-![構成への変更を保存した後、デフォルト値のリセットおよびエクスポートのアクションが使用可能になります。](./system-settings/images/04.png)
+![構成への変更を保存した後、デフォルト値のリセットおよびエクスポートのアクションが使用可能になります。](../configuring-liferay/system-settings/images/04.png)
 
 ## 構成のエクスポートと展開
 

@@ -10,14 +10,14 @@ Contents
    site_building
    content_authoring_and_management
    process_automation
-   using_search
+   using-search
    collaboration_and_social
-   users_and_permissions
+   users-and-permissions
    system_administration
-   developing_applications
-   liferay_internals
+   building-applications
+   liferay-internals
    headless_delivery
-   installation_and_upgrades
+   installation-and-upgrades
 
 Indices and tables
 ==================

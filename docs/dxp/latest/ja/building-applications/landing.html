@@ -1,0 +1,145 @@
+<script type="module">
+	import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.esm.browser.min.js'
+
+	const page = new Vue({
+		el: '#landingPage',
+		data: {
+			cards: [
+				{
+					sectionName: '単一ページアプリケーションの開発',
+					sectionURL: 'building-applications/developing-a-javascript-application.html',
+					showAll: false,
+					subsections: [
+						{
+							name: 'Reactの使用 (近日公開！)',
+							url: 'building-applications/developing-a-javascript-application/using-react.html'
+						},
+						{
+							name: 'Angularの使用 (近日公開！)',
+							url: 'building-applications/developing-a-javascript-application/using-angular.html'
+						},
+						{
+							name: 'Vue.jsの使用 (近日公開！)',
+							url: 'building-applications/developing-a-javascript-application/using-vuejs.html'
+						}
+					]
+				},
+				{
+					sectionName: 'Java Webアプリケーションの開発',
+					sectionURL: 'building-applications/developing-a-java-web-application.html',
+					showAll: false,
+					subsections: [
+						{
+							name: 'ポートレット',
+							url: 'building-applications/developing-a-java-web-application/reference/portlets.html'
+						},
+						{
+							name: 'MVCの使用 (近日公開！)',
+							url: 'building-applications/developing-a-java-web-application/using-mvc.html'
+						},
+						{
+							name: 'Springの使用 (近日公開！)',
+							url: 'building-applications/developing-a-java-web-application/using-spring.html'
+						},
+						{
+							name: 'JSFの使用 (近日公開！)',
+							url: 'building-applications/developing-a-java-web-application/using-jsf.html'
+						},
+					]
+				},
+				{
+					sectionName: 'REST Web APIの開発',
+					showAll: false,
+					subsections: [
+						{
+							name: 'GraphQL APIの使用 (近日公開！)',
+							url: 'building-applications/developing-a-rest-web-api/producing-graphql-apis.html'
+						},
+					]
+				},
+				{
+					sectionName: 'コアフレームワーク',
+					sectionURL: 'building-applications/core-frameworks.html',
+					showAll: false,
+					subsections: [
+						{
+							name: 'Message Bus (近日公開！)',
+							url: 'building-applications/core-frameworks/message-bus.html'
+						},
+					]
+				},
+				{
+					sectionName: 'データフレームワーク',
+					sectionURL: 'building-applications/data-frameworks.html',
+					showAll: false,
+					subsections: [
+						{
+							name: 'サービスビルダー (近日公開！)',
+							url: 'building-applications/data-frameworks/service-builder.html'
+						},
+						{
+							name: '開発者ガイド',
+							url: 'content-authoring-and-management/documents-and-media/developer_guide.html'
+						},
+						{
+							name: '開発者ガイド',
+							url: 'using-search/developer_guide.html'
+						},
+					]
+				},
+				{
+					sectionName: 'ツーリング',
+					sectionURL: 'building-applications/tooling.html',
+					subsections: [
+						{
+							name: '開発者ツールの概要',
+							url: 'building-applications/tooling/developer-tools-overview.html'
+						},
+						{
+							name: 'ブレードCLIのインストールと更新',
+							url: 'building-applications/tooling/blade-cli/installing-and-updating-blade-cli.html'
+						},
+						{
+							name: 'Liferay Workspace (近日公開！)',
+							url: 'building-applications/tooling/liferay-workspace.html'
+						},
+					]
+				},
+				{
+					sectionName: '参照',
+					sectionURL: 'building-applications/reference.html',
+					showAll: false,
+					subsections: [
+						{
+							name: 'WARのデプロイ（WABジェネレータ）',
+							url: 'building-applications/reference/deploying-wars-wab-generator.html'
+						},
+						{
+							name: 'WABから除外されたJAR',
+							url: 'building-applications/reference/jars-excluded-from-wabs.html'
+						},
+					]
+				},
+				{
+					sectionName: 'アプリビルダー',
+					sectionURL: 'building-applications/app-builder.html',
+					showAll: false,
+					subsections: [
+						{
+							name: 'アプリビルダーの概要',
+							url: 'building-applications/app-builder.html'
+						},
+						{
+							name: '標準アプリケーションの作成',
+							url: 'building-applications/app-builder/creating-a-standard-application.html'
+						},
+						{
+							name: 'ワークフロー対応アプリケーションの作成',
+							url: 'building-applications/app-builder/creating-a-workflow-powered-application.html'
+						},
+					]
+				}
+			]
+		}
+	})
+</script>

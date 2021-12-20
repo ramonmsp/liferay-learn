@@ -1,3 +1,0 @@
-# Theme Components
-
-Coming soon!

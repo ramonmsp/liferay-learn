@@ -35,7 +35,7 @@ See the further sections below for more details.
 
 These limitations apply to every service in a DXP Cloud environment:
 
-* **Access to Old Logs**: By default, logs are only available from the last 30 days are available for each service. [Submit a Support request](https://help.liferay.com/) to access older logs (up to a year old).
+* **Access to Old Logs**: By default, logs are only available from the last 30 days for each service. [Submit a Support request](https://help.liferay.com/) to access older logs (up to a year old).
 
 * **Additional Instances per Service**: Your subscription plan determines the allowed [`scale` setting](../manage-and-optimize/auto-scaling.md) for your services. By default, all services will have only one additional instance (the Search service must use an odd number of additional instances). The `scale` setting will begin already configured to use the purchased number of instances for your subscription plan.
 
@@ -51,7 +51,9 @@ These limitations apply to the [Liferay service](../using-the-liferay-dxp-servic
 
 * **Remote Staging**: [Remote Staging](https://learn.liferay.com/dxp/latest/en/site-building/publishing-tools/staging/configuring-remote-live-staging.html) is not available with DXP Cloud. Local Staging is still available and supported.
 
-* **Autoscaling**: When enabled, autoscaling may only add new instances up to a maximum of 10.
+* **Autoscaling**: When enabled, autoscaling may only add new instances up to a default maximum of 10. You can configure a different maximum number of instances, up to 100 instances.
+
+* **Document Library Storage**: Your subscription plan determines the size of the `data` volume for the Liferay service; this includes storage used for Liferay's Document Library. The default volume size is 100 GB, but it can be increased as long as the size is below 4 TB. A private cluster is required if a project needs more than 4 TB of storage.
 
 * **Session Replication**: Replicating sessions between multiple Liferay instances in DXP Cloud may impact your instances' performance, and is not supported. <!-- Instead, use sticky sessions, or avoid using session storage entirely in your custom applications. -->
 
@@ -75,7 +77,7 @@ These limitations apply to the [Database service](../platform-services/database-
 
 * **Database Size**: The maximum size for a database is normally 100 GB. [Submit a Support request](https://help.liferay.com/) to increase this limit.
 
-* **Downtime**: Database maintenance may cause downtime every few months. This downtime usually lasts about two minutes. This may not come with a notification in advance.
+* **Downtime**: Database maintenance may cause downtime every few months. This downtime usually lasts about two minutes. This may not come with a notification in advance. You can set a [preferred maintenance window](../platform-services/database-service/database-service.md#database-maintenance-window-variables) to mitigate the impact of downtime.
 
 * **Read/write splits**: Configuring a read/write split in your database service is not supported in DXP Cloud.
 
@@ -175,9 +177,11 @@ These limitations apply to the network configuration of your services in a DXP C
 
 * **Maximum SSL Certificates**: A maximum of 14 custom SSL certificates are allowed. The provider issuing the certificates may also impose its own limitations to make this less.
 
-* **Public IP Addresses**: By default, every environment has one public IP address, and services within the environment have internal IP addresses. However, you can configure a service's ports to be external, assigning a public IP address to the service.
+* **Public IP Addresses**: By default, every environment has one public IP address, and services within the environment have internal IP addresses. However, you can configure a service's ports to be external, assigning a public IP address to the service. Exposing a service's endpoints to the internet is *not recommended*, because it bypasses DDoS protection from the [HTTPS load balancer](../infrastructure-and-operations/networking/load-balancer.md).
 
 * **Wildcard SSL Certificates**: Wildcard certificates are not supported for Liferay's auto-generated SSL certificates. However, you may configure your instance with custom Wildcard SSL certificates.
+
+* **TCP Port Status**: Some TCP ports may show as open, even if no external traffic can reach the customer environment using it. These ports are open for other projects sharing the same disk on the server, and do not pose a security risk for your environment.
 
 ## VPN Servers
 

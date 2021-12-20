@@ -44,7 +44,7 @@ Liferay commonly uses three kinds of modules:
 
 1. **Client** modules consume the APIs.
 
-You'll learn how to create each one by developing a simple command in [Gogo Shell](./using-the-gogo-shell/using-the-gogo-shell.md) to greet users when they enter their names.
+You'll learn how to create each one by developing a simple command in [Gogo Shell](./using-the-gogo-shell.md) to greet users when they enter their names.
 
 ![Gogo shell command that greets users.](./module-projects/images/01.png)
 
@@ -82,10 +82,10 @@ The example module defines an API for generating a greeting.
     k8s2-api/build/libs/com.acme.k8s2.api-1.0.0.jar
     ```
 
-1. Start a [Liferay Docker container](../../installation-and-upgrades/installing-liferay/using-liferay-docker-images/docker-container-basics.md).
+1. Start a [Liferay Docker container](../../installation-and-upgrades/installing-liferay/using-liferay-docker-images.md).
 
     ```bash
-    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
     ```
 
 1. Deploy the module JAR.
@@ -108,7 +108,7 @@ The example module defines an API for generating a greeting.
    **User Name:** `test@liferay.com`
    **Password:** `test`
 
-1. Open the [Gogo Shell](./using-the-gogo-shell/using-the-gogo-shell.md).
+1. Open the [Gogo Shell](./using-the-gogo-shell.md).
 
 1. In the Gogo Shell command field, use `lb` to show the module's information, including its ID. The most recently added module appears last. If you know a keyword in the module name, you can `grep` for it.
 
@@ -164,9 +164,9 @@ Liferay modules are developed in a Gradle build infrastructure. The following Gr
 | `gradle/` | Contains a Gradle wrapper |
 | `gradlew[.bat]`  | Invokes the Gradle wrapper to execute tasks |
 | `gradle.properties` | Specifies the Liferay product version |
-| `settings.gradle` | Applies Gradle plugins, including the [Liferay Workspace](../../developing-applications/tooling/liferay-workspace.md) plugin. |
+| `settings.gradle` | Applies Gradle plugins, including the [Liferay Workspace](../../building-applications/tooling.md) plugin. |
 
-You can add more modules in new subfolders, like the example project's `k8s2-api` folder, or create them in a new [Liferay Workspace](../../developing-applications/tooling/liferay-workspace.md).
+You can add more modules in new subfolders, like the example project's `k8s2-api` folder, or create them in a new [Liferay Workspace](../../building-applications/tooling/liferay-workspace/what-is-liferay-workspace.md).
 
 Here's the `k8s2-api` module structure in the context of the project root.
 
@@ -191,8 +191,8 @@ The `k8s2-api` module folder contains a `bnd.bnd` metadata file, a `build.gradle
 The example module has only one Java class: an interface called `Greeter`.
 
 ```{literalinclude} ./module-projects/resources/liferay-k8s2.zip/k8s2-api/src/main/java/com/acme/k8s2/Greeter.java
-   :language: java
-   :lines: 5-10
+:language: java
+:lines: 5-10
 ```
 
 The [`@ProviderType`](https://docs.osgi.org/javadoc/osgi.annotation/7.0.0/org/osgi/annotation/versioning/ProviderType.html) annotation tells the service registry that anything implementing the interface provides it (i.e., a `Greeter`). The interface's one method called `greet` asks for a `String` and doesn't return anything.
@@ -204,7 +204,7 @@ Add your own Java code and resources in your module's `src/main/java` folder and
 The `build.gradle` file specifies the module's dependencies.
 
 ```{literalinclude} ./module-projects/resources/liferay-k8s2.zip/k8s2-api/build.gradle
-   :language: groovy
+:language: groovy
 ```
 
 It depends on one artifact: the Liferay release API JAR. It is a large JAR packed with Liferay, Bnd, and OSGi artifacts associated with the Liferay product release.
@@ -217,8 +217,8 @@ liferay.workspace.product=portal-7.3-ga3
 
 Lastly, there's no dependency version. That's because Workspace applies the Liferay product API version associated with the release.
 
-```note::
-   Please see `Configuring Dependencies <./configuring-dependencies/configuring-dependencies.md>`_ for more information.
+```{note}
+Please see [Configuring Dependencies](./configuring-dependencies.md) for more information.
 ```
 
 ### Specify Metadata
@@ -274,7 +274,7 @@ For details about the module lifecycle, see [Module Lifecycle](../architecture/m
 
 * [APIs as OSGi Services](./apis-as-osgi-services.md)
 * [Using an OSGi Service](./using-an-osgi-service.md)
-* [Configure Dependencies](./configuring-dependencies/configuring-dependencies.md)
+* [Configure Dependencies](./configuring-dependencies.md)
 * [Importing Packages](./importing-packages.md)
 * [Exporting Packages](./exporting-packages.md)
 * [Module Lifecycle](../architecture/module-lifecycle.md)

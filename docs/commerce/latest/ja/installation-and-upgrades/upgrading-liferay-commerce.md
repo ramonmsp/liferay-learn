@@ -6,7 +6,7 @@
 
 管理者がDXPとコマースの両方をアップグレードする場合は、最初にDXP 7.1を7.2にアップグレードしてください。 DXPアップグレードプロセスの詳細については：
 
-  - [アップグレードの概要](https://learn.liferay.com/dxp/7.x/en/installation-and-upgrades/upgrading-liferay-dxp/upgrade-basics/upgrade-overview.html)
+  - [アップグレードの概要](https://learn.liferay.com/dxp/7.x/en/installation-and-upgrades/upgrading-liferay-dxp/upgrade-basics.html)
 
 DXPが7.1から7.2に正常にアップグレードされたら、以下の手順に従ってLiferay Commerceをアップグレードします。
 
@@ -21,8 +21,8 @@ Liferay Commerceは、最新バージョンへのシームレスなアップグ�
 
 <!-- end list -->
 
-``` tip::
-   1.1.xから2.1.xへのアップグレードでは、2.0.xへの増分アップグレードは**必要ありません**。
+```{tip}
+1.1.xから2.1.xへのアップグレードでは、2.0.xへの増分アップグレードは**必要ありません**。
 ```
 
 ### 最新のフィックスパックを適用する
@@ -107,10 +107,10 @@ Liferay Commerceインスタンスがアップグレードされました。
 
 検索インデックスの再作成を実行するには：
 
-1.  *[Control Panel]* → *[Configuration]* → *[Search]*に移動します。
-2.  *[Reindex all search indexes]*の隣にある*[Execute]*をクリックします。
+1.  *[Control Panel]* → *[Configuration]* → *[Search]* に移動します。
+2.  *[Reindex all search indexes]* の隣にある*[Execute]* をクリックします。
 3.  インデックスの再作成が完了するまで待ちます。
-4.  *[Control Panel]* → *[Commerce]* → *[Products]*に移動します。
+4.  *[Control Panel]* → *[Commerce]* → *[Products]* に移動します。
 5.  すべての商品が再び表示されることを確認します。
 
 インデックスの再作成が完了すると、アップグレードされたLiferay Commerceインスタンスを使用する準備が整います。

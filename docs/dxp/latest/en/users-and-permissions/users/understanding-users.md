@@ -1,12 +1,12 @@
 # Understanding Users
 
-Every person who accesses a Liferay site is considered a User. Unauthenticated Users are considered *Guest* users. Liferay ships out-of-the-box with a default Admin user who has complete control of and access to the system. [Roles and Permissions](../roles_and_permissions.html) govern what users are able to see and do on a site.
+Every person who accesses a Liferay site is considered a User. Unauthenticated Users are considered *Guest* users. Liferay ships out-of-the-box with a default Admin user who has complete control of and access to the system. [Roles and Permissions](../roles-and-permissions.md) govern what users are able to see and do on a site.
 
 Users break down into three general categories:
 
 | User | Default Access | Notes |
 | --- | --- | --- |
-| [Administrator](../../getting-started/introduction-to-the-admin-account.md) | Liferay Admin with full system access | We *strongly* recommend that users change the password for this account promptly after installation. |
+| [Administrator](../../getting-started/introduction-to-the-admin-account.md) | Liferay Admin with full system access. | We *strongly* recommend that users change the password for this account promptly after installation. |
 | Guest | View access to Public Pages and Sites. In most cases cannot create or add content unless explicitly permitted. | By default, Guest users can create an account on a Liferay Site to view and interact with *Public* Sites. |
 | User | View access to Pages and Sites they are members of. Able to create content. | Users get defined default permissions and can be elevated to Organization or Site Administrators. |
 
@@ -38,7 +38,7 @@ Are there other methods of adding users? -->
 
 ## Managing User Access
 
-User access is controlled by Roles and Permissions. Permissions define what a User can and cannot do. Roles are groupings of permissions. Permissions are configured by defining permissions for a Role and assigning Users to pre-set Roles. To learn more about managing access for Users, see [Roles and Permissions](../roles_and_permissions.html).
+User access is controlled by Roles and Permissions. Permissions define what a User can and cannot do. Roles are groupings of permissions. Permissions are configured by defining permissions for a Role and assigning Users to pre-set Roles. To learn more about managing access for Users, see [Roles and Permissions](../roles-and-permissions.md).
 
 ## Organizing Users
 

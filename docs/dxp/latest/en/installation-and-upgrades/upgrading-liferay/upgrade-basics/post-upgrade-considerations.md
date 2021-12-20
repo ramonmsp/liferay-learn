@@ -11,7 +11,7 @@ Now that you are done upgrading your database, re-enable your production setting
 If you disabled search indexing for upgrading to 7.2, re-enable search indexing by removing the `.config` file you used to disable it or by setting `indexReadOnly="false"` in the `.config` file. For example, 
 
 ```bash
-rm [Liferay Home]/files/osgi/config/com.liferay.portal.search.configuration.IndexStatusManagerConfiguration.config
+rm osgi/configs/com.liferay.portal.search.configuration.IndexStatusManagerConfiguration.config
 ```
 
 Reindexing search indexes is required for most upgrades, but is typically not required for applying a service pack or upgrading to a new GA (rolling release) within the same Liferay version. Here's how to reindex:
@@ -54,7 +54,7 @@ Prior to 7.1, all users could view Web Content articles by default. Now view per
 
 ### Check Web Content Images
 
-Upgrading to 7.2 moves Web Content images to the [File Store](../../../system-administration/file-storage/configuring-file-storage.md) (also known as the Document Library) and then deletes their former table, `JournalArticleImage`. If an image can't be migrated, Liferay reports the failure.
+Upgrading to 7.2 moves Web Content images to the [File Store](../../../system-administration/file-storage.md) (also known as the Document Library) and then deletes their former table, `JournalArticleImage`. If an image can't be migrated, Liferay reports the failure.
 
 ```
 Unable to add the journal article image {filename} into the file repository
@@ -62,13 +62,17 @@ Unable to add the journal article image {filename} into the file repository
 
 If there aren't any such messages, all of your images should now be in your File Store. You can preview your Web Content articles to verify the images.
 
-### Account for Deprecations and Features in Maintenance Mode
+## Account for Deprecations and Features in Maintenance Mode
 
 If you haven't done so already, review the [deprecations and features in maintenance mode](../reference/maintenance-mode-and-deprecations-in-7-3.md) and plan for handling how they affect your Liferay instance.
 
-### Remove Obsolete Data
+## Remove Obsolete Data
 
-Clean up data from obsolete features. Please see [Data Cleanup](../reference/data-cleanup.md) for more information.
+If you're done using data that's unnecessary and useless, you can remove it. Here are two common obsolete data situations and tools for removing the data.
+
+* Data from obsolete Liferay apps or modules. The [Data Cleanup](../reference/data-cleanup.md) tool removes it.
+
+* Obsolete data from available Liferay apps and modules. The [Data Removal](../reference/data-removal.md) tool removes it.
 
 ## Conclusion
 

@@ -4,7 +4,7 @@ This article documents how to configure a mailing list for a message board categ
 
 ## Prerequisites
 
-Before configuring the Message Boards app's email lists, see the [Connecting to a Mail Server](../../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md) article for general instructions on how to configure a mail server for the entire DXP instance.
+Before configuring the Message Boards app's email lists, see the [Configuring Mail](../../../installation-and-upgrades/setting-up-liferay/configuring-mail.md) article for general instructions on how to configure a mail server for the entire DXP instance.
 
 ## Adding a Mailing List to a Message Boards Category
 
@@ -38,11 +38,11 @@ To add a mailing list to a Message Boards Category:
 
 The mailing list is now active for this category. Users who have subscribed to this category now receive email notifications for new threads in the category.
 
-```important::
-   If using the `IMAP <https://support.google.com/mail/answer/7126229?hl=en>`_ protocol for a category’s mailing list, make sure to `configure the IMAP inbox to delete messages <https://support.google.com/mail/answer/78892?hl=en>`_ as they are pulled by the email client that sends messages to the users on the mailing list. Otherwise, each email message retained on the server is sent to the mailing list each time there's a new post or update in the category.
+```{important}
+If using the [IMAP](https://support.google.com/mail/answer/7126229?hl=en) protocol for a category’s mailing list, make sure to [configure the IMAP inbox to delete messages](https://support.google.com/mail/answer/78892?hl=en) as they are pulled by the email client that sends messages to the users on the mailing list. Otherwise, each email message retained on the server is sent to the mailing list each time there's a new post or update in the category.
 ```
 
 ## Related Information
 
-* [Connecting to a Mail Server](../../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)
+* [Configuring Mail](../../../installation-and-upgrades/setting-up-liferay/configuring-mail.md)
 * [Creating Message Board Categories](./creating-message-boards-categories.md)

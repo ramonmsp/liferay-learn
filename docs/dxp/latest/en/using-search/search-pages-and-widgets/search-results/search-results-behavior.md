@@ -9,6 +9,8 @@ Previously, you [learned](./configuring-the-search-results-widget.md) how to dis
 * [Search results when Publications are enabled](#search-and-publications)
 * [Search results summaries](#result-summaries)
 * [Search results term highlighting](#highlighting)
+* [Search results and content pages](#returning-pages-in-search-results)
+* [Returning Objects in Search Results](#returning-objects-in-search-results)
 
 ## Filtering Results with Facets
 
@@ -61,14 +63,14 @@ With [staging](../../../site-building/publishing-tools/staging/managing-data-and
 
 ## Search and Publications
 
-With [Publications](../../../site-building/publishing-tools/publications/publications-overview.md) enabled, content is associated with a specific Publication. Content added to a Publication is marked so that the search API can decipher whether an item is in production or not. In the production version of the Site, only content that's been [published](../../../site-building/publishing-tools/publications/making-and-publishing-changes.md#publishing-your-changes) can be returned in search results. In an ongoing Publication, production content and content for that specific Publication can be returned.
+With [Publications](../../../site-building/publishing-tools/publications.md) enabled, content is associated with a specific Publication. Content added to a Publication is marked so that the search API can decipher whether an item is in production or not. In the production version of the Site, only content that's been [published](../../../site-building/publishing-tools/publications/making-and-publishing-changes.md#publishing-your-changes) can be returned in search results. In an ongoing Publication, production content and content for that specific Publication can be returned.
 
 ## Result Summaries
 
 A result summary includes the information from a document that the asset's developer felt is most useful to those searching for the asset. Each asset can have different fields included in the summary. For assets with text content, a common summary format includes the title and some of the content, with title displayed first. The asset type always appears on the second line, and a snippet of the content that matches the search term is on the last line. Assets without content fields, like Documents and Media documents, display the description instead.
 
-```note::
-   Users are different. Only the User's full name and the asset type (User) appear in User result summaries.
+```{note}
+Users are different. Only the User's full name and the asset type (User) appear in User result summaries.
 ```
 
 ![For users, only the user's full name appears for summary.](./search-results-behavior/images/03.png)
@@ -98,3 +100,24 @@ Highlighting is a helpful visual cue that hints at why the result is returned, b
 
 ![Some results may not necessarily have any highlighted terms.](./search-results-behavior/images/06.png)
 
+## Returning Pages in Search Results
+
+In Liferay 7.2+, [page content](../../../site-building/creating-pages/building-and-managing-content-pages/content-pages-overview.md) from public content pages is returned in the Search Results widget. For example, you can search for text found in a Paragraph fragment on a public page.
+
+By contrast, in the latest Liferay 7.2 and 7.3, and all Liferay 7.4+ releases, page content on private content pages and staged pages is not indexed and thus not returned in the list of search results, regardless of the User's permission to view the page.
+
+![Content from private pages cannot be searched.](./search-results-behavior/images/10.png)
+
+Although the content field is not indexed and searchable for private or staged pages, other fields are available. For example, the title field of both public and private content pages is indexed in 7.2+, so searching for keywords that match private content page titles still produces hits in the Search Results widget.
+
+![Titles from public and private pages can be searched.](./search-results-behavior/images/11.png)
+
+To discover which fields are indexed for content pages, enable the Search Results widget's _Display Results in Document Form_ setting. See [Inspecting Search Engine Documents](./configuring-the-search-results-widget.md#inspecting-search-engine-documents) for more details.
+
+![Inspect the document view of a content page to see what fields are indexed.](./search-results-behavior/images/12.png)
+
+## Returning Objects in Search Results
+
+Liferay 7.4 includes [Liferay Objects](../../building-applications/objects.md), a GUI-driven application-building framework. Fields of each Object's definition can be declared searchable; Object Entries (the records submitted by the application's users) [can then be queried](../../getting-started/searching-for-content.md#searching-for-liferay-objects) and returned in the Search Results widget.
+
+![A title and a content summary are displayed for Object Entries.](./search-results-behavior/images/13.png)

@@ -1,6 +1,6 @@
 # Auditing Portlet Activity with Portlet Filters
 
-Portlet filters intercept requests and responses at the start of each [portlet request processing phase](../../../developing-applications/developing-a-java-web-application/reference/portlets.md#portlet-phases) so you can add functionality there. This makes them useful for auditing portlet activities during their render, action, event, and resource serving phases.
+Portlet filters intercept requests and responses at the start of each [portlet request processing phase](../../../building-applications/developing-a-java-web-application/reference/portlets.md#portlet-phases) so you can add functionality there. This makes them useful for auditing portlet activities during their render, action, event, and resource serving phases.
 
 Follow these steps to create portlet filters for auditing portlet activities:
 
@@ -13,12 +13,12 @@ Follow these steps to create portlet filters for auditing portlet activities:
    * Render Phase - [`RenderFilter`](http://docs.liferay.com/portlet-api/3.0/javadocs/javax/portlet/filter/RenderFilter.html)
    * Resource Serving Phase - [`ResourceFilter`](http://docs.liferay.com/portlet-api/3.0/javadocs/javax/portlet/filter/ResourceFilter.html)
 
-   See [Portlets](../../../developing-applications/developing-a-java-web-application/reference/portlets.md#portlet-phases) for more information about each portlet phase.
+   See [Portlets](../../../building-applications/developing-a-java-web-application/reference/portlets.md#portlet-phases) for more information about each portlet phase.
 
 1. Declare the portlet filter a Component within the OSGi framework using the `@Component` annotation and identify it as a `PortletFilter.class` service.
 
-   ```note::
-      Portlet filters are `OSGi Declarative Service (DS) Components <https://enroute.osgi.org/FAQ/300-declarative-services.html>`_. Filters can also be applied to a portlet using a ``portlet.xml`` descriptor or a ``@PortletLifecycleFilter`` annotation. See Portlet 3.0 Specification for details.
+   ```{note}
+   Portlet filters are [OSGi Declarative Service (DS) Components](https://enroute.osgi.org/FAQ/300-declarative-services.html). Filters can also be applied to a portlet using a `portlet.xml` descriptor or a `@PortletLifecycleFilter` annotation. See Portlet 3.0 Specification for details.
    ```
 
 1. Enter the following properties into the `@Component` declaration.
@@ -34,16 +34,16 @@ The following example uses a `RenderFilter` to audit the render phase for the Bl
 
 Follow these steps to download, build, and deploy the sample Portlet Filter to a new docker container:
 
-1. Start a new [Liferay Docker container](../../../installation-and-upgrades/installing-liferay/using-liferay-docker-images/docker-container-basics.md).
+1. Start a new [Liferay Docker container](../../../installation-and-upgrades/installing-liferay/using-liferay-docker-images.md).
 
    ```bash
-   docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+   docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
    ```
 
 1. Download and unzip the example module.
 
    ```bash
-   curl https://learn.liferay.com/dxp/latest/en/liferay-internals/extending-liferay/liferay-b4k8.zip -O
+   curl https://learn.liferay.com/dxp/latest/en/liferay-internals/extending-liferay/portlet-filters/liferay-b4k8.zip -O
    ```
 
    ```bash
@@ -60,7 +60,7 @@ Follow these steps to download, build, and deploy the sample Portlet Filter to a
 
 1. Confirm the module was successfully deployed and started via the container console.
 
-   ```log
+   ```
    Processing com.acme.b4k8.impl-1.0.0.jar
    STARTED com.acme.b4k8.impl_1.0.0 [1656]
    ```
@@ -69,7 +69,7 @@ Follow these steps to download, build, and deploy the sample Portlet Filter to a
 
    Whenever a render request is made to the Blogs portlet, the container console shows a warning message with an audit of its render time, average render time, and total number of renders.
 
-   ```log
+   ```
    WARN [http-nio-8080-exec-2][B4K8PortletFilter:54] Blogs portlet rendered in 3 ms with an average of 3 ms out of 1 renders.
    WARN [http-nio-8080-exec-10][B4K8PortletFilter:54] Blogs portlet rendered in 0 ms with an average of 1 ms out of 2 renders.
    ```
@@ -194,5 +194,5 @@ The portlet filter proceeds to implement the [`RenderFilter`](http://docs.lifera
 
 ## Additional Information
 
-* [Portlets](../../../developing-applications/developing-a-java-web-application/reference/portlets.md)
+* [Portlets](../../../building-applications/developing-a-java-web-application/reference/portlets.md)
 <!--TASK: Add link to Using Portlet Filters article when finished -->

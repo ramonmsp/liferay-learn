@@ -12,17 +12,17 @@
 
 3.  ユーザーの追加フォームに入力して、*[保存]* をクリックします。 少なくとも、ユーザーの画面名、名、姓、および電子メールアドレスを入力します。
 
-    ``` note::
-        スクリーンネームとメールアドレスは互換性がありません。 画面名はユーザーのプライベートページへのURLで使用されるため、画面名に「@」記号を含めることはできません。
+    ```{note}
+    スクリーンネームとメールアドレスは互換性がありません。 画面名はユーザーのプライベートページへのURLで使用されるため、画面名に「@」記号を含めることはできません。
 
-        ユーザーの追加機能は、いくつかの独立したフォームに分割されています。 最初のフォームを保存してユーザーを作成すると、「Success. Your request completed successfully.」という成功メッセージが表示されます。
+    ユーザーの追加機能は、いくつかの独立したフォームに分割されています。 最初のフォームを保存してユーザーを作成すると、「Success. Your request completed successfully.」という成功メッセージが表示されます。
     ```
 
 ユーザーを作成したら、追加の情報を追加できます。
 
 ### 新規ユーザーのパスワードを設定する
 
-ユーザーを作成すると、Liferay DXPがユーザーのパスワードを生成します。 メールサーバーが[セットアップ](../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)されている場合、Liferay DXPはユーザーの新しいパスワードを含む電子メールメッセージを送信します。
+ユーザーを作成すると、Liferay DXPがユーザーのパスワードを生成します。 メールサーバーが[セットアップ](../../installation-and-upgrades/setting-up-liferay/configuring-mail.md)されている場合、Liferay DXPはユーザーの新しいパスワードを含む電子メールメッセージを送信します。
 
 メールサーバーを設定していない場合は、[General]メニューの*[Password]* 項目をクリックして、新しいユーザーのパスワードを手動で設定します。 新しいパスワードを2回入力します。
 
@@ -43,15 +43,15 @@
 | Manage Pages         | ユーザーの個人用ページを設定します。                                                                              |
 | Impersonate User     | あなたがそのユーザーであるかのように、別のウィンドウでサイトを閲覧します。                                                           |
 | Deactivate           | [ユーザーのアカウントを無効にします](#deactivating-users) 。                                                      |
-| Erase Personal Data  | [ユーザーの個人データを削除します](./managing-user-data-gdpr-compliance/introduction-to-managing-user-data.md)。 |
-| Export Personal Data | [ユーザーの個人データをダウンロードします](./managing-user-data-gdpr-compliance/exporting-user-data.md)。            |
+| Erase Personal Data  | [ユーザーの個人データを削除します](../managing-user-data/sanitizing-user-data.md)。 |
+| Export Personal Data | [ユーザーの個人データをダウンロードします](../managing-user-data/exporting-user-data.md)。            |
 
 ## ユーザーの非アクティブ化と削除
 
 ユーザーの削除は、いくつかの理由で2段階のプロセスで行います。
 
   - あなたまたはユーザーが本当はそのアカウントが必要であると判断する可能性があります。
-  - 多くの場合、ユーザーはあなたの国で[法律上面倒な問題](./managing-user-data-gdpr-compliance/introduction-to-managing-user-data.md)が発生する可能性のあるコンテンツに関連付けられています。
+  - 多くの場合、ユーザーはあなたの国で[法律上面倒な問題](../managing-user-data.md)が発生する可能性のあるコンテンツに関連付けられています。
   - ユーザーの存在の証拠をすべて削除する前に、ユーザーのアカウントアクティビティを確認する時間が必要な場合があります。
 
 これらの理由やその他の理由により、ユーザーを*削除*する前に、まずユーザーを*非アクティブ化*する必要があります。
@@ -99,10 +99,10 @@
 2.  *[Default Password Policy]* をクリックします。
 3.  [Password Changes]セクションで*[Change Required]* スイッチャーの選択を解除します。 ここで、追加したユーザーがパスワードをリセットする必要があるかどうかを決定できます。
 
-デフォルトポリシーの編集または独自のポリシーを作成する詳細については、[Password Policies](../devops/README.md)を参照してください。
+デフォルトポリシーの編集または独自のポリシーを作成する詳細については、[Password Policies](../roles-and-permissions/configuring-a-password-policy.md)を参照してください。
 
 ## 関連情報
 
   - [Understanding Users](./understanding-users.md)
   - [Authentication Basics](../../installation-and-upgrades/securing-liferay/authentication-basics.md)
-  - [Connecting to an LDAP Directory](../devops/connecting-to-a-user-directory/connecting-to-an-ldap-directory.md)
+  - [Connecting to an LDAP Directory](../connecting-to-a-user-directory/connecting-to-an-ldap-directory.md)

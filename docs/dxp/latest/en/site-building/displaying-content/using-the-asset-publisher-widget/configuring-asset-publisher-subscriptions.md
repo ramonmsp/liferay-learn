@@ -29,15 +29,15 @@ Liferay Portal periodically checks for new assets and sends emails to subscribed
 
 ## RSS Feed Subscriptions
 
-```note::
-  RSS feeds are deprecated for Liferay Portal 7.2+ and are disabled by default. To leverage RSS feeds, you must enable this feature.
+```{note}
+RSS feeds are deprecated for Liferay Portal 7.2+ and are disabled by default. To leverage RSS feeds, you must enable this feature.
 ```
 
 To enable RSS feed subscriptions for the Asset Publisher, follow these steps:
 
 1. Open the Product Menu and go to *Control Panel* &rarr; *Configuration* &rarr; *System Settings*.
 1. Select *Web Content* under the *Content and Data* heading.
-1. Under the *System Scope* &rarr; *Administration* tab, check the *Show Feeds* box. For more information on deprecated apps, see [this article](TODO:deprecated-apps).
+1. Under the *System Scope* &rarr; *Administration* tab, check the *Show Feeds* box. For more information on deprecated apps, see [this article](../../../installation-and-upgrades/upgrading-liferay/reference/maintenance-mode-and-deprecations-in-7-4.md).
 
     ![Enable RSS feeds through System Settings.](./configuring-asset-publisher-subscriptions/images/04.png)
 
@@ -53,6 +53,6 @@ To enable RSS feed subscriptions for the Asset Publisher, follow these steps:
 
 ## Related Information
 
-- [Connecting to a Mail Server](../../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)
+- [Configuring Mail](../../../installation-and-upgrades/setting-up-liferay/configuring-mail.md)
 - [Displaying Assets Using the Asset Publisher Widget](./displaying-assets-using-the-asset-publisher-widget.md)
 - [Configuring the Asset Publisher Display Settings](./configuring-asset-publisher-display-settings.md)

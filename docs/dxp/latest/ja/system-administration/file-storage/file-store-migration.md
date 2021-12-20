@@ -8,8 +8,8 @@
 
 [サーバー管理](../using-the-server-administration-panel/using-the-server-administration-panel.md) のデータ移行ユーティリティは、移行を容易にします。
 
-``` warning::
-   移行する前に、**必ず** `ファイルストアとデータベースをバックアップ <../../installation-and-upgrades/maintaining-a-liferay-dxp-installation/backing-up.md>`_ してください。 バックアップコピーで移行プロセスをテストすることをお勧めします。
+```{warning}
+ 移行する前に、**必ず** `ファイルストアとデータベースをバックアップ <../../installation-and-upgrades/maintaining-a-liferay-installation/backing-up.md>`_ してください。 バックアップコピーで移行プロセスをテストすることをお勧めします。
 ```
 
 ## ファイルの移行
@@ -37,12 +37,12 @@
 
 DXPインスタンスが、新しく設定されたファイルストア上に移行されたファイルを使用するようになりました。
 
-``` warning::
-   システム設定で新しいストア構成を必ず保存してください。 そうしないと、新しいストアを使用できず、次の例外が発生します：`java.lang.IllegalStateException: Store is not available`
+```{warning}
+システム設定で新しいストア構成を必ず保存してください。 そうしないと、新しいストアを使用できず、次の例外が発生します：`java.lang.IllegalStateException: Store is not available`
 ```
 
 ## 追加情報
 
-  - [ファイルストレージの構成](./configuring-file-storage.md)
+  - [ファイルストレージの構成](../file-storage.md)
   - [Amazon S3 Store](./other-file-store-types/amazon-s3-store.md)
   - [DBStore](./other-file-store-types/dbstore.md)

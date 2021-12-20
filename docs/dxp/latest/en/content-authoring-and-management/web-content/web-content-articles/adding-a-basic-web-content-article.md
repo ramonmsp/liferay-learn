@@ -6,7 +6,7 @@ Each web content article is based on a structure that defines its available fiel
 
 ## Creating a Basic Web Content Article
 
-1. Open the Site Menu, and navigate to _Content & Data_ → _Web Content_.
+1. Open the Site Menu (![Site Menu](../../../images/icon-menu.png)), and navigate to _Content & Data_ → _Web Content_.
 
 1. Click on the *Add* button (![Add icon](../../../images/icon-add.png)) and select _Basic Web Content_.
 
@@ -17,6 +17,12 @@ Each web content article is based on a structure that defines its available fiel
     ![The edit screen for a new web content article.](./adding-a-basic-web-content-article/images/02.png)
 
 1. When finished, click _Publish_.
+
+    ```{tip}
+    Use the _Preview_ (![Preview](../../../images/icon-preview.png)) button to verify how your content looks when using the Default Template and Display Page Template.
+
+    ![Preview content from Default Template and Display Page Template.](./adding-a-basic-web-content-article/images/03.png)
+    ```
 
 Congratulations! You have added a basic web content article to your Site. See [Using the Web Content Display Widget](../../../site-building/displaying-content/additional-content-display-options/using-the-web-content-display-widget.md) for more information on displaying this article on a page.
 
@@ -35,10 +41,10 @@ When creating or editing a _Basic Web Content_ article, you can access the follo
 | **Schedule** | Used to schedule a date to display or expire the article, if desired. | See [Scheduling Web Content](https://help.liferay.com/hc/en-us/articles/360029042011-Scheduling-Web-Content-Publication) for more information. |
 | **Search** | Used to set whether this article will be indexed for search. | |
 | **Related Assets** | Used to select any related assets, if desired. | |
-| **Permissions** | Used to set any permissions for Guests or Site Members, specific to the article. | Click More Options to see permissions for more than who can view the article. See [Roles and Permissions](../../../users-and-permissions/roles-and-permissions/understanding-roles-and-permissions.md) for more information. |
+| **Permissions** | Used to set any permissions for Guests or Site Members, specific to the article. | Click More Options to see who can view the article. See [Roles and Permissions](../../../users-and-permissions/roles-and-permissions/understanding-roles-and-permissions.md) for more information. |
 
 ## Additional Information
 
 * [Creating and Managing Display Page Templates](../../../site-building/displaying-content/using-display-page-templates/creating-and-managing-display-page-templates.md)
 * [Introduction to Web Content Structures](../web-content-structures/understanding-web-content-structures.md)
-* [Using the Web Content Display Widget](../../../site-building/displaying-content/additional-content-display-options/using-the-web-content-display-widget.md)
+* [Filtering and Sorting Web Content Articles](./filtering-and-sorting-web-content-articles.md)

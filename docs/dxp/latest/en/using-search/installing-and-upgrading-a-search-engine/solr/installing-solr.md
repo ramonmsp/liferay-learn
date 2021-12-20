@@ -4,10 +4,10 @@ Solr is a popular enterprise search platform built on Apache Lucene. It's reliab
 
 These instructions describe installing Solr 8 for Liferay 7.1 through 7.3. They apply equally to installing Solr 7 for Liferay 7.1-7.2, but some adjustments for version name may be necessary.
 
-```important::
-   -  Liferay's Solr support is deprecated; Solr 8 is the last supported Solr version. Please plan to migrate to `Elasticsearch <../elasticsearch/getting-started-with-elasticsearch.md>`_.
+```{important}
+-  Liferay's Solr support is deprecated; Solr 8 is the last supported Solr version. Please plan to migrate to [Elasticsearch](../elasticsearch/getting-started-with-elasticsearch.md).
 
-   -  There are important limitations to be aware of when installing Solr. Read `Solr Limitations <./solr-limitations.md>`__ before proceeding with the installation.
+-  There are important limitations to be aware of when installing Solr. Read [Solr Limitations](./solr-limitations.md)_ before proceeding with the installation.
 ```
 
 As you proceed, remember these terms: 
@@ -27,12 +27,12 @@ Before installing the Liferay Connector to Solr, you must blacklist or otherwise
 - the modules for certain DXP features that only work with Elasticsearch
 - the Liferay Connector to Elasticsearch's modules
 
-```tip::
-   Use the Gogo shell command ``lb [substring-to-search] -s`` to search for modules deployed to the OSGi runtime and list them by their Symbolic Name. The Symbolic Name is the value to enter in the ``blacklistBundleSymbolicNames`` property.
+```{tip}
+Use the Gogo shell command `lb [substring-to-search] -s` to search for modules deployed to the OSGi runtime and list them by their Symbolic Name. The Symbolic Name is the value to enter in the `blacklistBundleSymbolicNames` property.
 
-   The following command returns the list of modules that must be blacklisted:
+The following command returns the list of modules that must be blacklisted:
 
-   ``lb -s | grep 'search' | grep 'elasticsearch|tuning'``
+`lb -s | grep 'search' | grep 'elasticsearch|tuning'`
 ```
 
 ### Blacklisting Elasticsearch-Only Features
@@ -66,7 +66,7 @@ If you're a Liferay DXP customer you should use the blacklist feature to disable
 
 ### Stopping the Modules with Elasticsearch-Only Features
 
-The App Manager and Gogo shell rely on the `osgi/state` folder to "remember" the state of the bundle. If you delete this folder (recommended during [patching Liferay DXP](../../../installation-and-upgrades/maintaining-a-liferay-dxp-installation/patching-liferay/patching-liferay.md)) the Elasticsearch connector is reinstalled and started automatically. Liferay CE users can use the blacklist approach or disable the Elasticsearch and search tuning modules in the App Manager or the Gogo shell. 
+The App Manager and Gogo shell rely on the `osgi/state` folder to "remember" the state of the bundle. If you delete this folder (recommended during [patching Liferay DXP](../../../installation-and-upgrades/maintaining-a-liferay-installation/patching-dxp-7-3-and-earlier.md)) the Elasticsearch connector is reinstalled and started automatically. Liferay CE users can use the blacklist approach or disable the Elasticsearch and search tuning modules in the App Manager or the Gogo shell. 
 
 To disable via App Manager,
 
@@ -74,7 +74,7 @@ To disable via App Manager,
 
 1. Once in the App Manager, search for *elasticsearch*. Find the Liferay Connector to Elasticsearch 6/7 modules and open the Actions (![Actions](../../../images/icon-actions.png)) menu. Choose _Deactivate_.  This leaves the bundle installed, but stops it in the OSGi runtime. Do the same for the search tuning modules.
 
-To use the [Felix Gogo shell](../../../liferay-internals/fundamentals/using-the-gogo-shell/using-the-gogo-shell.md) to stop the Elasticsearch and search tuning modules,
+To use the [Felix Gogo shell](../../../liferay-internals/fundamentals/using-the-gogo-shell.md) to stop the Elasticsearch and search tuning modules,
 
 1. Enter `lb -s | grep 'search' | grep 'elasticsearch|tuning'`
 
@@ -303,8 +303,8 @@ There's only one thing left to do: specify the client type as *CLOUD* in Liferay
 
 ## Solr Connector Configuration Reference
 
-```note::
-   The Solr Connector properties apply equally to the Solr 7 and Solr 8 connectors. Substitue `solr7` in the config file name (instead of `solr8`). In System Settings, see the entries starting with _Solr 7_.
+```{note}
+The Solr Connector properties apply equally to the Solr 7 and Solr 8 connectors. Substitue `solr7` in the config file name (instead of `solr8`). In System Settings, see the entries starting with _Solr 7_.
 ```
 
 Below are the default configurations along with settings that become available (in the System Settings Search category, or configurable by `.config` file) when you install the Solr connector application. These settings accept a limited set of values: 

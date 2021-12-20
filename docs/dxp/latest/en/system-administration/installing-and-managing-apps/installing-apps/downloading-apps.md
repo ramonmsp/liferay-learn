@@ -18,8 +18,8 @@ Here's how to download the app from its receipt:
 
 The LPKG file downloads to your machine.
 
-```note::
-   The receipt Liferay emails you also links to the Purchased App page.
+```{note}
+The receipt Liferay emails you also links to the Purchased App page.
 ```
 
 If you don't happen to download the app via the receipt, there's no need to worry. Your purchased apps are available to download via the Purchased Apps page on the Marketplace website and your Liferay.com account home.
@@ -50,8 +50,8 @@ Here are the steps for downloading an app in the Purchased Apps UI:
 
 1. When you've found the app version you want, click _App_ to download it.
 
-The app downloads as an LPKG file. You can [install the app](./installing-apps.md) via this file.
+The app downloads as an LPKG file. You can [install the app](../installing-apps.md) via this file.
 
 ## Next Steps
 
-* [Installing Apps](./installing-apps.md)
+* [Installing Apps](../installing-apps.md)

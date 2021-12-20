@@ -10,9 +10,9 @@ The Content Dashboard interface has the following areas:
 
 ![The Content Dashboard user interface contains three areas of information.](./content-dashboard-interface/images/05.png)
 
-When you [open the Content Dashboard](#accessing-the-content-dashboard), you see the [Content Audit Tool](#content-audit-tool) (1) at the top of the page and the [Contents list](#contents-list) (2) at the bottom. From the Contents list, you can access the [Content Info sidebar](#content-info-sidebar) (3) and the [Content Performance panel](../content-performance-panel/about-the-content-performance-panel.md). The Content Info sidebar and the Content Performance panel can collapse. They show additional details for each item in the Contents List.
+When you [open the Content Dashboard](#accessing-the-content-dashboard), you see the [Content Audit Tool](#content-audit-tool) (1) at the top of the page and the [Contents list](#contents-list) (2) at the bottom. From the Contents list, you can access the [Content Info sidebar](#content-info-sidebar) (3) and the [Content Performance panel](../content-performance-tool/about-the-content-performance-tool.md). The Content Info sidebar and the Content Performance panel can collapse. They show additional details for each item in the Contents List.
 
-To access the Content Info sidebar, click the *Actions Menu* (![Action Menu](../../images/icon-actions.png)) for the content and select the *Info* option. Alternatively, hover over the article and click *Info* (![Info](../../images/icon-information.png)). For information on the *View Metrics* (![Metrics](../../images/icon-analytics.png)) option, read [About the Content Performance Panel](../content-performance-panel/about-the-content-performance-panel.md).
+To access the Content Info sidebar, click the *Actions Menu* (![Action Menu](../../images/icon-actions.png)) for the content and select the *Info* option. Alternatively, hover over the article and click *Info* (![Info](../../images/icon-information.png)). For information on the *View Metrics* (![Metrics](../../images/icon-analytics.png)) option, read [About the Content Performance Panel](../content-performance-tool/about-the-content-performance-tool.md).
 
 ## Accessing the Content Dashboard
 
@@ -25,7 +25,12 @@ To access the Content Info sidebar, click the *Actions Menu* (![Action Menu](../
 
 This tool is the graphical area at the top of the Content Dashboard page. The chart represents the total number of assets for the combination of categories in the global Vocabularies you select. This chart takes into account:
 
-- Web content articles exclusively, across all Sites and Asset Libraries.
+- [Web Content Articles](../web-content/web-content-articles/adding-a-basic-web-content-article.md) and [Documents and Media](../documents-and-media/documents-and-media-overview.md) across all Sites and Asset Libraries.
+
+    ```{note}
+    Documents and Media are available in the Content Dashboard starting with Liferay DXP 7.4+.
+    ```
+
 - Content you can access.
 - The existing [filters](#filtering-and-sorting-content-in-the-contents-list) in the [Contents list](#contents-list).
 - A maximum of two global Vocabularies (for the *x* and *y* axes.)
@@ -95,6 +100,7 @@ In the list of contents, you can find the following columns:
 | --- | --- |
 | Title | Article title(*). |
 | Author | Author's name. |
+| Type | Specifies a [Web Content Article](../web-content/web-content-articles/adding-a-basic-web-content-article.md) or [Documents](../documents-and-media/documents-and-media-overview.md) asset type (available in Liferay DXP 7.4+.) |
 | Subtype | Article's [Subcategory](../tags-and-categories/defining-categories-and-vocabularies-for-content.md#creating-subcategories). |
 | Site or Asset Library | Location of the article in the Liferay DXP instance. |
 | Status | Article workflow status. Articles with more than one version in different statuses show all than statuses. |
@@ -113,7 +119,7 @@ For each entry in the Contents list, you can access the following options using 
 - *View* (![View](../../images/icon-preview.png)): Opens the content based on a Display Page Template in view mode.
 - *Edit* (![Edit](../../images/icon-edit.png)): Opens the content in edit mode.
 - *Info* (![Information](../../images/icon-information.png)): Opens the [Content info](#content-info-sidebar) sidebar.
-- *View Metrics* (![View Metrics](../../images/icon-analytics.png)): Opens the [Content Performance panel](../content-performance-panel/about-the-content-performance-panel.md).
+- *View Metrics* (![View Metrics](../../images/icon-analytics.png)): Opens the [Content Performance panel](../content-performance-tool/about-the-content-performance-tool.md).
 
     ![Access the Content info sidebar and Content Performance panel from the Actions menu or the icons on each content row.](./content-dashboard-interface/images/11.png)
 
@@ -144,6 +150,32 @@ To sort the content,
 When you close the Content Dashboard page, the default filter and sorting option are set again.
 ```
 
+### Filter Options Reference
+
+> Some filter options are only available starting with Liferay 7.4+
+
+From the *Filter and Order* drop-down menu, you can choose these options:
+
+| Filter | Description |
+| :--- | :--- |
+| Categories | Filters using one or more [Categories](../tags-and-categories/organizing-content-with-categories-and-tags.md) from your Vocabularies. |
+| Site or Asset Library | Selects the assets' Site or Asset Library.  |
+| Type | Choose the Web Content Articles or Documents to include. From here, you can select</br><ul><li>**Web Content Articles**: Includes all the [Basic Web Content Articles](../web-content/web-content-articles/adding-a-basic-web-content-article.md) and the custom [Structures](../web-content/web-content-structures/understanding-web-content-structures.md) from all the Sites.</li><li>**Documents**: Includes the out of the box Document types and all the [custom Document types](../documents-and-media/uploading-and-managing/managing-metadata/defining-document-types.md).</li></ul> |
+| Extension | Provides a way to filter by the Document or Media type. You can choose from the following types:</br><ul><li>`audio`</li><li>`code`</li><li>`compressed`</li><li>`image`</li><li>`presentation`</li><li>`spreadsheet`</li><li>`text`</li><li>`vectorial`</li><li>`video`</li><li>`other`</li></ul> |
+| Tags | Selects from the list of [keywords](../tags-and-categories/tagging-content-and-managing-tags.md) you use to organize your assets. |
+| Filter by Author | Filters by the Web Content or Document's author. |
+| Filter by Status | Filters by the Web Content or Document's [workflow status](../../process-automation/workflow/introduction-to-workflow.md). |
+
+When using the Type or Extension filter, you can define your search criteria from a new Filter dialog. Consider this information:
+
+- Selecting a top-level node selects all the elements inside.
+- The top-level nodes show the total number of elements inside.
+- Search is case insensitive.
+- You can add, remove, or edit the available extensions from the Global menu (![Global menu](../../images/icon-applications-menu.png)) &rarr; *Control Panel* &rarr; *System Settings* &rarr; *Content and Data* &rarr; *Documents and Media* &rarr; *Service*.
+- The filter in the Content lists reflects the filter criteria you choose in the Filter dialog.
+
+![The search criteria you use in the Type or Extension filters is included in the Content List.](./content-dashboard-interface/images/13.png)
+
 ### Understanding How Filtering Works in the Contents List
 
 - When you use the Categories or Tags filters with more than one criteria, the results correspond to content that meets all the criteria (see example A.)
@@ -172,5 +204,5 @@ To open the Information sidebar,
 ## Related Information
 
 - [About the Content Dashboard](./about-the-content-dashboard.md)
-- [About the Content Performance Panel](../content-performance-panel/about-the-content-performance-panel.md)
+- [About the Content Performance Tool](../page-performance-and-accessibility/about-the-content-performance-tool.md)
 - [Defining Categories and Vocabularies for Content](../tags-and-categories/defining-categories-and-vocabularies-for-content.md)

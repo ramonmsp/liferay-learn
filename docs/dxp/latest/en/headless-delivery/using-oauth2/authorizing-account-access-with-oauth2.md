@@ -17,8 +17,8 @@ https://[hostname]/o/oauth2/authorize?response_type=code&client_id=[client ID]
 
 The client ID comes from registering the application. It's automatically generated (you can change it if you edit the application).
 
-```important::
-   Sometimes the phrase "web application" is used loosely, implying applications where the above URL is requested from the web browser directly. If this happens, you'd leak the client secret, compromising the security of the grant flow and the application. In such cases, select the "User Agent Application" client profile instead when registering your application. This makes a secure alternative available to your application: PKCE Extended Authorization Code flow (see below).
+```{important}
+Sometimes the phrase "web application" is used loosely, implying applications where the above URL is requested from the web browser directly. If this happens, you'd leak the client secret, compromising the security of the grant flow and the application. In such cases, select the "User Agent Application" client profile instead when registering your application. This makes a secure alternative available to your application: PKCE Extended Authorization Code flow (see below).
 ```
 
 Once the user has authorized the requested permissions to their resources, the authorization server returns an authorization code to your application at its registered callback URI (A.K.A. redirect URI) as a query string parameter.
@@ -103,13 +103,15 @@ OAuth 2.0 provides a convenient way for client applications to be granted access
 
 Once access is granted, users or administrators are free to revoke access whenever they wish. If this happens to a client, the token becomes invalid and the client must ask the user for authorization again. This puts users in control of what has access to their data, and they can exercise this control at any time.
 
-![Figure 1: Users have complete control over what applications have access to their data in their account profiles.](./authorizing-account-access-with-oauth2/images/01.png)
+![Users have complete control over what applications have access to their data in their account profiles.](./authorizing-account-access-with-oauth2/images/01.png)
 
-In their account areas, users can click *OAuth2 Connected Applications* and see a list of applications they've allowed to access their accounts. From here, they can revoke access by clicking the *Remove Access* item in the Action menu or the *Remove Access* button in the detail screen for the application.
+In their account areas, users can click *My Connected Applications* and see a list of applications they've allowed to access their accounts. From here, they can revoke access by clicking the *Remove Access* item in the Action menu or the *Remove Access* button in the detail screen for the application.
 
-Administrators can view the authorizations in the Authorizations tab of any app in *Control Panel* &rarr; *Configuration* &rarr; *OAuth2 Administration*.
+![In My Connected Applications, users can see their authorized apps and revoke their access.](./authorizing-account-access-with-oauth2/images/02.png)
 
-![Figure 2: All authorizations for an app appear in the Authorizations tab for the app.](./authorizing-account-access-with-oauth2/images/02.png)
+Administrators can view the authorizations in the Authorizations tab of any app in *Control Panel* &rarr; *Configuration* &rarr; *OAuth2 Administration*. If the app is trusted or the Remember My Authorization box was checked, that information appears. 
+
+![All authorizations for an app appear in the Authorizations tab for the app.](./authorizing-account-access-with-oauth2/images/03.png)
 
 Clicking the *Revoke* button on any listed authorization revokes that application's access to that user's account.
 

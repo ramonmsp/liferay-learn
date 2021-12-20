@@ -12,7 +12,7 @@ Multiple factors affect search results:
 
 Developers of content types (_assets_ in Liferay DXP) control much about how the asset's information is indexed and how its information is searched and returned in the search results. For further control, an *Indexer Post Processor* can modify an asset's indexing behavior and how search queries are constructed to look up the assets.
 
-Keep in mind though, almost everything you do when [configuring search](../../search_administration_and_tuning.md) has an impact on search results, particularly [Synonym Sets](../../search_administration_and_tuning.md) and [Result Rankings](../../search_administration_and_tuning.md).
+Keep in mind though, almost everything you do when [configuring search](../../search-administration-and-tuning.md) has an impact on search results, particularly [Synonym Sets](../../search-administration-and-tuning.md) and [Result Rankings](../../search-administration-and-tuning.md).
 
 The concepts below are essential to understand before you begin changing any settings.
 
@@ -30,9 +30,9 @@ The search engine processes and orders results by *relevance*. Relevance is a sc
 
 Results relevance is configurable:
 
-* [Search Tuning is a brute-force way to customize rankings](../../search_administration_and_tuning.md).
-* [Liferay Enterprise Search's Learning to Rank feature is a machine learning model you can train to return more relevant results.](./../../liferay_enterprise_search.md)
-* [The Search Insights widget displays the relevance scoring to reveal why a result appears in a certain position.](../../search_administration_and_tuning.md)
+* [Search Tuning is a brute-force way to customize rankings](../../search-administration-and-tuning.md).
+* [Liferay Enterprise Search's Learning to Rank feature is a machine learning model you can train to return more relevant results.](./../../liferay-enterprise-search.md)
+* [The Search Insights widget displays the relevance scoring to reveal why a result appears in a certain position.](../../search-administration-and-tuning.md)
 * [Sort the results by an indexed field to override relevance scoring](./sorting-search-results.md).
 
 ## Permissions and Search Results
@@ -75,8 +75,8 @@ In the staged version of the Site, all content---live or staged---is searchable.
 
 A result summary condenses information from the original asset into an abstract. Asset developers choose what fields are included in the summary. A common summary includes a *title* and some of the *content*, with title displayed first. The asset type always appears on the second line, followed by a snippet of content matching the search term. Assets without content fields, like Documents and Media documents, display the description instead.
 
-```note::
-   Searching for Users: When you click an asset in the search results, it's displayed in an `Asset Publisher <./../../../site-building/displaying-content/using_the_asset_publisher_widget.md>`__ (unless the *View in Context* option is selected in the Search Results portlet). Users are different, though. Think of them as invisible assets, not intended for display in the Asset Publisher application.  While Users appear as search results with other indexed assets, when you click one you're taken to the User's profile page. If public personal pages are disabled, clicking on a User from the list of search results shows you a blank page. Only the User's full name and the asset type (User) appear in User result summaries:
+```{note}
+Searching for Users: When you click an asset in the search results, it's displayed in an [Asset Publisher](./../../../site-building/displaying-content/using_the_asset_publisher_widget.md)_ (unless the *View in Context* option is selected in the Search Results portlet). Users are different, though. Think of them as invisible assets, not intended for display in the Asset Publisher application.  While Users appear as search results with other indexed assets, when you click one you're taken to the User's profile page. If public personal pages are disabled, clicking on a User from the list of search results shows you a blank page. Only the User's full name and the asset type (User) appear in User result summaries:
 ```
 
 ![User summaries contain only the User's full name.](./search-results/images/03.png)

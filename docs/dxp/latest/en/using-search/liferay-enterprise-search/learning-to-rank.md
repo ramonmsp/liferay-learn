@@ -30,7 +30,7 @@ Now the Learning to Rank re-scoring process is skipped for queries entered into 
 
 There are some prerequisites for using Learning to Rank to re-score Liferay queries sent to Elasticsearch:
 
-- A [Liferay Enterprise Search](https://www.liferay.com/products/dxp/enterprise-search) (LES) subscription is required for Learning to Rank. Once you have a subscription, [download the Liferay Enterprise Search Learning to Rank](https://customer.liferay.com/en/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191013&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191060) LPKG file and [install it](../../system-administration/installing-and-managing-apps/installing-apps/installing-apps.md).
+- A [Liferay Enterprise Search](https://www.liferay.com/products/dxp/enterprise-search) (LES) subscription is required for Learning to Rank. Once you have a subscription, [download the Liferay Enterprise Search Learning to Rank](https://customer.liferay.com/en/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191013&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191060) LPKG file and [install it](../../system-administration/installing-and-managing-apps/installing-apps.md).
 
 - A remote Elasticsearch server with your data indexed into it.
 
@@ -73,8 +73,8 @@ A useful trained model is produced when a good judgment list and a good feature 
 
 Before beginning, you must have a remote [Elasticsearch](../installing-and-upgrading-a-search-engine/elasticsearch.html) cluster communicating with Liferay. See the [Search Engine Compatibility Matrix for more information](https://help.liferay.com/hc/en-us/articles/360016511651).
 
-```tip::
-   Use `Suggestions <../search-pages-and-widgets/search-results/enabling-search-suggestions.md>`__ to discover the most common queries (this can be one way to decide which queries to create Learning to Rank models for).
+```{tip}
+Use [Suggestions](../search-pages-and-widgets/search-results/enabling-search-suggestions.md)_ to discover the most common queries (this can be one way to decide which queries to create Learning to Rank models for).
 ```
 
 ## Step 1: Install the Learning to Rank Plugin on Elasticsearch
@@ -84,7 +84,7 @@ See [the Elasticsearch Learning to Rank plugin documentation](https://elasticsea
 You'll be running a command like this one, depending on the plugin version you're installing:
 
 ```bash
-./bin/elasticsearch-plugin install http://es-learn-to-rank.labs.o19s.com/ltr-plugin-v1.5.3-es7.9.3.zip
+./bin/elasticsearch-plugin install https://github.com/o19s/elasticsearch-learning-to-rank/releases/download/v1.5.7-es7.13.4/ltr-plugin-v1.5.7-es7.13.4.zip
 ```
 
 If using [X-Pack security in your Elasticsearch cluster](../installing-and-upgrading-a-search-engine/elasticsearch/securing-elasticsearch.md), there [may be additional steps.](https://elasticsearch-learning-to-rank.readthedocs.io/en/latest/x-pack.html)
@@ -172,8 +172,8 @@ You'll upload the model using a `POST` request, but first you need to make sure 
 
 This is a very high level set of instructions, because there's not much to do in Liferay itself. To learn in more detail about what's required, see the [Learning to Rank plugin's documentation](https://elasticsearch-learning-to-rank.readthedocs.io/en/latest/index.html).
 
-```tip::
-   Keep reworking those judgment lists!
+```{tip}
+Keep reworking those judgment lists!
 ```
 
 ## Step 4: Enable Learning to Rank

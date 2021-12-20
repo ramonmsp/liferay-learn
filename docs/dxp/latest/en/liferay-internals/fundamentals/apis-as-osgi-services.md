@@ -19,15 +19,15 @@ Here you'll deploy API and implementation modules that create a simple greeter O
 
 Start the example modules.
 
-1. Start a [Liferay Docker container](../../installation-and-upgrades/installing-liferay/using-liferay-docker-images/docker-container-basics.md).
+1. Start a [Liferay Docker container](../../installation-and-upgrades/installing-liferay/using-liferay-docker-images.md).
 
     ```bash
-    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
     ```
 
 1. Download and unzip `liferay-p9g2.zip`.
 
-    ```curl
+    ```bash
     curl https://learn.liferay.com/dxp/latest/en/liferay-internals/fundamentals/liferay-p9g2.zip -O
     ```
 
@@ -54,7 +54,7 @@ Start the example modules.
 
 1. Go to `http://localhost:8080` and sign in.
 
-1. Go to the [Gogo Shell](./using-the-gogo-shell/using-the-gogo-shell.md).
+1. Go to the [Gogo Shell](./using-the-gogo-shell.md).
 
 1. Get the module IDs using the `lb` Gogo Shell command.
 
@@ -86,7 +86,7 @@ Start the example modules.
        service.scope = bundle
        component.name = com.acme.p9g2.internal.P9G2Greeter
        component.id = 8462
-      ```
+    ```
 
 The Acme P9G2 Implementation module provides one service: `com.acme.p9g2.Greeter`. The `component.name` property indicates that the module's `com.acme.p9g2.internal.P9G2Greeter` component implements the service.
 
@@ -106,8 +106,8 @@ An API is created in just two steps:
 The example API module `Greeter` class is a Java interface.
 
 ```{literalinclude} ./apis-as-osgi-services/resources/liferay-p9g2.zip/p9g2-api/src/main/java/com/acme/p9g2/Greeter.java
-   :language: java
-   :lines: 5-6
+:language: java
+:lines: 5-6
 ```
 
 The [`@ProviderType`](https://docs.osgi.org/javadoc/osgi.annotation/7.0.0/org/osgi/annotation/versioning/ProviderType.html) annotation registers `Greeter` as a type that a component can implement or consume.
@@ -115,9 +115,9 @@ The [`@ProviderType`](https://docs.osgi.org/javadoc/osgi.annotation/7.0.0/org/os
 The `greet` method takes a name `String` as input.
 
 ```{literalinclude} ./apis-as-osgi-services/resources/liferay-p9g2.zip/p9g2-api/src/main/java/com/acme/p9g2/Greeter.java
-   :dedent: 1
-   :language: java
-   :lines: 8
+:dedent: 1
+:language: java
+:lines: 8
 ```
 
 The `Greeter` capability is defined.
@@ -147,8 +147,8 @@ The example implementation module contains a concrete Java class that provides t
 The `P9G2Greeter` class implements the `Greeter` interface:
 
 ```{literalinclude} ./apis-as-osgi-services/resources/liferay-p9g2.zip/p9g2-impl/src/main/java/com/acme/p9g2/internal/P9G2Greeter.java
-   :language: java
-   :lines: 7-8
+:language: java
+:lines: 7-8
 ```
 
 The [`@Component`](https://docs.osgi.org/javadoc/osgi.cmpn/7.0.0/org/osgi/service/component/annotations/Component.html) annotation and its `service = Greeter.class` attribute make the `P9G2Greeter` class a `Greeter` service provider.
@@ -158,9 +158,9 @@ The [`@Component`](https://docs.osgi.org/javadoc/osgi.cmpn/7.0.0/org/osgi/servic
 The `Greeter` interface defines a method `greet(String)` with a `void` return value.
 
 ```{literalinclude} ./apis-as-osgi-services/resources/liferay-p9g2.zip/p9g2-impl/src/main/java/com/acme/p9g2/internal/P9G2Greeter.java
-   :dedent: 1
-   :language: java
-   :lines: 10-13
+:dedent: 1
+:language: java
+:lines: 10-13
 ```
 
 The example `greet` method prints an enthusiastic greeting using the given name.
@@ -170,7 +170,7 @@ The example `greet` method prints an enthusiastic greeting using the given name.
 Here is the implementation module `build.gradle` file.
 
 ```{literalinclude} ./apis-as-osgi-services/resources/liferay-p9g2.zip/p9g2-impl/build.gradle
-   :language: groovy
+:language: groovy
 ```
 
 It includes a compile-time dependency on the `p9g2-api` module project because it requires the module's `Greeter` class.
@@ -211,7 +211,7 @@ You have *defined* a service capability called `Greeter` and *provided* it in a 
 * [Gogo Shell Commands](./using-the-gogo-shell/gogo-shell-commands.md)
 * [Exporting Packages](./exporting-packages.md)
 * [Importing Packages](./importing-packages.md)
-* [Configuring Dependencies](./configuring-dependencies/configuring-dependencies.md)
+* [Configuring Dependencies](./configuring-dependencies.md)
 * [Getting started with OSGi at OSGi EnRoute](https://enroute.osgi.org/)
 * [Declarative Services](https://enroute.osgi.org/FAQ/300-declarative-services.html)
 * [OSGi Alliance](https://www.osgi.org/)

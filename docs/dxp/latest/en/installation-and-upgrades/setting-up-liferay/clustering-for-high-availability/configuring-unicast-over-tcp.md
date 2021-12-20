@@ -2,12 +2,6 @@
 
 If your network configuration or the geographical distance between cluster nodes prevents you from using [UDP Multicast clustering](./configuring-cluster-link.md#using-multicast-over-udp), you can configure TCP Unicast. You must use this if you have a firewall separating any of your nodes or if your nodes are in different geographical locations.
 
-**Contents:**
-
-* [Unicast Configurations](#unicast-configurations)
-* [Alternative Discovery Protocols](#alternative-discovery-protocols)
-* [Using Different Control and Transport Channel Ports](#using-different-control-and-transport-channel-ports)
-
 ## Unicast Configurations
 
 Use the following steps to configure Unicast:
@@ -69,7 +63,7 @@ Use the following steps to configure Unicast:
         port_range="0"/>
     ```
 
-1. Modify the [Cluster Link properties](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html#Cluster%20Link) in each node's [`portal-ext.properties` file](../../reference/portal-properties.md) to enable Cluster Link and point to the TCP XML file for each Cluster Link channel:
+1. Modify the [Cluster Link properties](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#Cluster%20Link) in each node's [`portal-ext.properties` file](../../reference/portal-properties.md) to enable Cluster Link and point to the TCP XML file for each Cluster Link channel:
 
     ```properties
     cluster.link.enabled=true
@@ -141,7 +135,7 @@ The following steps use Unicast over TCPPing to demonstrate the approach.
     * `tcp-control.xml`
     * `tcp-transport.xml`
 
-1. Modify the [Cluster Link properties](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html#Cluster%20Link) in the node's [`portal-ext.properties` file](../../reference/portal-properties.md) to enable Cluster Link and point to the TCP XML file for each Cluster Link channel:
+1. Modify the [Cluster Link properties](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#Cluster%20Link) in the node's [`portal-ext.properties` file](../../reference/portal-properties.md) to enable Cluster Link and point to the TCP XML file for each Cluster Link channel:
 
     ```properties
     cluster.link.enabled=true
@@ -200,9 +194,9 @@ Here are example TCP and TCPPing elements using the bind ports on nodes running 
     port_range="0"/>
 ```
 
-If you have added entities that can be cached or you want to tune the cache configuration for your system, you can do so using a module. <!--TODO Link to caching articles. jhinkey -->
+If you have added entities that can be cached or you want to tune the cache configuration for your system, you can do so using a module. For information on configuring cache, please see [Cache Configuration](https://help.liferay.com/hc/en-us/articles/360035581451-Introduction-to-Cache-Configuration).
 
 ## Additional Information
 
 * [Configuring Cluster Link](./configuring-cluster-link.md)
-* [Clustering for High Availability](./clustering-for-high-availability.md)
+* [Clustering for High Availability](../clustering-for-high-availability.md)

@@ -8,9 +8,9 @@ Liferay DXPにはJava JDK 8または11が必要です。 JDKの選択には [互
 
 これらのファイルを [ヘルプセンター](https://customer.liferay.com/downloads) （サブスクリプション）または [Liferayコミュニティダウンロード](https://www.liferay.com/downloads-community)からダウンロードします。
 
-  - DXP WARファイル
-  - 依存関係のZIPファイル
-  - OSGi依存関係のZIPファイル
+* DXP WARファイル
+* 依存関係のZIPファイル
+* OSGi依存関係のZIPファイル
 
 WebLogicにLiferay DXPをインストールするには、次の手順が必要です。
 
@@ -35,8 +35,8 @@ NativeVersionEnabled=false
 StartScriptEnabled=true
 ```
 
-``` note::
-   By default, SSL is used with Node Manager. If you want to disable SSL during development, for example, set ``SecureListener=false`` in your ``nodemanager.properties`` file.
+```{note}
+By default, SSL is used with Node Manager. If you want to disable SSL during development, for example, set `SecureListener=false` in your `nodemanager.properties` file.
 ```
 
 詳細については、Oracleの [Configuring Java Node Manager](https://docs.oracle.com/middleware/1212/wls/NODEM/java_nodemgr.htm#NODEM173) ドキュメントを参照してください。
@@ -56,8 +56,8 @@ WebLogicスクリプトおよび管理対象サーバーの変数とオプショ
 
     DXPはこのサーバーを必要としないため、 `DERBY_FLAG` 設定は、WebLogicに組み込まれたDerbyサーバーを無効にします。 残りの設定は、DXPのメモリ要件、UTF-8要件、Luceneの使用、およびAspectJによるアスペクト指向プログラミングをサポートしています。
 
-    ``` important::
-       DXPが適切に機能するには、アプリケーションサーバーJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
+    ```{important}
+    DXPが適切に機能するには、アプリケーションサーバーJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
     ```
 
     また、マシン上のWebLogicサーバーを含むフォルダーに `MW_HOME` を設定してください。 例:
@@ -108,8 +108,8 @@ DXPをインストールする前に、 [*Liferay Home*](../../reference/liferay
 
 <!-- end list -->
 
-``` note::
-   If you need to update ``portal-ext.properties`` after DXP deploys, it is in the user domain's ``autodeploy/ROOT/WEB-INF/classes`` folder. Note that the ``autodeploy/ROOT`` folder contains the DXP deployment.
+```{note}
+If you need to update `portal-ext.properties` after DXP deploys, it is in the user domain's `autodeploy/ROOT/WEB-INF/classes` folder. Note that the `autodeploy/ROOT` folder contains the DXP deployment.
 ```
 
 ## DXP依存関係のインストール
@@ -161,7 +161,7 @@ Liferay DXPは、DXPの組み込みデータソース（推奨）またはアプ
 
 ## メールサーバーに接続
 
-組み込みのメールセッションを使用して、Liferay DXP [をメールサーバー](../../setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md) 接続できます。 WebLogicのメールセッションを使用することもできます。
+組み込みのメールセッションを使用して、Liferay DXP [をメールサーバー](../../setting-up-liferay/configuring-mail.md) 接続できます。 WebLogicのメールセッションを使用することもできます。
 
 1.  WebLogicを起動し、管理サーバーのコンソールにログインします。
 
@@ -208,12 +208,12 @@ Liferay DXP Enterpriseサブスクリプションをお持ちの場合、DXPは�
 
 WebLogicでDXPを実行しています。
 
-``` note::
-   Adjust the application server's logging level or log filters to avoid excessive benign log messages such as the ones below involving ``PhaseOptimizer``.
+```{note}
+Adjust the application server's logging level or log filters to avoid excessive benign log messages such as the ones below involving `PhaseOptimizer`.
 ```
 
 ``` 
- May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
+May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
      WARNING: Skipping pass gatherExternProperties
 May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass process
      WARNING: Skipping pass checkControlFlow
@@ -224,10 +224,10 @@ May 02, 2018 9:12:27 PM com.google.javascript.jscomp.PhaseOptimizer$NamedPass pr
 
 ## 次のステップ
 
-[管理者ユーザーとしてサインイン](../../../getting-started/introduction-to-the-admin-account.md)して、[DXPでソリューションの構築](../../../building-solutions-on-dxp/README.md)を開始できます。 または、[Liferay DXPのその他のセットアップ](../../setting-up-liferay.md)トピックを参照できます。
+[管理者ユーザーとしてサインイン](../../../getting-started/introduction-to-the-admin-account.md)して、[DXPでソリューションの構築](../../../building-solutions-on-dxp/README.rst)を開始できます。 または、[Liferay DXPのその他のセットアップ](../../setting-up-liferay.md)トピックを参照できます。
 
-  - [Installing the Marketplace Plugin](../../../system-administration/installing-and-managing-apps/getting-started/using-marketplace.md#appendix-installing-the-marketplace-plugin)
-  - [試用期間中のEEプラグインへのアクセス](../../../system-administration/installing-and-managing-apps/installing-apps/accessing-ee-plugins-during-a-trial-period.md)
-  - [検索エンジンのインストール](../../../using-search/installing-and-upgrading-a-search-engine/introduction-to-installing-a-search-engine.md)
-  - [Securing Liferay DXP](../../securing-liferay/introduction-to-securing-liferay.md)
-  - [高可用性のクラスタリング](../../setting-up-liferay/clustering-for-high-availability.md)
+* [マーケットプレイスプラグインのインストール](../../../system-administration/installing-and-managing-apps/using-marketplace.md#appendix-installing-the-marketplace-plugin)
+* [試用期間中のEEプラグインへのアクセス](../../../system-administration/installing-and-managing-apps/installing-apps/accessing-ee-plugins-during-a-trial-period.md)
+* [検索エンジンのインストール](../../../using-search/installing-and-upgrading-a-search-engine/installing-a-search-engine.md)
+* [Securing Liferay DXP](../../securing-liferay.md)
+* [高可用性のクラスタリング](../../setting-up-liferay/clustering-for-high-availability.md)

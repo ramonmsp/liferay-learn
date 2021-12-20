@@ -2,20 +2,20 @@
 
 After [setting up Elasticsearch](./installing-elasticsearch.md), you must connect Liferay to it using the Liferay Connector to Elasticsearch. Connection steps depend on the [connector](#available-liferay-elasticsearch-connectors) you're configuring:
 
-* Liferay 7.3: Liferay Connector to Elasticsearch is included in the Liferay DXP 7.3 and CE 7.3 GA4+. It's also available on [Liferay Marketplace](../../../system-administration/installing-and-managing-apps/getting-started/using-marketplace.md).
-* Liferay 7.2: Liferay Connector to Elasticsearch is available on [Liferay Marketplace](../../../system-administration/installing-and-managing-apps/getting-started/using-marketplace.md).
+* Liferay 7.3: Liferay Connector to Elasticsearch is included in the Liferay DXP 7.3 and CE 7.3 GA4+. It's also available on [Liferay Marketplace](../../../system-administration/installing-and-managing-apps/using-marketplace.md).
+* Liferay 7.2: Liferay Connector to Elasticsearch is available on [Liferay Marketplace](../../../system-administration/installing-and-managing-apps/using-marketplace.md).
 
 Notable installation and configuration procedure differences are presented here. 
 
-```important::
-   Stop each Liferay server node before configuring the connection.
+```{important}
+Stop each Liferay server node before configuring the connection.
 ```
 
 If you're on Liferay 7.2, skip to [Liferay 7.2: Installing Elasticsearch 7 Connector](#liferay-7-2-installing-elasticsearch-7-connector).
 
 ## Configuring the Connector
 
-The Elasticsearch 7 connector is configured for Liferay 7.3 via a configuration file named `com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConfiguration.config`. 
+The Elasticsearch 7 connector is configured for Liferay 7.3+ via a configuration file named `com.liferay.portal.search.elasticsearch7.configuration.ElasticsearchConfiguration.config`. 
 
 After specifying the configuration in the file, you can deploy it by placing it into your `[Liferay Home]/osgi/configs/` folder.
 
@@ -29,7 +29,7 @@ Alternatively, you can configure the connector in the user interface. In the Glo
 
 > In Liferay 7.2, The Control Panel is in the Product Menu (![Product Menu](../../../images/icon-product-menu.png)).
 
-A simple 7.3 connector configuration enables production mode (`productionModeEnabled="true"`) and sets the URL to each Elasticsearch node (`networkHostAddresses=["http://es-node:9200"]`).
+A simple Liferay 7.3+ connector configuration enables production mode (`productionModeEnabled="true"`) and sets the URL to each Elasticsearch node (`networkHostAddresses=["http://es-node:9200"]`).
 
 1. Create the following configuration file:
 
@@ -40,10 +40,10 @@ A simple 7.3 connector configuration enables production mode (`productionModeEna
 1. Specify the configuration properties in the `.config` file. Here's an example that includes [security properties](./securing-elasticsearch.md) commented out (note that you'd need to use `https` network host addresses when encryption is enabled):
 
     ```properties
-    # In CE/DXP7.3, productionModeEnabled replaces operationMode (deprecated):
+    # In CE/DXP7.3+, productionModeEnabled replaces operationMode (deprecated):
     productionModeEnabled=B"true"
     networkHostAddresses=["http://es-node1:9200","http://es-node3:9201","http://es-node3:9202"]
-    # In CE/DXP 7.3 the security settings are included in the ElasticsearchConfiguration
+    # In CE/DXP 7.3+ the security settings are included in the ElasticsearchConfiguration
     # In CE/DXP 7.2 the security settings go in com.liferay.portal.search.elasticsearch7.configuration.XPackSecurityConfiguration.config
     # Authentication
     #authenticationEnabled=B"true"
@@ -64,14 +64,14 @@ A simple 7.3 connector configuration enables production mode (`productionModeEna
 1. Place the `.config` file in your `[Liferay Home]/osgi/configs` folder.
 
 
-```tip::
-   The connectors contain many configuration settings. See the `Elasticsearch Connector Settings <./elasticsearch-connector-configuration-reference.md>`_ for their definitions. Most of the configurations correspond to settings available in `Elasticsearch <https://www.elastic.co/guide/en/elasticsearch/reference/7.x/index.html>`_.
+```{tip}
+The connectors contain many configuration settings. See the [Elasticsearch Connector Settings](./elasticsearch-connector-configuration-reference.md) for their definitions. Most of the configurations correspond to settings available in [Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/7.x/index.html).
 ```
 
 To refer to Elasticsearch servers by name, map each Elasticsearch server name to its IP address in your DNS or your Liferay server's `/etc/hosts` file.
 
-```tip::
-  The network host address format is ``http[s]://[host name]:[port]``. If you're using a Liferay Docker container, you can use ``--add-host [host name]:[IP address]`` options with your ``docker run`` command to map a host name to each Elasticsearch server IP address. The port is defined in the Elasticsearch container's docker run command as the first value of the ``-p 1234:5678`` option (it's ``1234`` in this case). If you're running a local test environment without HTTPS enabled, all the addresses can be ``http://localhost:port``. See `Docker's documentation <https://docs.docker.com/engine/reference/run/#managing-etchosts>`_ for more details.
+```{tip}
+The network host address format is `http[s]://[host name]:[port]`. If you're using a Liferay Docker container, you can use `--add-host [host name]:[IP address]` options with your `docker run` command to map a host name to each Elasticsearch server IP address. The port is defined in the Elasticsearch container's docker run command as the first value of the `-p 1234:5678` option (it's `1234` in this case). If you're running a local test environment without HTTPS enabled, all the addresses can be `http://localhost:port`. See [Docker's documentation](https://docs.docker.com/engine/reference/run/#managing-etchosts) for more details.
 ```
 
 ## Liferay 7.2: Installing Elasticsearch 7 Connector
@@ -103,20 +103,20 @@ On Liferay 7.2, the bundled connector application and APIs are for Elasticsearch
 
     When you start the Liferay server (not yet), Liferay reads this file and blocks the declared bundles from starting.
 
-    ```tip::
-      **Docker:** ``Liferay Home`` and other important folders of a Liferay installation are accessed in a Docker container at ``/mnt/liferay`` as described `here <../../../installation-and-upgrades/installing-liferay/using-liferay-docker-images/container-lifecycle-and-api.md#api>`_. You can use ``docker cp /path/to/local/file [container_name]:/mnt/liferay/files/osgi/configs`` to place configuration files into the container. Later, you can use ``docker cp`` to deploy the Liferay Connector to Elasticsearch 7 LPKG file.
+    ```{tip}
+    **Docker:** `Liferay Home` and other important folders of a Liferay installation are accessed in a Docker container at `/mnt/liferay` as described [here](../../../installation-and-upgrades/installing-liferay/using-liferay-docker-images/container-lifecycle-and-api.md#api). You can use `docker cp /path/to/local/file [container_name]:/mnt/liferay/files/osgi/configs` to place configuration files into the container. Later, you can use `docker cp` to deploy the Liferay Connector to Elasticsearch 7 LPKG file.
     ```
 
 ### Install the Elasticsearch 7 Connector
 
 1. Download the Liferay Connector to Elasticsearch 7.
 
-   Make sure the connector corresponds to your Elasticsearch version. Note, the client libraries in the connector can be for an older version of Elasticsearch (e.g., 7.3) even though the connector application supports a newer version (e.g., 7.9.x). Liferay tests the connector with every minor Elasticsearch version and creates new update connector versions when needed. As always, consult the [Search Engine Compatibility Matrix](https://help.liferay.com/hc/en-us/articles/360016511651) for connector compatibility.
+   Make sure the connector corresponds to your Elasticsearch version. Note, the client libraries in the connector can be for an older version of Elasticsearch (e.g., 7.14.1) even though the connector application supports a newer version (e.g., 7.15.1). Liferay tests the connector with every minor Elasticsearch version and creates new update connector versions when needed. As always, consult the [Search Engine Compatibility Matrix](https://help.liferay.com/hc/en-us/articles/360016511651) for connector compatibility.
 
    * CE: [Liferay CE Connector to Elasticsearch 7](https://web.liferay.com/en/marketplace/-/mp/application/170642090)
    * DXP: [Liferay Connector to Elasticsearch 7](https://web.liferay.com/en/marketplace/-/mp/application/170390307)
 
-1. [Install the LPKG](../../../system-administration/installing-and-managing-apps/installing-apps/installing-apps.md) by placing it in the folder
+1. [Install the LPKG](../../../system-administration/installing-and-managing-apps/installing-apps.md) by placing it in the folder
 
    ```bash
    [Liferay Home]/deploy
@@ -162,7 +162,7 @@ If Elasticsearch is [installed and running](./installing-elasticsearch.md), star
 
 Re-index the search indexes and spell check indexes. Invoke both of these actions in the Index Actions tab of Control Panel &rarr; Configuration &rarr; Search.
 
-On Liferay 7.3, Re-index the [Workflow Metrics](../../../process-automation/workflow/using-workflows/using-workflow-metrics.md) indexes from the Workflow Metrics Settings window: 
+On Liferay 7.3+, Re-index the [Workflow Metrics](../../../process-automation/workflow/using-workflows/using-workflow-metrics.md) indexes from the Workflow Metrics Settings window: 
 
 1. From the Global Menu (![Applications Menu](../../../images/icon-applications-menu.png)) navigate to Applications &rarr; Workflow Metrics. 
 
@@ -170,8 +170,8 @@ On Liferay 7.3, Re-index the [Workflow Metrics](../../../process-automation/work
 
 1. Click _Reindex All_. Repeat this operation for each Virtual Instance in your system.
 
-```note::
-   If you have Elasticsearch indexes used for primary data storage (storing data not backed by a database) you can bring that data into your new Elasticsearch cluster using the `snapshot and restore approach <./upgrading-elasticsearch/backing-up-elasticsearch.md>`__. Liferay's own Search Tuning indexes (for Result Rankings and Synyonyms) are primary storage indexes.
+```{note}
+If you have Elasticsearch indexes used for primary data storage (storing data not backed by a database) you can bring that data into your new Elasticsearch cluster using the [snapshot and restore approach](./upgrading-elasticsearch/backing-up-elasticsearch.md)_. Liferay's own Search Tuning indexes (for Result Rankings and Synyonyms) are primary storage indexes.
 ```
 
 Now Liferay is indexing content into your remote Elasticsearch 7 installation.
@@ -182,6 +182,7 @@ The bundled connector to Elasticsearch is not always the best choice for your in
 
 | Liferay CE/DXP Version | Name | Availability | Communication Protocol | Supports Secure Connection | Operation Modes |
 | ---------------------- | ---- | ------------ | ---------------------- | -------------------------- | --------------- |
+| Liferay 7.4, all varieties | Liferay Connector to Elasticsearch 7 | Bundled | [HTTP](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.x/java-rest-overview.html) | &#10004; | Sidecar / Remote (Production)\* |
 | CE 7.3 GA4+, DXP 7.3 GA1+ | Liferay (CE) Connector to Elasticsearch 7 | Bundled | [HTTP](https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.x/java-rest-overview.html) | &#10004; | Sidecar / Remote (Production)\* |
 | CE 7.2, DXP 7.2 | Liferay Connector (CE) to Elasticsearch 6 | Bundled | [Transport](https://www.elastic.co/guide/en/elasticsearch/client/java-api/6.x/transport-client.html) | &#10004;\*\* (requires [LES](https://www.liferay.com/products/dxp/enterprise-search)) | Embedded / Remote |
 | CE 7.2, DXP 7.2 | Liferay Connector (CE) to Elasticsearch 7 (v3.x) | Marketplace: [CE](https://web.liferay.com/marketplace/-/mp/application/170642090), [DXP](https://web.liferay.com/marketplace/-/mp/application/170390307) | [Transport](https://www.elastic.co/guide/en/elasticsearch/client/java-api/7.x/transport-client.html) | &#10004; |  Embedded / Remote |
@@ -201,6 +202,6 @@ Now that Liferay is connected to Elasticsearch, you can start using Elasticsearc
 * [Securing Elasticsearch](./securing-elasticsearch.md)
 * [Elasticsearch Connector Settings](./elasticsearch-connector-configuration-reference.md)
 * [Using the Sidecar or Embedded Elasticsearch](./using-the-sidecar-or-embedded-elasticsearch.md)
-* [Liferay Enterprise Search](../../liferay_enterprise_search.html)
+* [Liferay Enterprise Search](../../liferay-enterprise-search.html)
 * [Search Pages](../../search-pages-and-widgets/working-with-search-pages/search-pages.md)
-* [Administering and Tuning Search](../../search_administration_and_tuning.html)
+* [Administering and Tuning Search](../../search-administration-and-tuning.html)

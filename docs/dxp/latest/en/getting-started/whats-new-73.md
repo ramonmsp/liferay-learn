@@ -78,7 +78,7 @@ In 7.3 we've added a new configuration to vocabularies in order to [set visibili
 
 ## Publication Management
 
-[Publications](../site-building/publishing-tools/publications/publications-overview.md) is a new feature that enables content creators to prepare changes and publish them on a schedule. If you must roll out a special, seasonal promotion that involves updating images, copy, and adding new pages, you can create a Publication and invite the necessary users to make their changes before publishing them. Multiple Publications can be worked on at a time, giving you the freedom to create many updates at once and roll them out on your schedule.
+[Publications](../site-building/publishing-tools/publications.md) is a new feature that enables content creators to prepare changes and publish them on a schedule. If you must roll out a special, seasonal promotion that involves updating images, copy, and adding new pages, you can create a Publication and invite the necessary users to make their changes before publishing them. Multiple Publications can be worked on at a time, giving you the freedom to create many updates at once and roll them out on your schedule.
 
 ![Publications provide a way to update your Site on a schedule of your choosing.](./whats-new-73/images/09.gif)
 
@@ -138,7 +138,7 @@ If you use your site to support products, the new [Questions app](../collaborati
 
 ![App Builder provides an in-browser development environment for low-code applications.](./whats-new-73/images/19.png)
 
-[App Builder](../developing-applications/developing-low-code-applications/app-builder-overview.md) is a new low-code application development solution for Liferay DXP backed by the Data Engine. It empowers business users with an intuitive GUI to define forms and table views and leverage workflows to build applications with the goal of digitizing and automating business processes. Applications can be deployed in standalone fashion or added to pages as a widget or through the product menu.
+[App Builder](../building-applications/app-builder.md) is a new low-code application development solution for Liferay DXP backed by the Data Engine. It empowers business users with an intuitive GUI to define forms and table views and leverage workflows to build applications with the goal of digitizing and automating business processes. Applications can be deployed in standalone fashion or added to pages as a widget or through the product menu.
 
 ### Form View Rules and Field Sets
 
@@ -154,7 +154,7 @@ Fieldsets are fields grouped together, and App Builder's fieldsets make it easy 
 
 > Subscription Required
 
-App Builder contains a [workflow process for approvals](../developing-applications/developing-low-code-applications/creating-a-workflow-powered-application.md). You can define the stages of the process and specify what information should be requested and/or displayed in each step of the application. You can also make use of [Workflow Metrics](#workflow-metrics-improvements) to understand the performance and health of the App's processes. 
+App Builder contains a [workflow process for approvals](../building-applications/app-builder/creating-a-workflow-powered-application.md). You can define the stages of the process and specify what information should be requested and/or displayed in each step of the application. You can also make use of [Workflow Metrics](#workflow-metrics-improvements) to understand the performance and health of the App's processes. 
 
 ![Process-Driven Apps](./whats-new-73/images/22.png)
 
@@ -254,7 +254,7 @@ A new SAML property was introduced: *Unknown users are strangers*. This property
 
 ### OAuth 2 configuration on instance level
 
-The [OAuth 2](../headless-delivery/using-oauth2/using-oauth2.md) application scopes screen has been simplified, so you have more control over the presentation of scopes during application authorization requests. For example, two scopes relating to two separate API applications can be presented as if they are one.
+The [OAuth 2](../headless-delivery/using-oauth2.md) application scopes screen has been simplified, so you have more control over the presentation of scopes during application authorization requests. For example, two scopes relating to two separate API applications can be presented as if they are one.
 
 Expired authorizations can now be configured to be removed. After the expired authorizations afterlife duration, the authorization data is automatically removed by a scheduled process running in the background.
 
@@ -348,4 +348,4 @@ Liferay has begun transitioning big portions of its internal UI to React. As a s
 
 ### Upgrade Improvements 
 
-Many reliability improvements have been added to the [upgrade process](../installation-and-upgrades/upgrading-liferay/upgrade-basics/upgrade-overview.md). The upgrade process has been unified between Core and Modules. Auto upgrade behavior can be controlled by a new portal property: `upgrade.database.auto.run`. 
+Many reliability improvements have been added to the [upgrade process](../installation-and-upgrades/upgrading-liferay/upgrade-basics.md). The upgrade process has been unified between Core and Modules. Auto upgrade behavior can be controlled by a new portal property: `upgrade.database.auto.run`. 

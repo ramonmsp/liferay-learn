@@ -37,13 +37,13 @@ Liferay DXP is the commercially supported and enterprise ready platform used aro
 1. Get the Docker image.
 
     ```bash
-    docker pull [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+    docker pull [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
     ```
 
 1. Start the Docker image.
 
     ```bash
-    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+    docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
     ```
 
 1. Open your browser to `https://localhost:8080`.
@@ -54,4 +54,4 @@ Continue our Getting Started walkthrough and learn about logging in for the firs
 
 Doing more than just checking things out? See the [Installing a Liferay-Tomcat Bundle](../installation-and-upgrades/installing-liferay/installing-a-liferay-tomcat-bundle.md) to learn more.
 
-Learn more about [using Docker images](../installation-and-upgrades/installing-liferay/using-liferay-docker-images/docker-container-basics.md).
+Learn more about [using Docker images](../installation-and-upgrades/installing-liferay/using-liferay-docker-images.md).

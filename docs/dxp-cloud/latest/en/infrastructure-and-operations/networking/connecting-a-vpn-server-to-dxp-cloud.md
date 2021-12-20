@@ -46,8 +46,8 @@ For example, you may need to connect your DXP Cloud services to directories or a
 
     ![Add one or more port forwarding routes before creating the VPN connection.](./connecting-a-vpn-server-to-dxp-cloud/images/03.png)
 
-    ```tip::
-       Add more port forwarding routes by clicking the + icon on the right side. Remove added routes by clicking the Trash icon to the side of the existing route.
+    ```{tip}
+    Add more port forwarding routes by clicking the + icon on the right side. Remove added routes by clicking the Trash icon to the side of the existing route.
     ```
 
 1. Click *Create VPN*.
@@ -64,8 +64,8 @@ Navigate to your environment's _Settings_ page and then click on the configured 
 
 ![Click on the configured VPN connection to see the VPN details page.](./connecting-a-vpn-server-to-dxp-cloud/images/05.png)
 
-```note::
-   The status of the VPN (connected or not connected) is visible both from the VPN details page, as well as the VPN section of the `Settings` page of your environment.
+```{note}
+The status of the VPN (connected or not connected) is visible both from the VPN details page, as well as the VPN section of the `Settings` page of your environment.
 ```
 
 ### Connecting and Disconnecting the VPN
@@ -76,8 +76,8 @@ The VPN details page indicates whether or not the VPN is already connected in th
 
 The VPN attempts to connect after clicking the button. If the connection fails, then the failed attempt displays in the _Related Activities_ section of the details page.
 
-```tip::
-   You can manually test the connectivity of your services to an IP address through your VPN by using the service's `shell <../../troubleshooting/shell-access.md>`__ to run a command like the following: ``curl -v [address]``.
+```{tip}
+You can manually test the connectivity of your services to an IP address through your VPN by using the service's [shell](../../troubleshooting/shell-access.md) to run a command like the following: `curl -v [address]`.
 ```
 
 While the connection is being established, the message "VPN connection attempt initiated" appears, and you cannot perform other management operations for your VPN until it completes. If you need to cancel the connection (for example, because an error is causing the connection to hang), then click "Cancel" on the pop-up.
@@ -86,8 +86,8 @@ While the connection is being established, the message "VPN connection attempt i
 
 To disconnect the VPN any time after the connection is established, click _Disconnect_ from the top-right Actions menu. This takes you to the _Disconnect VPN_ page.
 
-```warning::
-   Disconnecting the VPN will interrupt communications with any external services with DXP Cloud.
+```{warning}
+Disconnecting the VPN will interrupt communications with any external services with DXP Cloud.
 ```
 
 ![The Disconnect VPN page asks you to confirm the impact of disconnecting before proceeding.](./connecting-a-vpn-server-to-dxp-cloud/images/08.png)
@@ -101,6 +101,20 @@ You can change any details of the VPN configuration (including forwarding ports)
 To edit the configuration, go to the environment's details page, and then _Edit..._ from the top-right Actions menu. This displays the same screen as creating the VPN configuration for the first time.
 
 ![Click the Edit button from the Actions menu when the VPN is not connected to change the configuration.](./connecting-a-vpn-server-to-dxp-cloud/images/09.png)
+
+### Deleting the Configuration
+
+You can completely remove a VPN configuration by using the *Delete VPN* option.
+
+1. From your environment's Settings page, click the Actions menu for the VPN and click Delete VPN.
+
+1. On the Delete VPN page, check the checkbox to confirm the deletion. More checkboxes appear to confirm the effects if the VPN is connected at the time.
+
+    ![The Delete VPN page.](./connecting-a-vpn-server-to-dxp-cloud/images/10.png)
+
+1. Click Delete VPN at the bottom of the page.
+
+The VPN is deleted and can no longer be used for your environment. Add a new VPN configuration to connect to your environment instead.
 
 ## Additional Information
 

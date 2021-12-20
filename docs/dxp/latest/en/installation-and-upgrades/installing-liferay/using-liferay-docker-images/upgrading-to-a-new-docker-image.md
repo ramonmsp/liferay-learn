@@ -1,9 +1,9 @@
 # Upgrading to a New Docker Image
 
-As new Liferay versions are released as Docker images, you can upgrade to them. The [Upgrade Overview](../../upgrading-liferay/upgrade-basics/upgrade-overview.md) describes the process.
+As new Liferay versions are released as Docker images, you can upgrade to them. [Upgrade Basics](../../upgrading-liferay/upgrade-basics.md) describes the process.
 
-```important::
-   **Always** `back up <../../maintaining-a-liferay-dxp-installation/backing-up.md>`_ your data and installation before upgrading. Testing the upgrade process on backup copies is advised.
+```{important}
+**Always** [back up](../../maintaining-a-liferay-installation/backing-up.md) your data and installation before upgrading. Testing the upgrade process on backup copies is advised.
 ```
 
 Upgrading involves updating configurations, Marketplace applications, and custom code. Perhaps the biggest part of the upgrade is upgrading the Liferay database. There are two ways to upgrade the database:
@@ -14,4 +14,4 @@ Upgrading involves updating configurations, Marketplace applications, and custom
 
 ## What's Next
 
-Start by reading the [Upgrade Overview](../../upgrading-liferay/upgrade-basics/upgrade-overview.md). Then if you are interested in using auto-upgrade in the new container, see [Upgrading via Docker](../../upgrading-liferay/upgrade-basics/upgrading-via-docker.md). If your environment calls for using the Database Upgrade Tool, see [Using the Database Upgrade Tool](../../upgrading-liferay/upgrade-basics/using-the-database-upgrade-tool.md).
+Start by reading [Upgrade Basics](../../upgrading-liferay/upgrade-basics.md). Then if you are interested in using auto-upgrade in the new container, see [Upgrading via Docker](../../upgrading-liferay/upgrade-basics/upgrading-via-docker.md). If your environment calls for using the Database Upgrade Tool, see [Using the Database Upgrade Tool](../../upgrading-liferay/upgrade-basics/using-the-database-upgrade-tool.md).

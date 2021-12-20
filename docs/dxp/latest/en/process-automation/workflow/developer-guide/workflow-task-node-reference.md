@@ -62,7 +62,7 @@ These have a name and a [script](./using-the-script-engine-in-workflow.md) and a
 Workflow tasks are completed by a User. Assignments make sure the right users can access the tasks. You can choose how you want to configure your assignments. Assignments can be added to
 
 * Specific Roles
-* Multiple Roles of a Role type (Organization, Site, or regular Role types)
+* Multiple Roles of a Role type (Organization, Site, Asset Library, Account, or Regular Role types)
 * Asset creator
 * Resource actions
 * Specific Users
@@ -227,8 +227,8 @@ The above snippet demonstrates how to set up a reassignment action.
 
 Like `<action>` elements, `<timer-action>` elements can contain scripts. See [Using the Script Engine in Workflow](./using-the-script-engine-in-workflow.md) for more information.
 
-```note::
-   A `timer-action` can contain all the same tags as an `action`, with one exception: `execution-type`. Timer actions are always triggered once the time is up, so specifying and execution type of `onEntry`, for example, isn't meaningful inside a timer.
+```{note}
+A `timer-action` can contain all the same tags as an `action`, with one exception: `execution-type`. Timer actions are always triggered once the time is up, so specifying and execution type of `onEntry`, for example, isn't meaningful inside a timer.
 ```
 
 ## Additional Information

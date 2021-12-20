@@ -27,9 +27,5 @@ Auto Tagging
 Developer Guide
 ---------------
 
-- Implementing Asset Tags and Categories
-
-APIs
-~~~~
-
-Coming soon!
+-  :doc:`/content-authoring-and-management/tags-and-categories/developer-guide/categories-and-vocabulary-api-basics.md`
+-  :doc:`/content-authoring-and-management/tags-and-categories/developer-guide/tags-api-basics.md`

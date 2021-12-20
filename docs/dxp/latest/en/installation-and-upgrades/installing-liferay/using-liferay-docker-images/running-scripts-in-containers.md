@@ -23,8 +23,8 @@ Here are steps for setting up Configure Phase scripts using a bind mount.
     mkdir scripts
     ```
 
-    ```tip::
-       If you plan to `mount the container's /mnt/liferay folder <./providing-files-to-the-container.md#bind-mounting-a-host-folder-to-mnt-liferay>`_ already, you can put your Configure Phase scripts into a folder called ``scripts`` in your local mount folder to include in the Configure Phase. The ``[local-folder]/scripts`` folder would map to the container's ``/mnt/liferay/scripts`` folder.
+    ```{tip}
+    If you plan to [mount the container's /mnt/liferay folder](./providing-files-to-the-container.md#bind-mounting-a-host-folder-to-mnt-liferay) already, you can put your Configure Phase scripts into a folder called `scripts` in your local mount folder to include in the Configure Phase. The `[local-folder]/scripts` folder would map to the container's `/mnt/liferay/scripts` folder.
     ```
 
 1. Create a script(s) for executing your pre-configuration actions.
@@ -126,6 +126,6 @@ Now you know how to execute scripts in all parts of the container's lifecycle.
 
 ## Additional Information
 
-* [Docker Container Basics](./docker-container-basics.md)
+* [Using Liferay Docker Images](../using-liferay-docker-images.md)
 * [Container Lifecycle and API](./container-lifecycle-and-api.md)
 * [Providing Files to the Container](./providing-files-to-the-container.md)

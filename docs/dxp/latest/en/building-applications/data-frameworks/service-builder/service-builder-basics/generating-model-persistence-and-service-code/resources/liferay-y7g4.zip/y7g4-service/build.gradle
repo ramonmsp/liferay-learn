@@ -1,0 +1,8 @@
+buildService {
+	apiDir = "../y7g4-api/src/main/java"
+}
+
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "release.portal.api"
+	compileOnly project(":y7g4-api")
+}

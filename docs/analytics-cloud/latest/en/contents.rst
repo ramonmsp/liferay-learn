@@ -6,14 +6,14 @@ Contents
    :includehidden:
    :maxdepth: 3
 
-   getting_started
-   connecting_data_sources
+   getting-started
+   connecting-data-sources
    touchpoints
    people
    optimization
    apis
-   workspace_data
-   workspace_settings
+   workspace-data
+   workspace-settings
    troubleshooting
 
 Indices and tables

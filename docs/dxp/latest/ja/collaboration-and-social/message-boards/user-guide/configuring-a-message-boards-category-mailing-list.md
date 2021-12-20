@@ -4,7 +4,7 @@
 
 ## 前提条件
 
-メッセージボードアプリのメーリングリストを設定する前に、[Connecting to a Mail Server](../../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)の記事を参照し、DXPインスタンス全体にメールサーバーを設定する一般的な手順について確認してください。
+メッセージボードアプリのメーリングリストを設定する前に、[Configuring Mail](../../../installation-and-upgrades/setting-up-liferay/configuring-mail.md)の記事を参照し、DXPインスタンス全体にメールサーバーを設定する一般的な手順について確認してください。
 
 ## メッセージボードカテゴリにメーリングリストを追加する
 
@@ -41,11 +41,11 @@
 
 メーリングリストがこのカテゴリでアクティブになりました。 このカテゴリに登録したユーザーは、カテゴリ内の新しいスレッドに関する電子メール通知を受け取るようになりました。
 
-``` important::
-   カテゴリのメーリングリストにIMAP <https://support.google.com/mail/answer/7126229?hl=en>プロトコルを使用している場合は、メッセージをメーリングリストのユーザーに送信する電子メールクライアントによってメッセージがプルされたときにメッセージ<https://support.google.com/mail/answer/78892?hl=en>が削除されるようにIMAP受信トレイを設定してください。 そうしないと、サーバーに保持されている各電子メールメッセージは、カテゴリに新しい投稿や更新があるたびにメーリングリストに送信されます。
+```{important}
+カテゴリのメーリングリストにIMAP <https://support.google.com/mail/answer/7126229?hl=en>プロトコルを使用している場合は、メッセージをメーリングリストのユーザーに送信する電子メールクライアントによってメッセージがプルされたときにメッセージ<https://support.google.com/mail/answer/78892?hl=en>が削除されるようにIMAP受信トレイを設定してください。 そうしないと、サーバーに保持されている各電子メールメッセージは、カテゴリに新しい投稿や更新があるたびにメーリングリストに送信されます。
 ```
 
 ## 関連情報
 
-  - [Connecting to a Mail Server](../../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)
+  - [Configuring Mail](../../../installation-and-upgrades/setting-up-liferay/configuring-mail.md)
   - [Creating Message Board Categories](./creating-message-boards-categories.md)

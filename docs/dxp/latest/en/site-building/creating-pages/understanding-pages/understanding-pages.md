@@ -18,8 +18,8 @@ There are several page types available when you [add a page](../adding-pages/add
 
 ![You must select a page type when adding pages.](./understanding-pages/images/01.png)
 
-```tip::
-   The Page Type of the currently viewed page appears at the top of the page to help you determine the administration options you have and where you need to go to configure the page.
+```{tip}
+The Page Type of the currently viewed page appears at the top of the page to help you determine the administration options you have and where you need to go to configure the page.
 ```
 
 ### Content Pages
@@ -31,7 +31,7 @@ Content Pages enable users to build professional pages that can be easily manage
 Using Content Pages allows access to additional powerful features and benefits:
 
 * [Personalized and Adaptive Site Experiences](../../personalizing-site-experience/personalizing-site-experience.md)
-* [A/B Testing](../../optimizing_sites.html)
+* [A/B Testing](../../optimizing-sites/ab-testing/ab-testing.md)
 * Approachable Content and Site Building Experience
 
 To learn more about Content Pages, see the [Content Page Overview](../building-and-managing-content-pages/content-pages-overview.md). To jump right into building one, see [Adding Elements to Content Pages](../building-and-managing-content-pages/adding-elements-to-content-pages.md).
@@ -83,8 +83,8 @@ Pages can also be created in a hierarchical fashion by creating Child Pages. Chi
 
 ![You can add a child Page to a top-level page to organize pages hierarchically.](./understanding-pages/images/06.png)
 
-```tip::
-  You can navigate among pages of a Site hierarchy with the Site Map application. A Site Administrator can configure a root page and a display depth. The display depth of the Site Map application determines how many levels of nested pages to display.
+```{tip}
+You can navigate among pages of a Site hierarchy with the Site Map application. A Site Administrator can configure a root page and a display depth. The display depth of the Site Map application determines how many levels of nested pages to display.
 ```
 
 ## Related Information

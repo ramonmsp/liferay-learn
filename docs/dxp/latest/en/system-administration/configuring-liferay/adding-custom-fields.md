@@ -21,7 +21,7 @@ Many of Liferay's assets and resources can be extended with custom fields. Addin
 * Web Content Folder
 * Wiki Page
 
-There are many reasons for using custom fields. Here's one example. 
+There are many reasons for using custom fields. Here's one example.
 
 **Max Role Use Case**: Suppose you want to limit the number of users that can be assigned to a particular Role on your Site. To accomplish this, you could create a *max-users* custom field for the Role. Then ask your developer to create logic to keep track and prevent more Users to be added once the set limit was reached.
 
@@ -61,7 +61,9 @@ Follow these steps to see how a custom field can be created for the example use 
 
     Click the *Save* button to save your changes.
 
-    **Note**: The Field Name is the identifier stored in your database and the name that is used by the developer to access the custom field. 
+    ```{note} 
+    The Field Name is the identifier stored in your database and the name that is used by the developer to access the custom field.
+    ``` 
 
 Once you have created a custom field, you can find it in the UI of the resource you created it for. Navigate to the resource, and the custom field is displayed in the UI.
 

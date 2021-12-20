@@ -54,8 +54,8 @@
 
 
 
-``` note::
-   Liferay CE 7.3.1 GA2 および Liferay DXP 7.2 SP3+ の時点で、サイトロールを `User Segments <../../site-building/personalizing-site-experience/segmentation/creating-and-managing-user-segments.md>`__ に割り当てることができます。 詳細については、`ユーザーセグメントにロールを割り当てる <./assigning-roles-to-user-segments.md>`_ を参照してください。
+```{note}
+Liferay CE 7.3.1 GA2 および Liferay DXP 7.2 SP3+ の時点で、サイトロールを [User Segments](../../site-building/personalizing-site-experience/segmentation/creating-and-managing-user-segments.md)_ に割り当てることができます。 詳細については、[ユーザーセグメントにロールを割り当てる](./assigning-roles-to-user-segments.md) を参照してください。
 ```
 
 
@@ -93,7 +93,7 @@
 | 単一のアセットライブラリ | 組織 <br />ユーザーグループ <br /> 個別ユーザー |
 
 
-1.  [Asset Library](../../site-building/understanding-asset-libraries.md) メニュー→People→Membershipsに移動します。
+1.  [Asset Library](../../content-authoring-and-management/asset-libraries/asset-libraries-overview.md) メニュー→People→Membershipsに移動します。
 
 2.  ロールを割り当てるメンバーシップタイプのタブをクリックします。 サイトと同様に、アセットライブラリはユーザー（つまり、個々のサイトメンバー）、組織、またはユーザーグループに割り当てられます。
 

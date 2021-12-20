@@ -4,8 +4,8 @@ Liferay DXPの最新バージョンは、Dockerイメージとして入手でき
 
 1.  Liferay DXPを入手します。
 
-    ``` tip::
-       Dockerをお持ちではありませんか？ まずは `Linux <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_ | `Windows <https://docs.docker.com/docker-for-windows/install/>`_ | `OSX <https://docs.docker.com/docker-for-mac/install/>`_ に移動してください。
+    ```{tip}
+    Dockerをお持ちではありませんか？ まずは [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/) | [Windows](https://docs.docker.com/docker-for-windows/install/) | [OSX](https://docs.docker.com/docker-for-mac/install/) に移動してください。
     ```
 
     ``` bash
@@ -18,13 +18,13 @@ Liferay DXPの最新バージョンは、Dockerイメージとして入手でき
     docker run -it -p 8080:8080 liferay/portal:7.3.0-ga1
     ```
 
-    ``` tip::
-       起動の完了を示す「org.apache.catalina.startup.Catalina.start Server startup in [x] milliseconds」が表示されるまで待ちます。
+    ```{tip}
+    起動の完了を示す「org.apache.catalina.startup.Catalina.start Server startup in [x] milliseconds」が表示されるまで待ちます。
     ```
 
 3.  ブラウザで`https://localhost:8080`を開きます。
 
-    ![Liferay DXPの最初のランディングページ。](./starting-with-a-dxp-docker-image/images/01.png)
+    ![Liferay DXPの最初のランディングページ。](./starting-with-a-docker-image/images/01.png)
 
 ## 次のステップ
 
@@ -32,4 +32,4 @@ Liferay DXPの最新バージョンは、Dockerイメージとして入手でき
 
 状況をチェックする以上のことをしますか？ 詳細については、[Installing a Liferay DXP Tomcat Bundle](../installation-and-upgrades/installing-liferay/installing-a-liferay-dxp-tomcat-bundle.md)を参照してください。
 
-Liferay DXPで構築できるものについて詳しく知りたいですか？ [Build Solutions on DXP](../building-solutions-on-dxp/README.md)を参照してください。
+Liferay DXPで構築できるものについて詳しく知りたいですか？ [Build Solutions on DXP](../installation-and-upgrades/installing-liferay/using-liferay-docker-images.md)を参照してください。

@@ -16,6 +16,8 @@
         * [Initial Bnd Content](#initial-bnd-content)
         * [Export API Packages](#export-api-packages)
 * [build.gradle](#buildgradle)
+* [Applying the Java Workspace Template to Your Project](#applying-the-java-workspace-template-to-your-project)
+* [Opening Permissions on Your Scripts](#opening-permissions-on-your-scripts)
 * [Packages](#packages)
     * [Package Names for Extensions or Implementations](#package-names-for-extensions-or-implementations)
     * [Portlet Package Names](#portlet-package-names)
@@ -37,12 +39,13 @@
         * [Labels and Headings](#labels-and-headings)
     * [Logging Output](#logging-output)
         * [Logging an Exception](#logging-an-exception)
+	* [Portlet ID](#portlet-id)
 * [Templates](#templates)
     * [Naming JSP Files](#naming-jsp-files)
     * [Use the Portlet Title in the Main Views](#use-the-portlet-title-in-the-main-views)
     * [Wrap Subtitles and Section Names in h5 Tags](#wrap-subtitles-and-section-names-in-h5-tags)
 * [Review Process](#review-process)
-    * [Run update_examples.sh](#run-update_examplessh)
+    * [Rerun update_examples.sh](#rerun-update_examplessh)
     * [Test Your Code](#test-your-code)
     * [Code Changes Only](#code-changes-only)
     * [Submit Your Code](#submit-your-code)
@@ -103,8 +106,8 @@ Our `update_tutorials.sh` script creates the rest. Create your own project next.
 
     Avoid these things in your ID:
 
-    * Ones and `L`s. Number `1` and letter `l` are easily confused.
-    * Zeros and `O`s. Number `0` and letters `o` and `O` are easily confused.
+    * Number `1`, `L`s, and `I`s. Number `1`, letter `l`, and letter `I` are easily confused.
+    * Number `0` and letters `o` and `O`. Number `0` and letters `o` and `O` are easily confused.
     * Your initials (e.g., `j2b3` if your name is Joe Bloggs)
     * Duplicating characters (e.g., `b2b5` duplicates `b`, `a2z2` duplicates `2`)
     * Sequential characters (e.g., `a2b3` has sequential characters `a` and `b`, and `2` and `3`)
@@ -175,9 +178,8 @@ Here are some examples that demonstrate example project types.
 | :----------- | :-------- |
 | API Implementation | [writing-a-similar-results-contributor/resources/liferay-r1s1.zip](../docs/dxp/latest/en/using-search/developer-guide/writing-a-similar-results-contributor/resources/liferay-r1s1.zip) |
 | API & OSGi Services | [using-an-osgi-service/resources/liferay-j1h1.zip](../docs/dxp/latest/en/liferay-internals/fundamentals/using-an-osgi-service/resources/liferay-j1h1.zip) |
-| Portlet | [using-mvc/using-a-jsp-and-mvc-portlet/resources/liferay-w3e7.zip](../docs/dxp/latest/en/developing-applications/developing-a-java-web-application/using-mvc/using-a-jsp-and-mvc-portlet/resources/liferay-w3e7.zip) |
+| Portlet | [using-mvc/using-a-jsp-and-mvc-portlet/resources/liferay-w3e7.zip](../docs/dxp/latest/en/building-applications/developing-a-java-web-application/using-mvc/using-a-jsp-and-mvc-portlet/resources/liferay-w3e7.zip) |
 | Fragment (JS project) | [adding-configuration-options-to-fragments/resources/liferay-c7f8.zip](../docs/dxp/latest/en/site-building/developer-guide/developing-page-fragments/adding-configuration-options-to-fragments/resources/liferay-c7f8.zip) |
-
 
 ### Module Structure
 
@@ -258,6 +260,44 @@ dependencies {
 	compileOnly group: "com.liferay.portal", name: "release.portal.api"
 }
 ```
+
+## Applying the Java Workspace Template to Your Project
+
+After creating your module `bnd.bnd` file and setting your module portal/dxp API dependency in the `build.gradle` file, generate our standard Java Workspace environment to the project by running the `update_examples.sh` script against your project ID. For example,
+
+```bash
+cd liferay-learn/docs
+```
+
+```bash
+./update_examples.sh xxxx
+```
+
+The script generates the following files to your project:
+
+```
+liferay-xxxx.zip/
+├── gradle.properties // Specifies the Liferay product/version to build against
+├── gradlew // Gradle wrapper
+├── gradlew.bat // Gradle wrapper (Windows)
+├── settings.gradle // Specifies the artifact repository
+├── source-formatter-suppressions.xml // Suppresses unneeded code format checks
+└── xxxx-[api|impl|web] // Module
+```
+
+## Opening Permissions on Your Scripts
+
+Open execute permissions on your project's scripts by running the `update_permissions.sh` command on the project.
+
+```bash
+cd liferay-learn/docs
+```
+
+```bash
+./update_examples.sh xxxx
+```
+
+The script opens execute permissions on your project's scripts.
 
 ## Packages
 
@@ -445,6 +485,12 @@ catch (MessageBusException messageBusException) {
 }
 ```
 
+### Portlet ID
+
+If your example requires refering to a portlet by its ID, use the [portlet name](#portlet-name).
+
+**Important:** Make sure to assign a name to the `-Portlet` class via a [`javax.portlet.name`](#portlet-name) component property.
+
 ## Templates
 
 Put templates in your web module's `src/main/resources/META-INF/resources/` folder.
@@ -478,11 +524,12 @@ Wrap subtitles and section labels in `h5` tags--NOT bold `b` tags.
 Overview
 
 1. Run `update_examples.sh xxxx` (replace `xxxx` with project ID) to compile and to run the source formatter.
+1. Run `update_permissions.sh xxxx` to open execute permissions on your scripts.
 1. [Test your code](#test-your-code); the code has to work. 
 1. [Code changes only](#code-changes-only); don't include article changes.
 1. [Submit your code changes](#submit-your-code) to `jhinkey` (Jim Hinkey) here in `liferay-learn`.
 
-### Run update_examples.sh
+### Rerun update_examples.sh
 
 ```bash
 cd docs
@@ -492,7 +539,19 @@ cd docs
 ./update_examples.sh xxxx
 ```
 
-Resolve any reported issues and commit any changes that you or the script made.
+Resolve any reported issues and commit any changes that the script made (e.g., formatting corrections) or that you make.
+
+### Rerun update_permissions.sh
+
+```bash
+cd docs
+```
+
+```bash
+./update_examples.sh xxxx
+```
+
+The script opens execute permissions on your project's scripts.
 
 ### Test Your Code 
 

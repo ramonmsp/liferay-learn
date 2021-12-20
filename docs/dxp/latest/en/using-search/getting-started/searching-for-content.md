@@ -32,8 +32,8 @@ With prefix searching, searching for the term *instrument* returns documents not
 
 ![Searching for "lever" also returns "leverage" and "leveraging".](./searching-for-content/images/03.png)
 
-```note::
-   Prefix searching is available for many fields out of the box, but it's more complicated under the hood. The details of the field mapping, including the analyzer used on the field and any transformations performed, determine the final behavior.
+```{note}
+Prefix searching is available for many fields out of the box, but it's more complicated under the hood. The details of the field mapping, including the analyzer used on the field and any transformations performed, determine the final behavior.
 ```
 
 Another way to ensure users see results is through [search suggestions](../search-pages-and-widgets/search-results/enabling-search-suggestions.md).
@@ -44,8 +44,8 @@ The Search Bar's behavior can be configured via its portlet configuration screen
 
 ![Configure the search bar behavior in its configuration screen.](./searching-for-content/images/05.png)
 
-```note::
-   When you configure the globally embedded Search Bar widget at the top of one page, it configures the page-top Search Bar widget on all pages in the site. It also overrides the `destination Search Page's <../search-pages-and-widgets/working-with-search-pages/search-pages.md>`_ Search Bar portlet, if they're configured differently. However, it does not override Search Bar widgets manually placed on other pages.
+```{note}
+When you configure the globally embedded Search Bar widget at the top of one page, it configures the page-top Search Bar widget on all pages in the site. It also overrides the [destination Search Page's](../search-pages-and-widgets/working-with-search-pages/search-pages.md) Search Bar portlet, if they're configured differently. However, it does not override Search Bar widgets manually placed on other pages.
 ```
 
 There are several options:
@@ -82,6 +82,30 @@ http://localhost:8080/web/guest/search?q=data&target=this-site
 
 **Use Advanced Search Syntax:** If using Elasticsearch, enabling this allows users to enter [Query String Syntax](https://www.elastic.co/guide/en/elasticsearch/reference/7.6/query-dsl-simple-query-string-query.html) into the Search Bar. If using Solr, consult its documentation for the [proper syntax](https://lucene.apache.org/solr/guide/7_0/query-syntax-and-parsing.html).
 
+## Searching for Liferay Objects
+
+Liferay 7.4 includes [Liferay Objects](../../building-applications/objects.md), a GUI-driven application-building framework. Fields of each Object's definition can be declared searchable; Object Entries (the records submitted by the application's users) can then be queried and returned in the Search Results widget. 
+
+```{important}
+The scope of the Object determines how it must be searched:
+
+* If the scope of the Object is Company, the Object's Entries are only searched when the Search Bar is configured to search Everything.
+* If the scope of the Object is Site, the Object's Entries can be searched when the Search bar is configured to search in This Site.
+```
+
+The Type Facet and the Search Results widget support searching for Liferay Objects in the following manner:
+
+* The Type Facet automatically includes published Objects: 
+
+   ![Published Objects are added to the Type Facet widget.](./searching-for-content/images/09.png)
+
+* The Search Results widget automatically displays the Object Entry's title and a summary.
+
+   ![A title and a content summary are displayed for Object Entries.](./searching-for-content/images/10.png)
+
+<!-- * If configured in the Object, a display page can be shown when the Object Entry is clicked in Search Results. -->
+
 ## Additional Information
 
+* [Understanding Search Results](../search-pages-and-widgets/search-results/search-results-behavior.md)
 * [Enabling Search Suggestions](../search-pages-and-widgets/search-results/enabling-search-suggestions.md)

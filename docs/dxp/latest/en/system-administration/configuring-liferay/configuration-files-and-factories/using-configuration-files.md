@@ -6,8 +6,8 @@ You can use configuration files to transfer configurations from pre-production s
 
 Configuration files use the `.config` property value format defined by the [Apache Felix Configuration Admin framework](http://felix.apache.org/documentation/subprojects/apache-felix-config-admin.html).
 
-```note::
-   The ``.cfg`` file format is common in OSGi environments, and it's a supported format, but ``.config`` files are preferred because you can both specify a property value's type, and allow multi-valued properties. For this reason, ``.config`` files are used, recommended, and documented as a best practice.
+```{note}
+The `.cfg` file format is common in OSGi environments, and it's a supported format, but `.config` files are preferred because you can both specify a property value's type, and allow multi-valued properties. For this reason, `.config` files are used, recommended, and documented as a best practice.
 ```
 
 ## Creating Configuration Files
@@ -105,6 +105,10 @@ If storing your Liferay DXP configuration (e.g., Liferay Home) in a source contr
 ## Specifying a Read-Only Value
 
 If you must specify a read-only configuration value, use a [portal property](../../../installation-and-upgrades/reference/portal-properties.md).
+
+```{note}
+DXP supports this feature in 7.4+, in 7.3 since FP1/SP1, and in 7.2 since FP14/SP5.
+```
 
 Here's the property syntax:
 

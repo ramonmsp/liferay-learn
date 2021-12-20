@@ -28,8 +28,8 @@ DXP Cloudの [Services Changelog](https://help.liferay.com/hc/en-us/sections/360
 
 リリースノートの新しいバージョンを使用して、 `liferay.workspace.lcp.liferay.image` プロパティ値を更新します。 新しいDockerイメージは、インスタンスの起動時、または次回リポジトリからLiferayサービスをデプロイするときに使用されます。 新しいリリースのDockerイメージを使用して、他のサービスのプロパティをアップグレードすることもできます。
 
-``` note::
-   リポジトリ内の ``LCP.json`` ファイルが Liferay のバージョンの Docker イメージを直接参照している場合は、新しい Docker イメージにアップグレードする際に、これらのファイルも更新する必要があります。
+```{note}
+リポジトリ内の `LCP.json` ファイルが Liferay のバージョンの Docker イメージを直接参照している場合は、新しい Docker イメージにアップグレードする際に、これらのファイルも更新する必要があります。
 ```
 
 ## 展開（カスタマイズ、パッチ適用、ライセンス）
@@ -38,7 +38,7 @@ Liferay DXPへのカスタム追加の導入には、Gitリポジトリの適切
 
 `common/`ディレクトリを除き、特定のサービスの環境フォルダ（`dev`、`uat`、`prod`など）に追加された変更は、対応する環境にデプロイするときに*のみ*伝播されます。 `common/`ディレクトリに追加された変更は、ターゲットのデプロイ環境に関係なく、*常に*デプロイされます。 これは`lcp/liferay/`内にある、`config`、`deploy`、`hotfix`、`license`、 `script` ディレクトリに適用されます。
 
-配置ワークフローの仕組みの詳細については、 [配置ワークフローの概要](../build-and-deploy/overview-of-the-dxp-cloud-deployment-workflow.md) を参照してください。 DXP クラウドへのデプロイのチュートリアルについては、 [デプロイのライフサイクルを歩く](../build-and-deploy/walking-through-the-deployment-life-cycle.md)を参照してください。
+参照してください [展開ワークフローの概要](../build-and-deploy/overview-of-the-dxp-cloud-deployment-workflow.md) どのように展開ワークフローの詳細は。 DXP Cloudへのデプロイのチュートリアルについては、 [デプロイのライフサイクルを歩く](../build-and-deploy/walking-through-the-deployment-life-cycle.md)を参照してください。
 
 ### テーマ、ポートレット、およびOSGiモジュール
 
@@ -65,8 +65,8 @@ CIビルドは、これらのフォルダー内のソースコードをコンパ
 
 <!-- end list -->
 
-``` note::
-   ソースコードはCI内のビルドからデプロイされた場合にのみ、デプロイメントに含まれます。
+```{note}
+ソースコードはCI内のビルドからデプロイされた場合にのみ、デプロイメントに含まれます。
 ```
 
 ### ホットフィックス
@@ -102,19 +102,19 @@ CIビルドは、これらのフォルダー内のソースコードをコンパ
 
 ## 設定
 
-`portal.properties` 変更など、Liferayサービスに設定を適用するには、Gitリポジトリに設定を追加し、変更をGitにプッシュする必要があります。 これらの設定ファイルの追加の詳細については、 [Liferay DXPサービスの設定](./configuring-the-liferay-dxp-service.md)参照してください。
+`portal.properties` 変更など、Liferayサービスに設定を適用するには、Gitリポジトリに設定を追加し、変更をGitにプッシュする必要があります。 これらの設定ファイルの追加の詳細は、 [Liferay DXPサービスの設定](./configuring-the-liferay-dxp-service.md)参照してください。
 
 ## ホットデプロイ
 
 ホットデプロイは、Liferay DXP UIを介して実行できます。 これを行うには、コントロールパネル→アプリ→アプリマネージャーに移動します。 次に、右上の点をクリックして、[アップロード]をクリックします。 この画面から、ローカルファイルシステムからファイルを選択して展開およびインストールできます。
 
-``` note::
-   この方法でデプロイされたカスタマイズは、その後のDXPサービスのデプロイで失われてしまうため、DXPクラウドでホットデプロイを使用することは推奨されません。
+```{note}
+この方法でデプロイされたカスタマイズは、その後のDXPサービスのデプロイで失われてしまうため、DXP Cloudでホットデプロイを使用することは推奨されません。
 ```
 
 ## クラスタリングを有効にする
 
-DXP CloudでのLiferay DXPのクラスタリングは、Liferay DXPでのクラスタリングに比べて非常に単純化されたプロセスです。 クラスタリングのサポートが利用可能で、DXP Cloudですぐに使用できます。 クラスタリングの動作とスケールのための追加の設定には、いくつかの追加の手順が必要です。 詳細については、 [DXP Cloud](./setting-up-clustering-in-dxp-cloud.md) でのクラスタリングのセットアップを参照してください。
+DXP CloudでのLiferay DXPのクラスタリングは、Liferay DXPでのクラスタリングに比べて非常に単純化されたプロセスです。 クラスタリングのサポートが利用可能で、DXP Cloudですぐに使用できます。 クラスタリングの動作とスケールのための追加の設定には、いくつかの追加の手順が必要です。 詳細は、 [DXP Cloud](./setting-up-clustering-in-dxp-cloud.md) でのクラスタリングのセットアップを参照してください。
 
 ## スクリプトの実行
 

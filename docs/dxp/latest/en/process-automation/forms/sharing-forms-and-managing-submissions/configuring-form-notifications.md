@@ -22,7 +22,7 @@ To configure Form email notifications:
 
     **From Address:** The sender's email address. You can use `noreply@example.com`, so that recipients don't try to reply.
 
-    **To Address:** The recipient's email address (e.g., `test@example.com`).
+    **To Address:** The recipient's email address (e.g., `test@example.com`). Enter multiple To Addresses using a comma-separated list.
 
     **Subject:** The email's subject.
 
@@ -31,4 +31,4 @@ To configure Form email notifications:
 ## Additional Information
 
 * [Using Forms with a Workflow](./using-forms-with-a-workflow.md)
-* [Connecting to a Mail Server](../../../installation-and-upgrades/setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md)
+* [Configuring Mail](../../../installation-and-upgrades/setting-up-liferay/configuring-mail.md)

@@ -21,8 +21,8 @@ DXP Cloudに移行するプロセスの最も重要な部分は、データベ�
 mysqldump -uroot -ppassword --databases --add-drop-database lportal | gzip -c | cat > database.gz
 ```
 
-``` important::
-   バックアップの復元が正しく機能するためには ``databases`` と ``add-drop-database`` オプションが必要です。
+```{important}
+バックアップの復元が正しく機能するためには `databases` と `add-drop-database` オプションが必要です。
 ```
 
 DXP Cloudにインポートされたデータベースダンプは、データベースサービスが使用するためにMySQL形式である必要があります。 必要に応じて、 [DBeaver](http://dbeaver.io) などのツールを使用して、インポートのために他のタイプのデータベースをMySQLに変換できます。
@@ -37,8 +37,8 @@ DXP Cloudにインポートされたデータベースダンプは、データ�
 cd $LIFERAY_HOME/data && tar -czvf volume.tgz document_library
 ```
 
-``` important::
-   現在 `Amazon S3 <https://help.liferay.com/hc/en-us/articles/360028810172-Using-Amazon-Simple-Storage-Service>`_, `CMIS <https://help.liferay.com/hc/en-us/articles/360018176171-Using-the-CMIS-Store>`_, `DBStore <https://help.liferay.com/hc/en-us/articles/360028810192-Using-the-DBStore>`_ のストレージメソッドを使用している場合は、まず `File System Store <https://help.liferay.com/hc/en-us/articles/360028810132-Using-the-Simple-File-System-Store>`_ に移行する必要があります。
+```{important}
+現在 [Amazon S3](https://help.liferay.com/hc/en-us/articles/360028810172-Using-Amazon-Simple-Storage-Service), [CMIS](https://help.liferay.com/hc/en-us/articles/360018176171-Using-the-CMIS-Store), [DBStore](https://help.liferay.com/hc/en-us/articles/360028810192-Using-the-DBStore) のストレージメソッドを使用している場合は、まず [File System Store](https://help.liferay.com/hc/en-us/articles/360028810132-Using-the-Simple-File-System-Store) に移行する必要があります。
 ```
 
 ### バックアップサービスAPIを呼び出す
@@ -60,13 +60,13 @@ curl -X POST \
 
 これらがアップロードされると、バックアップサービスはDXP Cloudバックアップを初期化します。
 
-``` note::
-   バックアップは `prd`` 環境の `Backups` ページに表示されますが、復元するまではどの環境にも適用されません。
+```{note}
+バックアップは `prd` 環境の `Backups` ページに表示されますが、復元するまではどの環境にも適用されません。
 ```
 
 ## Liferay DXP設定のコピー
 
-ポータルプロパティとOSGi構成は、`lcp/liferay/config /`内の環境ごとに適切なフォルダにそれらを置くことによってDXP Cloudにコピーすることができます（例えば、 `DEV`、 `UAT`、または `PRD`、又は `の共通` 全てに適用する）。
+ポータルプロパティとOSGi設定　は、`lcp/liferay/config /`内の環境ごとに適切なフォルダにそれらを置くことによってDXP Cloudにコピーすることができます（例えば、 `DEV`、 `UAT`、または `PRD`、又は `の共通` 全てに適用する）。
 
 ``` 
     |-- lcp
@@ -80,15 +80,15 @@ curl -X POST \
                 |-- uat
 ```
 
-適切なフォルダに配置された `portal-*.properties` という形式のポータル・プロパティは、該当する環境のLiferay DXPサービス内の `$LIFERAY_HOME` に自動的にコピーされます。 OSGiプロパティ（.cfgまたは.configファイル）は、該当する環境のLiferay DXPサービス内の `osgi/configs` フォルダーにコピーされます。
+適切なフォルダに配置された `portal-*.properties` という形式のポータルプロパティは、該当する環境のLiferay DXPサービス内の `$LIFERAY_HOME` に自動的にコピーされます。 OSGiプロパティ（.cfgまたは.configファイル）は、該当する環境のLiferay DXPサービス内の `osgi/configs` フォルダーにコピーされます。
 
 ## サービス設定を追加
 
-残りの設定は、主にDXP Cloudで提供されるサービスを通じて処理されます。 ウェブサーバーと検索設定を翻訳するには、DXPクラウドのサービスを利用しなければならないので、その方法を決定するには計画が必要かもしれません。
+残りの設定は、主にDXP Cloudで提供されるサービスを通じて処理されます。 ウェブサーバーと検索設定を翻訳するには、DXP Cloudのサービスを利用しなければならないので、その方法を決定するには計画が必要かもしれません。
 
-Webサーバーの設定は、Nginxを使用して、webserverサービスを通じて行う必要があります。 このサービスに設定を追加する方法の詳細については、 [Web Server Service](../platform-services/web-server-service.md) を参照してください。 設定自体の詳細については、 [公式Nginxドキュメント](https://docs.nginx.com/) を参照してください。
+Webサーバーの設定は、Nginxを使用して、webserverサービスを通じて行う必要があります。 このサービスに設定を追加する方法の詳細は、 [ウェブサーバーサービス](../platform-services/web-server-service.md) を参照してください。 設定自体の詳細は、 [公式Nginxドキュメント](https://docs.nginx.com/) を参照してください。
 
-検索設定は、Elasticsearchを使用して、検索サービスを介して行う必要があります。 このサービスに設定を追加する方法の詳細については、 [Search Service](../platform-services/search-service.md) を参照してください。 設定自体の詳細については、 [Elasticsearchの公式ドキュメント](https://www.elastic.co/guide/index.html) を参照してください。
+検索設定は、Elasticsearchを使用して、検索サービスを介して行う必要があります。 このサービスに設定を追加する方法の詳細は、 [検索サービス](../platform-services/search-service.md) を参照してください。 設定自体の詳細は、 [Elasticsearchの公式ドキュメント](https://www.elastic.co/guide/index.html) を参照してください。
 
 ## バックアップを復元する
 
@@ -110,12 +110,12 @@ Webサーバーの設定は、Nginxを使用して、webserverサービスを通
 
 <!-- end list -->
 
-``` note::
-   選択した環境は、バックアップが展開されている間は利用できなくなります。
+```{note}
+選択した環境は、バックアップが展開されている間は利用できなくなります。
 ```
 
 復元プロセスが完了すると、選択した環境でDXPの移行されたインスタンスが使用可能になります。 この時点で、DXP Cloudへの移行のほとんどは完了しています。
 
 ## VPNを使用して外部サービスを接続する
 
-DXP Cloudの既存のサービス（SSOやLDAP統合など）に簡単にマッピングできない外部サービスは、VPNを使用して接続できます。 VPNの設定の詳細については、「 [VPNをDXP Cloud](../infrastructure-and-operations/networking/connecting-a-vpn-to-dxp-cloud.md) 接続する」を参照してください。
+DXP Cloudの既存のサービス（SSOやLDAP統合など）に簡単にマッピングできない外部サービスは、VPNを使用して接続できます。 VPNの設定の詳細は、「 [VPNをDXP Cloud](../infrastructure-and-operations/networking/connecting-a-vpn-to-dxp-cloud.md) 接続する」を参照してください。

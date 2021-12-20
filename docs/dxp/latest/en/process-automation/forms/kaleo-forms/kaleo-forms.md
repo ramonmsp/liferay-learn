@@ -2,10 +2,10 @@
 
 Liferay's *Kaleo Forms* solution combines the features of *Workflow Designer* and *Dynamic Data Lists* to create form-based business processes. With it, you can integrate forms with workflow tasks to create conference room checkout forms, support ticket processes, and more.
 
-- [Kaleo Forms](#kaleo-forms)
-  - [Creating a Kaleo Forms Process](#creating-a-kaleo-forms-process)
-  - [Using a Kaleo Forms Process](#using-a-kaleo-forms-process)
-  - [Additional Information](#additional-information)
+* [Kaleo Forms](#kaleo-forms)
+  * [Creating a Kaleo Forms Process](#creating-a-kaleo-forms-process)
+  * [Using a Kaleo Forms Process](#using-a-kaleo-forms-process)
+  * [Additional Information](#additional-information)
 
 ## Creating a Kaleo Forms Process
 
@@ -33,7 +33,7 @@ Follow these steps to create a new Kaleo Forms process:
 
 1. Select a *Workflow* to use for your new process's forms.
 
-   You can choose from existing, published workflows, or create a new one.
+   You can choose from existing published workflows or create a new one.
 
    * To choose an existing, published workflow, click on its *Actions* button ![Actions Button](../../../images/icon-actions.png), and select *Choose*. You can also select *Edit* to modify the workflow before choosing it.
 

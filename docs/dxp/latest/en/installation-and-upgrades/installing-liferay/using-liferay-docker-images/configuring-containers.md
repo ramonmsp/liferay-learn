@@ -10,8 +10,8 @@ Here are the most common things to configure:
 * [System Properties](#system-properties)
 * [System Settings](#system-settings)
 
-```note::
-   The configuration use cases that involve providing a file to the container are demonstrated here using `bind mounts <https://docs.docker.com/storage/bind-mounts/>`_. You can also use `volumes <https://docs.docker.com/storage/volumes/>`_ and in some cases, use a ``docker cp`` command. See `Providing File to the Container <./providing-files-to-the-container.md>`_ for more information.
+```{note}
+The configuration use cases that involve providing a file to the container are demonstrated here using [bind mounts](https://docs.docker.com/storage/bind-mounts/). You can also use [volumes](https://docs.docker.com/storage/volumes/) and in some cases, use a `docker cp` command. See [Providing File to the Container](./providing-files-to-the-container.md) for more information.
 ```
 
 ## JVM Options
@@ -26,8 +26,8 @@ JVM options can be appended to Tomcat's `CATALINA_OPTS` variable by specifying t
 docker run -it -m 8g -p 8080:8080 -e LIFERAY_JVM_OPTS=[value\ with\ space] liferay/dxp:[tag]
 ```
 
-```warning::
-   In the ``LIFERAY_JVM_OPTS`` value, use backslashes to escape space characters. Don't use quotes.
+```{warning}
+In the `LIFERAY_JVM_OPTS` value, use backslashes to escape space characters. Don't use quotes.
 ```
 
 The container runs with the `LIFERAY_JVM_OPTS` value appended to Tomcat's `CATALINA_OPTS`.
@@ -48,7 +48,7 @@ Another method of configuring JVM options involves overriding Tomcat's `setenv.s
     docker cp tmp-dxp:/opt/liferay/tomcat/bin/setenv.sh .
     ```
 
-1. [Stop the container](./docker-container-basics.md#stopping-a-container).
+1. [Stop the container](../using-liferay-docker-images.md#stopping-a-container).
 
 1. Set the JVM options in your copy of `setenv.sh`.
 
@@ -67,12 +67,12 @@ Another method of configuring JVM options involves overriding Tomcat's `setenv.s
 
 The container uses your `setenv.sh` script's JVM options.
 
-```note::
-   Please see `Providing Files to the Container <./providing-files-to-the-container.md#bind-mounting-a-host-folder-to-mnt-liferay>`_ for more information on bind mounting to to the container's ``/mnt/liferay`` folder.
+```{note}
+Please see [Providing Files to the Container](./providing-files-to-the-container.md#bind-mounting-a-host-folder-to-mnt-liferay) for more information on bind mounting to to the container's `/mnt/liferay` folder.
 ```
 
-```note::
-   See `Docker Container Basics <./docker-container-basics.md>`_ for details on starting and operating Liferay containers.
+```{note}
+See [Using Liferay Docker Images](../using-liferay-docker-images.md) for details on starting and operating Liferay containers.
 ```
 
 ## Portal Properties
@@ -86,9 +86,9 @@ Container [Portal Properties](../../reference/portal-properties.md) can be overr
 
 There's an *Env* variable for each [Portal Property](../../reference/portal-properties.md). Env variables are [Docker environment variables](https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file) that override a Liferay Docker container's Portal Properties.
 
-1. In the [Portal Properties](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html) online description, find the property you want to override.
+1. In the [Portal Properties](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html) online description, find the property you want to override.
 
-1. Copy the `Env` variable name displayed just below the property description. For example, here's the Env variable for the [`jdbc.default.jndi.name`](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html#JDBC) Portal Property:
+1. Copy the `Env` variable name displayed just below the property description. For example, here's the Env variable for the [`jdbc.default.jndi.name`](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#JDBC) Portal Property:
 
     ```properties
     Env: LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_JNDI_PERIOD_NAME
@@ -96,16 +96,20 @@ There's an *Env* variable for each [Portal Property](../../reference/portal-prop
 
 1. Create a container, passing in your Env variable assignments using `-e` options following the pattern `-e VARIABLE_A=value -e VARIABLE_B=value ...`. For example,
 
-    ```
+    ```bash
     docker run -it -m 8g -p 8080:8080 -e LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_JNDI_PERIOD_NAME=jdbc/MyPool liferay/dxp:[tag]
     ```
 
-    ```warning::
-       In the ``Env`` variable value, use backslashes to escape space characters. Don't use quotes.
+    ```{warning}
+    In the `Env` variable value, use backslashes to escape space characters. Don't use quotes.
     ```
 
-    ```note::
-       See `Docker Container Basics <./docker-container-basics.md>`_ for details on starting and operating the containers.
+    ```{note}
+    See [Database Templates](../../reference/database-templates.md) for database environment variable examples.
+    ```
+
+    ```{note}
+    See [Using Liferay Docker Images](../using-liferay-docker-images.md) for details on starting and operating the containers.
     ```
 
 The properties are visible in the Control Panel at _Configuration_ &rarr; _Server Administration_ &rarr; _Properties_ &rarr; _Portal Properties_.
@@ -133,6 +137,10 @@ You can override a container's Portal Properties using a `portal-ext.properties`
     ```
 
 The properties are visible in the Control Panel at _Configuration_ &rarr; _Server Administration_ &rarr; _Properties_ &rarr; _Portal Properties_.
+
+```{note}
+See [Database Templates](../../reference/database-templates.md) for database portal property examples.
+```
 
 ## Image-Defined Environment Variables
 
@@ -182,7 +190,7 @@ Here's how to disable it and work with it using a Portal Properties file:
     docker run -e LIFERAY_TERMS_PERIOD_OF_PERIOD_USE_PERIOD_REQUIRED -v $(pwd):/mnt/liferay ...
     ```
 
-    The terms of use requirement is based on your Portal Properties. The [default Portal Property setting](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html) (search for `LIFERAY_TERMS_PERIOD_OF_PERIOD_USE_PERIOD_REQUIRED`) requires the terms of use:
+    The terms of use requirement is based on your Portal Properties. The [default Portal Property setting](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html) (search for `LIFERAY_TERMS_PERIOD_OF_PERIOD_USE_PERIOD_REQUIRED`) requires the terms of use:
 
     ```properties
     terms.of.use.required=true
@@ -200,7 +208,7 @@ The container uses your property setting.
 
 ## System Properties
 
-[System Properties](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/system.properties.html) can be overridden using a `system-ext.properties` file. This example uses a [bind mount](./providing-files-to-the-container.md).
+[System Properties](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/system.properties.html) can be overridden using a `system-ext.properties` file. This example uses a [bind mount](./providing-files-to-the-container.md).
 
 1. Create a host folder and subfolders to create the path `[host folder]/files/tomcat/webapps/ROOT/WEB-INF/classes`.
 
@@ -220,8 +228,8 @@ The container uses your property setting.
     docker run -it -m 8g -p 8080:8080 -v [host folder path]:/mnt/liferay liferay/dxp:[tag]
     ```
 
-    ```note::
-       Please see `Providing Files to the Container <./providing-files-to-the-container.md#bind-mounting-a-host-folder-to-mnt-liferay>`_ for more information on bind mounting to to the container's ``/mnt/liferay`` folder.
+    ```{note}
+    Please see [Providing Files to the Container](./providing-files-to-the-container.md#bind-mounting-a-host-folder-to-mnt-liferay) for more information on bind mounting to to the container's `/mnt/liferay` folder.
     ```
 
 The properties are visible in the Control Panel at _Configuration_ &rarr; _Server Administration_ &rarr; _Properties_ &rarr; _System Properties_.
@@ -258,8 +266,8 @@ If you have not yet created a container, follow these steps to provide a `.confi
     docker run -it -m 8g -p 8080:8080 -v [host folder path]:/mnt/liferay liferay/dxp:[tag]
     ```
 
-    ```note::
-       Please see `Providing Files to the Container <./providing-files-to-the-container.md#bind-mounting-a-host-folder-to-mnt-liferay>`_ for more information on bind mounting to to the container's ``/mnt/liferay`` folder.
+    ```{note}
+    Please see [Providing Files to the Container](./providing-files-to-the-container.md#bind-mounting-a-host-folder-to-mnt-liferay) for more information on bind mounting to to the container's `/mnt/liferay` folder.
     ```
 
 The system component configurations are visible in the Control Panel at _Configuration_ &rarr; _System Settings_, in the screen for that component.
@@ -278,7 +286,7 @@ Now you know how to configure a Liferay container's JVM options, Portal Properti
 
 ## Additional Information
 
-* [Docker Container Basics](./docker-container-basics.md)
+* [Using Liferay Docker Images](../using-liferay-docker-images.md)
 * [Container Lifecycle and API](./container-lifecycle-and-api.md)
 * [Providing Files to the Container](./providing-files-to-the-container.md)
 * [Installing Apps and Other Artifacts to Containers](./installing-apps-and-other-artifacts-to-containers.md)

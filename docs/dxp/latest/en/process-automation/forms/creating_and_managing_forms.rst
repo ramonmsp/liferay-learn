@@ -10,14 +10,16 @@ Creating and Managing Forms
    creating-and-managing-forms/providing-help-text-and-predefined-values.md
    creating-and-managing-forms/building-forms-with-conditional-fields.md
    creating-and-managing-forms/validating-text-and-numeric-field-entries.md
+   creating-and-managing-forms/using-the-search-location-field.md
    creating-and-managing-forms/translating-forms.md
    creating-and-managing-forms/customizing-auto-save-behavior.md
    creating-and-managing-forms/exporting-and-importing-forms.md
+   creating-and-managing-forms/using-storage-adapters.md
+   creating-and-managing-forms/customizing-the-submit-button.md
    creating-and-managing-forms/forms-field-types-reference.md
    creating-and-managing-forms/forms-configuration-reference.md
    creating-and-managing-forms/validation-conditions-reference.md
    creating-and-managing-forms/forms-permissions-reference.md
-
 
 -  :doc:`/process-automation/forms/creating-and-managing-forms/creating-forms`
 -  :doc:`/process-automation/forms/creating-and-managing-forms/customizing-form-layouts`
@@ -25,9 +27,12 @@ Creating and Managing Forms
 -  :doc:`/process-automation/forms/creating-and-managing-forms/providing-help-text-and-predefined-values`
 -  :doc:`/process-automation/forms/creating-and-managing-forms/building-forms-with-conditional-fields`
 -  :doc:`/process-automation/forms/creating-and-managing-forms/validating-text-and-numeric-field-entries`
+-  :doc:`/process-automation/forms/creating-and-managing-forms/using-the-search-location-field`
 -  :doc:`/process-automation/forms/creating-and-managing-forms/translating-forms`
 -  :doc:`/process-automation/forms/creating-and-managing-forms/customizing-auto-save-behavior`
 -  :doc:`/process-automation/forms/creating-and-managing-forms/exporting-and-importing-forms`
+-  :doc:`/process-automation/forms/creating-and-managing-forms/using-storage-adapters`
+-  :doc:`/process-automation/forms/creating-and-managing-forms/customizing-the-submit-button`
 
 Reference
 ---------

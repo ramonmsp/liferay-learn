@@ -11,7 +11,7 @@ Liferay DXP contains [GraphQL](https://graphql.org) APIs for most of its applica
 You need a running Liferay DXP to call its GraphQL APIs. To obtain one using Docker, run this command:
 
 ```bash
-docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_DXP_DOCKER_IMAGE$]
+docker run -it -m 8g -p 8080:8080 [$LIFERAY_LEARN_PORTAL_DOCKER_IMAGE$]
 ```
 
 After Liferay DXP initializes, you can find the service you need.
@@ -41,13 +41,13 @@ After Liferay DXP initializes, you can find the service you need.
       ): BlogPosting
     ```
 
-```note::
-   You can also discover your local installation's APIs by requesting the schema directly:
+```{note}
+You can also discover your local installation's APIs by requesting the schema directly:
 
-   ``curl 'http://localhost:8080/o/graphql'  -H 'Content-Type: application/json' --data '{"query":"query{ __schema{ queryType{ name fields{ name args{ name } description } } } }","variables":{}}'``
+`curl 'http://localhost:8080/o/graphql'  -H 'Content-Type: application/json' --data '{"query":"query{ __schema{ queryType{ name fields{ name args{ name } description } } } }","variables":{}}'`
 
 
-   This URL does not require authentication, but it's quite cumbersome to manage the returned schema. For this reason, it's better to use the included GraphQL client.
+This URL does not require authentication, but it's quite cumbersome to manage the returned schema. For this reason, it's better to use the included GraphQL client.
    ```
 
 ![The included GraphQL client has a schema documentation browser.](./consuming-graphql-apis/images/01.png)
@@ -173,10 +173,10 @@ Liferay DXP returns a JSON representation of your blog entry that contains the f
 }
 ```
 
-```note::
+```{note}
 You can make these requests with any web client, such as cURL:
 
-   ``curl --request POST --url http://localhost:8080/o/graphql -u test@liferay.com:test --header 'content-type: application/json' --data '{"query":"mutation CreateBlog($blog: InputBlogPosting){   createSiteBlogPosting(blogPosting: $blog, siteKey: \"20122\" ) {    headline    articleBody    id    friendlyUrlPath  }    } ","variables":{"blog":{"articleBody":"This Blog entry was created by using cURL to call the GraphQL service!","headline":"cURL GraphQL Blog Entry"}},"operationName":"CreateBlog"}'``
+`curl --request POST --url http://localhost:8080/o/graphql -u test@liferay.com:test --header 'content-type: application/json' --data '{"query":"mutation CreateBlog($blog: InputBlogPosting){   createSiteBlogPosting(blogPosting: $blog, siteKey: \"20122\" ) {    headline    articleBody    id    friendlyUrlPath  }    } ","variables":{"blog":{"articleBody":"This Blog entry was created by using cURL to call the GraphQL service!","headline":"cURL GraphQL Blog Entry"}},"operationName":"CreateBlog"}'`
 ```
 
 ### Getting All Blog Entries

@@ -6,8 +6,8 @@
 
 構成ファイルは、 [Apache Felix構成管理フレームワーク](http://felix.apache.org/documentation/subprojects/apache-felix-config-admin.html)によって定義された `.config` プロパティ値の形式を使用します。
 
-``` note::
-   The ``.cfg`` file format is common in OSGi environments, and it's a supported format, but ``.config`` files are preferred because you can both specify a property value's type, and allow multi-valued properties. For this reason, ``.config`` files are used, recommended, and documented as a best practice.
+```{note}
+The `.cfg` file format is common in OSGi environments, and it's a supported format, but `.config` files are preferred because you can both specify a property value's type, and allow multi-valued properties. For this reason, `.config` files are used, recommended, and documented as a best practice.
 ```
 
 ## 構成ファイルの作成
@@ -22,7 +22,7 @@
 com.liferay.journal.configuration.JournalServiceConfiguration.config
 ```
 
-![Web Content System Settingsエントリには、バックエンドID com.liferay.journal.configurationがあります。JournalServiceConfiguration。](./using-configuration-files/images/01.png)
+![Web Content System Settingsエントリには、バックエンドID com.liferay.journal.configurationがあります。JournalServiceConfiguration。](../configuring-liferay/configuration-files-and-factories/using-configuration-files/images/01.png)
 
 システムは構成ファイルの名前を強制します。 名前を編集すると、構成エントリへのリンクが壊れ、それ以上のカスタマイズは有効になりません。 唯一の例外は [ファクトリ構成](./using-factory-configuration.md)で、一意のサブネームを提供できる場合があります。
 
@@ -48,7 +48,7 @@ multiValueSetting=["Value 1","Value 2", ...]
 
 [コンテンツ]セクションの[システム設定]で[Webコンテンツ]カテゴリを開き、仮想インスタンスのスコープとして[ *Webコンテンツ* を選択します。 *Characters Blacklist*複数の単一値エントリが表示されます。
 
-![Web Content System Settingsエントリには、多くの文字ブラックリストフィールドがあります。](./using-configuration-files/images/02.png)
+![Web Content System Settingsエントリには、多くの文字ブラックリストフィールドがあります。](../configuring-liferay/configuration-files-and-factories/using-configuration-files/images/02.png)
 
 構成ファイルでは、これはカンマ区切り値の配列を持つ単一のキーで表されます。
 
@@ -98,6 +98,6 @@ addDefaultStructures="true"
 
 クラスター環境では、各ノードの各エントリーに同じ構成値が必要です。 たとえば、すべてのノードで同じブログ構成設定を使用する必要があります。 これを行うには、 `.config` ファイルをデプロイします。 透過性と保守性のために、 `.config` ファイルをクラスター内のすべてのノードにデプロイします。 ただし、構成ファイルが単一のノードにのみデプロイされている場合でも、内部システムはクラスター内のすべてのノードに変更を適用します。
 
-``` important::
-   If storing your Liferay DXP configuration (e.g., Liferay Home) in a source control system, make sure to include the OSGi configuration files (.config files).
+```{important}
+If storing your Liferay DXP configuration (e.g., Liferay Home) in a source control system, make sure to include the OSGi configuration files (.config files).
 ```

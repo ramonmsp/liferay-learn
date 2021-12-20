@@ -1,4 +1,4 @@
-## Setting Up Liferay
+# Setting Up Liferay
 
 ```{toctree}
 :maxdepth: 3
@@ -8,21 +8,21 @@ setting-up-liferay/activating-liferay-dxp.md
 setting-up-liferay/initial-instance-localization.md
 setting-up-liferay/configuring-mail.md
 ../system-administration/configuring-liferay/virtual-instances/users.md
-../system-administration/file_storage.rst
+../system-administration/file-storage.md
 ../system-administration/file-storage/enabling-antivirus-scanning-for-uploaded-files.md
 ../using-search/installing-and-upgrading-a-search-engine/installing-a-search-engine.md
-securing-liferay/securing_liferay.rst
-maintaining-a-liferay-dxp-installation/backing-up.md
-../system-administration/installing_and_managing_apps.rst
+securing-liferay.md
+maintaining-a-liferay-installation/backing-up.md
+../system-administration/installing-and-managing-apps.md
 setting-up-liferay/using-a-cdn.md
 setting-up-liferay/clustering-for-high-availability.md
 setting-up-liferay/tuning-liferay.md
 setting-up-liferay/tuning-your-jvm.md
 ```
 
-After [installing Liferay](./installing_liferay.html), configure it to meet your needs. Here are common setup tasks.
+After [installing Liferay](./installing-liferay.md), configure it to meet your needs. Here are common setup tasks.
 
-## Setup Tasks
+**Setup Tasks**
 
 * [Activate Liferay](#activate-liferay) (Subscription Required)
 * [Configure Your Instance](#configure-your-instance)
@@ -63,7 +63,7 @@ Configure your instance's locale and time zone. See [Initial Instance Localizati
 
 ## Configure Mail
 
-[Set up a mail server](./setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md) to communicate with Users. Then configure your [email settings](../system-administration/configuring-liferay/virtual-instances/email-settings.md), including your email sender and message templates for email verifications, password resets, and password changes.
+[Set up a mail server](./setting-up-liferay/configuring-mail.md) to communicate with Users. Then configure your [email settings](../system-administration/configuring-liferay/virtual-instances/email-settings.md), including your email sender and message templates for email verifications, password resets, and password changes.
 
 ## Configure Users
 
@@ -73,13 +73,13 @@ After you [understand Users](../users-and-permissions/users/understanding-users.
 * Add any necessary [custom User fields](../users-and-permissions/users/adding-custom-fields-to-users.md)
 * Specify whether to allow strangers to create accounts
 * Define [User authentication](./securing-liferay/authentication-basics.md)
-* Configure automatic association of Users to specific Sites, [Roles](../users-and-permissions/roles-and-permissions/understanding-roles-and-permissions.md), and [User Groups](../users-and-permissions/user_groups.html)
+* Configure automatic association of Users to specific Sites, [Roles](../users-and-permissions/roles-and-permissions/understanding-roles-and-permissions.md), and [User Groups](../users-and-permissions/user-groups.md)
 
 Visit [Users](../system-administration/configuring-liferay/virtual-instances/users.md), [User Authentication](../system-administration/configuring-liferay/virtual-instances/user-authentication.md), and [Adding Custom Fields For Users](../users-and-permissions/users/adding-custom-fields-to-users.md) for details.
 
 ## Configure File Storage
 
-Using [Documents and Media](../content-authoring-and-management/documents-and-media/sharing-documents-and-media.md), file attachments, and embedding images in content requires file storage. Visit [File Storage](../system-administration/file-storage/configuring-file-storage.md) to configure it.
+Using [Documents and Media](../content-authoring-and-management/documents-and-media/documents-and-media-overview.md), file attachments, and embedding images in content requires file storage. Visit [File Storage](../system-administration/file-storage.md) to configure it.
 
 After setting up file storage, consider enabling antivirus file scanning. See [Enabling Antivirus Scanning for Uploaded Files](../system-administration/file-storage/enabling-antivirus-scanning-for-uploaded-files.md) to learn how.
 
@@ -89,11 +89,11 @@ Empower Users to search your site. Search engines such as Liferay Enterprise Sea
 
 ## Secure Liferay
 
-It's really important to secure Liferay too. Go to [Securing Liferay](./securing-liferay/securing-liferay.md) to learn more.
+It's really important to secure Liferay too. Go to [Securing Liferay](./securing-liferay.md) to learn more.
 
 ## Configure Backups
 
-As you develop your virtual instance make sure to back it up. See [Backing Up](./maintaining-a-liferay-dxp-installation/backing-up.md) for guidance.
+As you develop your virtual instance make sure to back it up. See [Backing Up](./maintaining-a-liferay-installation/backing-up.md) for guidance.
 
 ## Other Setup Tasks
 
@@ -101,7 +101,7 @@ The tasks described above are typically (but not always) completed first. In any
 
 ## Install Apps From Marketplace
 
-Improve your sites with [themes](../getting-started/changing-your-sites-appearance.md), connectors, and all kinds applications available on [Liferay Marketplace](https://web.liferay.com/marketplace). [Installing and managing apps](../system-administration/installing-and-managing-apps/getting-started/installing-and-managing-apps.md) has never been easier.
+Improve your sites with [themes](../getting-started/changing-your-sites-appearance.md), connectors, and all kinds applications available on [Liferay Marketplace](https://web.liferay.com/marketplace). [Installing and managing apps](../system-administration/installing-and-managing-apps/installing-apps.md) has never been easier.
 
 ## Configure Roles and Permissions
 
@@ -113,7 +113,7 @@ Entities in your Instances and applications can be customized with additional fi
 
 ## Integrate with Existing Systems
 
-Liferay can integrate with some other systems. For example, if you're using a directory such as LDAP, you can import Users from it. [Connecting to an LDAP Directory](../users-and-permissions/devops/connecting-to-a-user-directory/connecting-to-an-ldap-directory.md) demonstrates the process. Please search this site for integrations you may need.
+Liferay can integrate with some other systems. For example, if you're using a directory such as LDAP, you can import Users from it. [Connecting to an LDAP Directory](../users-and-permissions/connecting-to-a-user-directory/connecting-to-an-ldap-directory.md) demonstrates the process. Please search this site for integrations you may need.
 
 ## Configure Media File Previews
 
@@ -133,8 +133,8 @@ Tune Liferay's JVM, connection pools, and more for optimal performance. See [Tun
 
 ## What's Next
 
-If you're using Liferay DXP and haven't [activated](./setting-up-liferay/activating-liferay-dxp.md) it, do that first. Then continue with [Instance Configuration](../system-administration/configuring-liferay/virtual-instances/instance-configuration.md) and the other [Setup Tasks`_ listed above.
+If you're using Liferay DXP and haven't [activated](./setting-up-liferay/activating-liferay-dxp.md) it, do that first. Then continue with [Instance Configuration](../system-administration/configuring-liferay/virtual-instances/instance-configuration.md) and the other [Setup Tasks](#setup-tasks) listed above.
 
 ```{important}
-Before going to production, configure a process for backing up your installation and data. Please see [Backing Up](./maintaining-a-liferay-dxp-installation/backing-up.md) for details.
+Before going to production, configure a process for backing up your installation and data. Please see [Backing Up](./maintaining-a-liferay-installation/backing-up.md) for details.
 ```

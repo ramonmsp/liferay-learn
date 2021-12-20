@@ -6,9 +6,9 @@ Liferay DXPにはJava JDK 8または11が必要です。 参照 [互換性マト
 
 これらのファイルを [ヘルプセンター](https://customer.liferay.com/downloads) （サブスクリプション）または [Liferayコミュニティダウンロード](https://www.liferay.com/downloads-community)からダウンロードします。
 
-  - DXP WARファイル
-  - 依存関係のZIPファイル
-  - OSGi依存関係のZIPファイル
+* DXP WARファイル
+* 依存関係のZIPファイル
+* OSGi依存関係のZIPファイル
 
 [*Liferay Home*](../../reference/liferay-home.md) は、JBossサーバーフォルダーを含むフォルダーです。 DXPをインストールして展開した後、Liferayのホームフォルダは、JBossサーバのフォルダと同様に含ま `データ`、 `配布`、 `ログ`、及び `のOSGi` フォルダを。 `$JBOSS_HOME` はJBossサーバーフォルダーを参照します。 このフォルダーの名前は通常 `jboss-eap-[version]`です。
 
@@ -79,17 +79,17 @@ DXPは、スタンドアロンモードで実行する場合はJBoss EAPをサ�
 
 コマンドラインインターフェイスは、ドメインモードの展開に推奨されます。
 
-``` note::
-   This does not prevent DXP from running in a clustered environment on multiple JBoss servers. You can set up a cluster of DXP instances running on JBoss EAP servers running in standalone mode. Please refer to the `DXP clustering articles <../../setting-up-liferay/clustering-for-high-availability.md>`_ for more information.
+```{note}
+This does not prevent DXP from running in a clustered environment on multiple JBoss servers. You can set up a cluster of DXP instances running on JBoss EAP servers running in standalone mode. Please refer to the [DXP clustering articles](../../setting-up-liferay/clustering-for-high-availability.md) for more information.
 ```
 
 ## JBossの構成
 
 DXPを実行するためのJBossの設定には、次のものが含まれます。
 
-  - 環境変数を設定する
-  - プロパティと記述子の設定
-  - 不要な構成を削除する
+* 環境変数を設定する
+* プロパティと記述子の設定
+* 不要な構成を削除する
 
 `$JBOSS_HOME/standalone/configuration/standalone.xml`次の変更を加えます。
 
@@ -152,15 +152,15 @@ DXPを実行するためのJBossの設定には、次のものが含まれます
 
 `$JBOSS_HOME/ bin /` フォルダーで、スタンドアロンドメインの構成スクリプトファイル `standalone.conf` （Windowsでは`standalone.conf.bat` します。
 
-  - ファイルのエンコーディングを `設定UTF-8`
-  - ユーザーのタイムゾーンを `GMT`設定します
-  - 優先プロトコルスタックを設定する
-  - 利用可能なデフォルトのメモリ容量を増やします。
+* ファイルのエンコーディングを `設定UTF-8`
+* ユーザーのタイムゾーンを `GMT`設定します
+* 優先プロトコルスタックを設定する
+* 利用可能なデフォルトのメモリ容量を増やします。
 
 <!-- end list -->
 
-``` important::
-   DXPが適切に機能するには、アプリケーションサーバーJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
+```{important}
+DXPが適切に機能するには、アプリケーションサーバーJVMがGMTタイムゾーンとUTF-8ファイルエンコーディングを使用する必要があります。
 ```
 
 それぞれのオペレーティングシステムに応じて、次の編集を行います。
@@ -205,8 +205,8 @@ DXPを実行するためのJBossの設定には、次のものが含まれます
     -Djava.locale.providers=JRE,COMPAT,CLDR
     ```
 
-    ``` note::
-       JBossサーバーでIBM JDKを使用する場合は、以下の追加手順を実行します。
+    ```{note}
+    JBossサーバーでIBM JDKを使用する場合は、以下の追加手順を実行します。
     ```
 
 3.  `$JBOSS_HOME/modules/com/liferay/portal/main/module.xml` ファイルに移動し、 `<dependencies>` 要素内に次の依存関係を挿入します。
@@ -256,8 +256,8 @@ JBossを使用してデータソースを管理する場合は、次の手順に
 
     データベースのURL、ユーザー名、パスワードを適切な値に置き換えてください。
 
-    ``` note::
-       If the data source ``jndi-name`` must be changed, edit the ``datasource`` element in the ``<default-bindings>`` tag.
+    ```{note}
+    If the data source `jndi-name` must be changed, edit the `datasource` element in the `<default-bindings>` tag.
     ```
 
 2.  `<datasources>` 要素内にもある `standalone.xml` ファイルの `<drivers>` 要素にドライバーを追加します。
@@ -300,7 +300,7 @@ JBossを使用してデータソースを管理する場合は、次の手順に
 
 ## メールサーバーに接続する
 
-データベース構成と同様に、メールを構成する最も簡単な方法は、DXPにメールセッションを処理させることです。 DXPの内蔵メールセッションを使用したい場合は、このセクションと飛ばしコントロールパネルにある [DXPをメールサーバーに接続](../../setting-up-liferay/configuring-mail/connecting-to-a-mail-server.md) に行きます。
+データベース構成と同様に、メールを構成する最も簡単な方法は、DXPにメールセッションを処理させることです。 DXPの内蔵メールセッションを使用したい場合は、このセクションと飛ばしコントロールパネルにある [DXPをメールサーバーに接続](../../setting-up-liferay/configuring-mail.md) に行きます。
 
 JBossとのメールセッションを管理する場合は、次の手順に従います。
 

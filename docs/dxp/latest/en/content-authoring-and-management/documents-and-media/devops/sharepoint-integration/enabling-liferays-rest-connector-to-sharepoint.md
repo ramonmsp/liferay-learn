@@ -23,7 +23,7 @@ Follow these steps to install the Liferay REST Connector to SharePoint.
 
 1. Download the [Liferay REST Connector to SharePoint](https://web.liferay.com/marketplace/-/mp/application/105406871) as an LPKG file via the Liferay Marketplace.
 
-1. Copy the file to the instance's [`[LIFERAY_HOME]/deploy`](../../../../installation-and-upgrades/reference/liferay-home.md) folder to [deploy](../../../../system-administration/installing-and-managing-apps/installing-apps/installing-apps.md) it.
+1. Copy the file to the instance's [`[LIFERAY_HOME]/deploy`](../../../../installation-and-upgrades/reference/liferay-home.md) folder to [deploy](../../../../system-administration/installing-and-managing-apps/installing-apps.md) it.
 
    If successful, you should see the following message in the console's logs:
 
@@ -36,8 +36,8 @@ Follow these steps to install the Liferay REST Connector to SharePoint.
 
 Once the connector is successfully deployed and installed, you can add SharePoint OAuth2 configuration entries to complete setup. If desired, you can also define custom search sources to restrict and fine tune SharePoint search results.
 
-```important::
-   Since the REST connector uses Azure ACS with OAuth2 for SharePoint server authorization, ensure HTTPS support is enabled in your Server.
+```{important}
+Since the REST connector uses Azure ACS with OAuth2 for SharePoint server authorization, ensure HTTPS support is enabled in your Server.
 ```
 
 ## Updating to the Latest Version
@@ -108,5 +108,5 @@ Follow these steps to create SharePoint Search configuration with an different s
 
 ## Additional Information
 
-* [Installing Apps](../../../../system-administration/installing-and-managing-apps/installing-apps/installing-apps.md)
+* [Installing Apps](../../../../system-administration/installing-and-managing-apps/installing-apps.md)
 * [Creating SharePoint Repositories in Documents and Media](./creating-sharepoint-repositories-in-documents-and-media.md)

@@ -1,3 +1,0 @@
-# Using Spring
-
-Coming soon!

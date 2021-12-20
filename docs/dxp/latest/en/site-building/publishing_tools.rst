@@ -5,15 +5,15 @@ Publishing Tools
    :maxdepth: 3
 
    publishing-tools/introduction-to-publishing-tools.md
-   publishing-tools/staging.rst
-   publishing-tools/publications.rst
+   publishing-tools/staging.md
+   publishing-tools/publications.md
 
 -  :doc:`/site-building/publishing-tools/introduction-to-publishing-tools`
 
 Staging
 ~~~~~~~
 
--  :doc:`/site-building/publishing-tools/staging/staging-overview`
+-  :doc:`/site-building/publishing-tools/staging`
 -  :doc:`/site-building/publishing-tools/staging/understanding-the-publishing-process`
 -  :doc:`/site-building/publishing-tools/staging/configuring-local-live-staging`
 -  :doc:`/site-building/publishing-tools/staging/configuring-remote-live-staging`
@@ -26,7 +26,7 @@ Staging
 Publications
 ~~~~~~~~~~~~
 
--  :doc:`/site-building/publishing-tools/publications/publications-overview`
+-  :doc:`/site-building/publishing-tools/publications`
 -  :doc:`/site-building/publishing-tools/publications/enabling-publications`
 -  :doc:`/site-building/publishing-tools/publications/creating-and-managing-publications`
 -  :doc:`/site-building/publishing-tools/publications/making-and-publishing-changes`

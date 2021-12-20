@@ -25,7 +25,7 @@ Here are all the upgrade tool command line options:
 
 **--log-file** or **-l** + **[arg]**: Specifies the tool's log file name---the default name is `upgrade.log`.
 
-**--shell** or **-s**: Automatically connects you to the [Gogo shell](../../../liferay-internals/fundamentals/using-the-gogo-shell/using-the-gogo-shell.md) after finishing the upgrade process.
+**--shell** or **-s**: Automatically connects you to the [Gogo shell](../../../liferay-internals/fundamentals/using-the-gogo-shell.md) after finishing the upgrade process.
 
 ### Logging Output
 
@@ -78,8 +78,8 @@ Please enter your database host (localhost):
 (etc.)
 ```
 
-```note::
-   Omitted values use the defaults displayed in the parentheses.
+```{note}
+Omitted values use the defaults displayed in the parentheses.
 ```
 
 ### Manual Configuration
@@ -124,18 +124,18 @@ server.detector.server.id=tomcat
 
 #### Configuring portal-upgrade-database.properties
 
-Specify the following information to configure the database you're upgrading. Note that these properties correspond to the [JDBC portal properties](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html#JDBC) you'd use in a `portal-ext.properties` file.
+Specify the following information to configure the database you're upgrading. Note that these properties correspond to the [JDBC portal properties](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#JDBC) you'd use in a `portal-ext.properties` file.
 
 * `jdbc.default.driverClassName`
 * `jdbc.default.url`
 * `jdbc.default.username`
 * `jdbc.default.password`
 
-See the latest [portal properties reference](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html) for a reference on these values.
+See the latest [portal properties reference](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html) for a reference on these values.
 
 #### Configuring portal-upgrade-ext.properties
 
-Add all [portal properties](../../reference/portal-properties.md), such as `portal-ext.properties` file properties, from your [backup](../../maintaining-a-liferay-dxp-installation/backing-up.md). The following properties are especially important to configure the upgrade:
+Add all [portal properties](../../reference/portal-properties.md), such as `portal-ext.properties` file properties, from your [backup](../../maintaining-a-liferay-installation/backing-up.md). The following properties are especially important to configure the upgrade:
 
 * `liferay.home`: The [LIFERAY_HOME folder](../../reference/liferay-home.md).
 

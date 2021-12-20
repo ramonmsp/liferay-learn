@@ -8,7 +8,7 @@ At the bottom of the [User Group form](./creating-and-managing-user-groups.md) a
 
 User Group Sites are specific page sets that populate Users' *My Profile* (public) and *My Dashboard* (private) personal Sites.
 
-Users can have personal Sites that consist of public (Profile) and possibly private (Dashboard) pages. These must be enabled for both [public](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html#Default%20User%20Public%20Layouts) and [private](https://docs.liferay.com/dxp/portal/7.3-latest/propertiesdoc/portal.properties.html#Default%20User%20Private%20Layouts) Sites.
+Users can have personal Sites that consist of public (Profile) and possibly private (Dashboard) pages. These must be enabled for both [public](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#Default%20User%20Public%20Layouts) and [private](https://learn.liferay.com/reference/latest/en/dxp/propertiesdoc/portal.properties.html#Default%20User%20Private%20Layouts) Sites.
 
 <!-- The first part of this paragraph feels redundant to information presented a couple paragraphs prior.
 A *User Group Site* isn't really a Site: it's a set of pages that gets added to either the public (profile) or private (dashboard) Sites of Users. A mixed approach can also be used, where both private and public pages are added for the User Group Site. If Users belong to multiple User Groups, all the pages from those User Group Sites are made part of their personal Sites.
@@ -38,8 +38,8 @@ User Group Site pages function similarly to regular Site Template pages, with an
 
 This allows great flexibility in configuring a User's personal Site without having to modify it directly. When Users are assigned to a User Group, they'll immediately have access to the User Group's Site pages from their personal Sites.
 
-```note::
-   Site Templates have an option that propagates changes made to the Site Template. If you use a Site Template with this option enabled, the User Group Sites update automatically when that template changes. If you disable this option but enable it again later, the template's pages are copied to the Users' Sites, overwriting any changes they may have made.
+```{note}
+Site Templates have an option that propagates changes made to the Site Template. If you use a Site Template with this option enabled, the User Group Sites update automatically when that template changes. If you disable this option but enable it again later, the template's pages are copied to the Users' Sites, overwriting any changes they may have made.
 ```
 
 ## Creating User Group Sites Manually
