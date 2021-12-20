@@ -9,6 +9,11 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ page import="com.acme.f2m9.model.Todo" %><%@
 page import="com.acme.f2m9.service.TodoLocalServiceUtil" %>
 
+<%@ page import="com.liferay.portal.kernel.model.WorkflowInstanceLink" %><%@
+page import="com.liferay.portal.kernel.service.WorkflowInstanceLinkLocalServiceUtil" %><%@
+page import="com.liferay.portal.kernel.util.HashMapBuilder" %><%@
+page import="com.liferay.portal.kernel.workflow.WorkflowConstants" %>
+
 <%@ page import="java.util.List" %>
 
 <liferay-theme:defineObjects />
@@ -33,15 +38,40 @@ List<Todo> todoList = TodoLocalServiceUtil.getTodos(-1, -1);
 
 <h5>Todos</h5>
 <c:choose>
-	<c:when test="<%= (todoList != null) && (todoList.size() > 0) %>">
+	<c:when test="<%= (todoList != null) && !todoList.isEmpty() %>">
 		<table>
+			<tr>
+				<th>Entry</th>
+				<th>Status</th>
+			</tr>
+
 			<tbody>
-				<c:forEach items="<%= todoList %>" var="todo">
-					<tr>
-						<td>${todo.name }</td>
-						<td>${todo.status }</td>
-					</tr>
-				</c:forEach>
+				<%for(Todo todo: todoList) { %>
+				<tr>
+					<td><%= todo.getName() %></td>
+					<td><%= WorkflowConstants.getStatusLabel(todo.getStatus()) %></td>
+					<td>
+
+						<%
+						WorkflowInstanceLink workflowDefinitionLink = WorkflowInstanceLinkLocalServiceUtil.fetchWorkflowInstanceLink(todo.getCompanyId(), todo.getGroupId(), Todo.class.getName(), todo.getPrimaryKey());
+
+						if (workflowDefinitionLink != null) {
+							Long workflowInstanceId = workflowDefinitionLink.getWorkflowInstanceId();
+						%>
+
+						<react:component
+							module="js/Index.js"
+							props='<%=
+								HashMapBuilder.<String, Object>put(
+									"workflowInstanceId", workflowInstanceId
+								).build()
+							%>'
+						/>
+
+						<%} %>
+					</td>
+				</tr>
+				<%} %>
 			</tbody>
 		</table>
 	</c:when>

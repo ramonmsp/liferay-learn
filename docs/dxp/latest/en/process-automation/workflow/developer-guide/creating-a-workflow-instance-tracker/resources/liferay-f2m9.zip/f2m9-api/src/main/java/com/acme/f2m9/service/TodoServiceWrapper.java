@@ -26,6 +26,10 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
 public class TodoServiceWrapper
 	implements ServiceWrapper<TodoService>, TodoService {
 
+	public TodoServiceWrapper() {
+		this(null);
+	}
+
 	public TodoServiceWrapper(TodoService todoService) {
 		_todoService = todoService;
 	}

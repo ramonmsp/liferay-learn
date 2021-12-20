@@ -140,6 +140,11 @@ public class TodoWrapper
 		}
 	}
 
+	@Override
+	public Todo cloneWithOriginalValues() {
+		return wrap(model.cloneWithOriginalValues());
+	}
+
 	/**
 	 * Returns the company ID of this todo.
 	 *

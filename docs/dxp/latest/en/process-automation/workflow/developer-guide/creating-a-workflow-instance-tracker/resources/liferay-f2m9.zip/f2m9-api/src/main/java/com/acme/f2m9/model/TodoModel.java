@@ -365,4 +365,7 @@ public interface TodoModel
 	@Override
 	public boolean isScheduled();
 
+	@Override
+	public Todo cloneWithOriginalValues();
+
 }

@@ -26,6 +26,10 @@ import com.liferay.portal.kernel.service.ServiceWrapper;
 public class TodoLocalServiceWrapper
 	implements ServiceWrapper<TodoLocalService>, TodoLocalService {
 
+	public TodoLocalServiceWrapper() {
+		this(null);
+	}
+
 	public TodoLocalServiceWrapper(TodoLocalService todoLocalService) {
 		_todoLocalService = todoLocalService;
 	}
@@ -383,8 +387,7 @@ public class TodoLocalServiceWrapper
 	public com.acme.f2m9.model.Todo updateStatus(
 			long userId, com.acme.f2m9.model.Todo todo, int status,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			   com.liferay.portal.kernel.exception.SystemException {
+		throws com.liferay.portal.kernel.exception.PortalException {
 
 		return _todoLocalService.updateStatus(
 			userId, todo, status, serviceContext);
