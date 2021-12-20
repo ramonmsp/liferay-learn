@@ -19,7 +19,6 @@ import com.acme.f2m9.model.Todo;
 import com.liferay.petra.sql.dsl.query.DSLQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.model.PersistedModel;
 import com.liferay.portal.kernel.util.OrderByComparator;
 
@@ -351,7 +350,7 @@ public class TodoLocalServiceUtil {
 	public static Todo updateStatus(
 			long userId, Todo todo, int status,
 			com.liferay.portal.kernel.service.ServiceContext serviceContext)
-		throws PortalException, SystemException {
+		throws PortalException {
 
 		return getService().updateStatus(userId, todo, status, serviceContext);
 	}

@@ -314,7 +314,7 @@ public interface TodoLocalService
 
 	public Todo updateStatus(
 			long userId, Todo todo, int status, ServiceContext serviceContext)
-		throws PortalException, SystemException;
+		throws PortalException;
 
 	/**
 	 * Updates the todo in the database or adds it if it does not yet exist. Also notifies the appropriate model listeners.
