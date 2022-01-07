@@ -4,5 +4,8 @@
         "packages": [
             "f2m9-web"
         ]
+    },
+    "devDependencies": {
+        
     }
 }
